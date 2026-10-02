@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BaseURL</key>
+	<string>https://ai-gateway.tricentriclabs.workers.dev</string>
+	<key>AppId</key>
+	<string>grok_001</string>
+	<key>AppKey</key>
+	<string>aik_y-gSvot9Xkyim99aQzzVKulBI54aZqQHDaHO8JhhXt8</string>
+	<key>ChatModel</key>
+	<string>grok-4.3</string>
+	<key>ImageModel</key>
+	<string>gemini-2.5-flash-image</string>
+</dict>
+</plist>
