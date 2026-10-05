@@ -86,6 +86,9 @@ struct ResponseBlockView: View {
 
     var body: some View {
         switch block {
+        case .markdown(let text):
+            MarkdownAnswerView(text: text, showsCaret: showsCaret)
+
         case .paragraph(let text):
             StreamingParagraph(text: text, showsCaret: showsCaret)
 

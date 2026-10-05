@@ -9,7 +9,7 @@ import Foundation
 
 /// A PDF the user has dropped or chosen, with the facts the file row shows.
 nonisolated struct PDFDocumentInfo: Identifiable, Equatable {
-    let id = UUID()
+    let id: UUID
     let url: URL
     let name: String
     let pageCount: Int
@@ -18,7 +18,15 @@ nonisolated struct PDFDocumentInfo: Identifiable, Equatable {
     /// a locked document stays locked on every fresh open.
     var password: String?
 
-    init(url: URL, name: String, pageCount: Int, byteCount: Int, password: String? = nil) {
+    init(
+        id: UUID = UUID(),
+        url: URL,
+        name: String,
+        pageCount: Int,
+        byteCount: Int,
+        password: String? = nil
+    ) {
+        self.id = id
         self.url = url
         self.name = name
         self.pageCount = pageCount
@@ -46,9 +54,15 @@ nonisolated enum SummaryLength: String, CaseIterable, Identifiable, Hashable {
 }
 
 nonisolated struct SummarySection: Identifiable, Equatable {
-    let id = UUID()
+    let id: UUID
     let title: String
     let page: Int
+
+    init(id: UUID = UUID(), title: String, page: Int) {
+        self.id = id
+        self.title = title
+        self.page = page
+    }
 
     var pageLabel: String { "p. \(page)" }
 }

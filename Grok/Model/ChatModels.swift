@@ -11,11 +11,15 @@ import Foundation
 /// rather than one string so numbered lists keep their medium-weight lead,
 /// exactly as the design specifies.
 nonisolated enum ResponseBlock: Identifiable, Equatable {
+    /// An assistant answer in its original Markdown, rendered by
+    /// AIFormattingKit so headings, lists, tables and code keep their shape.
+    case markdown(String)
     case paragraph(String)
     case numberedList([NumberedItem])
 
     var id: String {
         switch self {
+        case .markdown(let text): return "m-\(text.hashValue)"
         case .paragraph(let text): return "p-\(text.hashValue)"
         case .numberedList(let items): return "l-\(items.map(\.id.uuidString).joined())"
         }
@@ -24,6 +28,8 @@ nonisolated enum ResponseBlock: Identifiable, Equatable {
     /// Plain-text rendering, used when the answer is copied to the pasteboard.
     var plainText: String {
         switch self {
+        case .markdown(let text):
+            return text
         case .paragraph(let text):
             return text
         case .numberedList(let items):
@@ -98,6 +104,39 @@ nonisolated struct ChatMessage: Identifiable, Equatable {
 
     var text: String {
         blocks.map(\.plainText).joined(separator: "\n\n")
+    }
+
+    /// The turn as speech should hear it. Answers now carry their Markdown, so
+    /// the markers are removed and fenced code is dropped rather than read out
+    /// symbol by symbol.
+    var spokenText: String {
+        var lines: [String] = []
+        var isInCodeBlock = false
+
+        for rawLine in text.components(separatedBy: .newlines) {
+            var line = rawLine.trimmingCharacters(in: .whitespaces)
+
+            if line.hasPrefix("```") || line.hasPrefix("~~~") {
+                isInCodeBlock.toggle()
+                continue
+            }
+            if isInCodeBlock { continue }
+
+            while line.hasPrefix("#") || line.hasPrefix(">") {
+                line.removeFirst()
+                line = line.trimmingCharacters(in: .whitespaces)
+            }
+            if line.hasPrefix("- ") || line.hasPrefix("* ") || line.hasPrefix("+ ") {
+                line.removeFirst(2)
+            }
+            for marker in ["**", "__", "*", "_", "`", "|"] {
+                line = line.replacingOccurrences(of: marker, with: "")
+            }
+
+            lines.append(line)
+        }
+
+        return lines.joined(separator: "\n").trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     /// The turn as the model sees it: each attachment's text, then the

@@ -1,0 +1,15 @@
+{
+  "originHash" : "f7b6743b81fef55a10b5696bd0f13e53002974ebf4a354de14d53a1b81897757",
+  "pins" : [
+    {
+      "identity" : "tricentricaiformatter",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Tricentric-labs/tricentricAiFormatter.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "c3c2c63876de216df6f3be64b1b0479610650a55"
+      }
+    }
+  ],
+  "version" : 3
+}

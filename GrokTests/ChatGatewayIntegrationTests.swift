@@ -69,7 +69,7 @@ final class GatewayChatServiceTests: XCTestCase {
         }
 
         XCTAssertFalse(snapshots.isEmpty, "The view needs progressive snapshots to animate.")
-        XCTAssertEqual(snapshots.last?.first, .paragraph("Hello there."))
+        XCTAssertEqual(snapshots.last?.first, .markdown("Hello there."))
     }
 
     func testGatewayFailurePropagatesToTheCaller() async {
@@ -84,44 +84,25 @@ final class GatewayChatServiceTests: XCTestCase {
             XCTFail("Unexpected error: \(error)")
         }
     }
-}
 
-final class ResponseTextParserTests: XCTestCase {
+    /// The reply reaches the view as Markdown, so AIFormattingKit — not the app —
+    /// decides how headings, lists, tables and code are drawn.
+    func testAnswersArriveAsMarkdownWithTheirMarkersIntact() async throws {
+        let markdown = "## Steps\n\n1. **Pick a focus.** One tap.\n\n```swift\nlet x = 1\n```"
+        StubURLProtocol.stub = .json(TestFixtures.chatResponse(content: markdown))
 
-    func testParagraphsAreSeparated() {
-        let blocks = ResponseTextParser.blocks(from: "First paragraph.\n\nSecond paragraph.")
-
-        XCTAssertEqual(blocks.count, 2)
-        XCTAssertEqual(blocks.first, .paragraph("First paragraph."))
-        XCTAssertEqual(blocks.last, .paragraph("Second paragraph."))
-    }
-
-    func testNumberedListKeepsItsBoldLead() throws {
-        let text = """
-            Here is the plan:
-
-            1. **Welcome.** One line on the promise.
-            2. **Pick a focus.** One tap, no typing.
-            """
-
-        let blocks = ResponseTextParser.blocks(from: text)
-        XCTAssertEqual(blocks.count, 2)
-
-        guard case .numberedList(let items) = blocks[1] else {
-            return XCTFail("Expected a numbered list, got \(blocks[1]).")
+        var snapshots: [[ResponseBlock]] = []
+        for try await snapshot in service().respond(to: "Hi") {
+            snapshots.append(snapshot)
         }
-        XCTAssertEqual(items.count, 2)
-        XCTAssertEqual(items[0].lead, "Welcome.")
-        XCTAssertEqual(items[0].body, "One line on the promise.")
-        XCTAssertEqual(items[1].lead, "Pick a focus.")
-    }
 
-    func testEmphasisMarkersAreStripped() {
-        let blocks = ResponseTextParser.blocks(from: "A **bold** word.")
-        XCTAssertEqual(blocks.first, .paragraph("A bold word."))
-    }
-
-    func testPlainTextAlwaysProducesABlock() {
-        XCTAssertEqual(ResponseTextParser.blocks(from: "Just one line.").count, 1)
+        XCTAssertEqual(snapshots.last, [.markdown(markdown)])
+        XCTAssertTrue(
+            snapshots.allSatisfy { snapshot in
+                guard case .markdown = snapshot.first else { return false }
+                return snapshot.count == 1
+            },
+            "Every snapshot should be one growing Markdown block."
+        )
     }
 }

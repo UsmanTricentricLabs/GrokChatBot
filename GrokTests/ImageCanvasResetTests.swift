@@ -14,18 +14,24 @@ import XCTest
 final class ImageCanvasResetTests: XCTestCase {
 
     private var viewModel: ImageViewModel!
+    /// A store of its own, so a test never reads or overwrites the gallery the
+    /// app has saved on this machine.
+    private var controller: PersistenceController!
 
     override func setUp() async throws {
         try await super.setUp()
         StubURLProtocol.reset()
+        controller = PersistenceController(inMemory: true)
         viewModel = ImageViewModel(
-            service: GatewayImageGenerationService(client: GatewayClient(session: StubURLProtocol.session()))
+            service: GatewayImageGenerationService(client: GatewayClient(session: StubURLProtocol.session())),
+            history: ImageHistoryStore(controller: controller)
         )
     }
 
     override func tearDown() async throws {
         StubURLProtocol.reset()
         viewModel = nil
+        controller = nil
         try await super.tearDown()
     }
 

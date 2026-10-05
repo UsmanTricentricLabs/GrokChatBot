@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		56FE3DD330737FE400E140CE /* tricentricAiFormatter in Frameworks */ = {isa = PBXBuildFile; productRef = 56FE3DD230737FE400E140CE /* tricentricAiFormatter */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		56AE31CA306E405400425001 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -39,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56FE3DD330737FE400E140CE /* tricentricAiFormatter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +95,7 @@
 			);
 			name = Grok;
 			packageProductDependencies = (
+				56FE3DD230737FE400E140CE /* tricentricAiFormatter */,
 			);
 			productName = Grok;
 			productReference = 56AE31A2306E405300425025 /* Grok.app */;
@@ -146,6 +152,9 @@
 			);
 			mainGroup = 56AE3199306E405300425025;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				56FE3DD130737FE400E140CE /* XCRemoteSwiftPackageReference "tricentricAiFormatter" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 56AE31A3306E405300425025 /* Products */;
 			projectDirPath = "";
@@ -351,7 +360,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.grok.ai.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -396,7 +405,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.grok.ai.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -418,7 +427,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YA6DV5HRSS;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.grok.ai.app.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -436,7 +445,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YA6DV5HRSS;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.grok.ai.app.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -477,6 +486,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		56FE3DD130737FE400E140CE /* XCRemoteSwiftPackageReference "tricentricAiFormatter" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Tricentric-labs/tricentricAiFormatter.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		56FE3DD230737FE400E140CE /* tricentricAiFormatter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56FE3DD130737FE400E140CE /* XCRemoteSwiftPackageReference "tricentricAiFormatter" */;
+			productName = tricentricAiFormatter;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 56AE319A306E405300425025 /* Project object */;
 }

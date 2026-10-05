@@ -17,12 +17,16 @@ nonisolated enum ArtworkExportError: LocalizedError, Equatable {
 /// image result.
 nonisolated enum ArtworkExporter {
     static func writePNG(_ image: NSImage, to url: URL) throws {
-        guard let tiff = image.tiffRepresentation,
-              let bitmap = NSBitmapImageRep(data: tiff),
-              let data = bitmap.representation(using: .png, properties: [:])
-        else {
-            throw ArtworkExportError.encodingFailed
-        }
+        guard let data = pngData(image) else { throw ArtworkExportError.encodingFailed }
         try data.write(to: url)
+    }
+
+    /// The same PNG encoding, for the history store — which keeps the bytes
+    /// rather than writing them to a file the user chose.
+    static func pngData(_ image: NSImage) -> Data? {
+        guard let tiff = image.tiffRepresentation,
+              let bitmap = NSBitmapImageRep(data: tiff)
+        else { return nil }
+        return bitmap.representation(using: .png, properties: [:])
     }
 }

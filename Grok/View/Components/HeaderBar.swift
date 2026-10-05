@@ -13,6 +13,8 @@ struct HeaderBar: View {
     var showsSidebarToggle: Bool = false
     var onToggleSidebar: () -> Void = {}
 
+    @State private var isSettingsPresented = false
+
     var body: some View {
         HStack(alignment: .center, spacing: 12) {
             if showsSidebarToggle {
@@ -31,7 +33,12 @@ struct HeaderBar: View {
 
             HStack(spacing: 8) {
                 StarfieldPill(title: "Language", asset: GrokAsset.language) {}
-                StarfieldPill(title: "Settings", asset: GrokAsset.settings) {}
+                StarfieldPill(title: "Settings", asset: GrokAsset.settings) {
+                    isSettingsPresented.toggle()
+                }
+                .popover(isPresented: $isSettingsPresented, arrowEdge: .bottom) {
+                    SettingDropDown { isSettingsPresented = false }
+                }
             }
         }
         .padding(.trailing, GrokMetrics.contentPadding)

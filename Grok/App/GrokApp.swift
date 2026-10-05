@@ -16,7 +16,7 @@ struct GrokApp: App {
     var body: some Scene {
         WindowGroup {
             DockPage()
-                .frame(minWidth: 720, minHeight: 560)
+                .frame(minWidth: 1280, minHeight: 736)
                 .preferredColorScheme(.light)
         }
         .windowStyle(HiddenTitleBarWindowStyle())

@@ -51,11 +51,56 @@ final class ChatViewModel: ObservableObject {
     }
 
     private let service: ChatService
+    private let history: ChatHistoryStore
+    private var historyObserver: AnyCancellable?
     private var responseTask: Task<Void, Never>?
 
-    init(service: ChatService = GatewayChatService()) {
+    /// The share sheet and its delegate, held for as long as the sheet is up.
+    private var sharePicker: NSSharingServicePicker?
+    private var shareDelegate: SharePickerDelegate?
+
+    init(
+        service: ChatService = GatewayChatService(),
+        history: ChatHistoryStore = .shared
+    ) {
         self.service = service
-        self.conversations = ChatViewModel.recentHistory
+        self.history = history
+        // The sample rows are laid down once, on the very first launch, so the
+        // sidebar is never empty before the first chat — after that the store
+        // is the only source of history.
+        if history.isEmpty {
+            self.conversations = ChatViewModel.recentHistory
+            history.save(self.conversations)
+        } else {
+            self.conversations = history.load()
+        }
+
+        // Every edit reaches the store: new turns, renames, pins, deletes. The
+        // pause lets a streaming answer settle before it is written, so a long
+        // reply costs one save rather than one per chunk.
+        historyObserver = $conversations
+            .dropFirst()
+            .debounce(for: .seconds(0.4), scheduler: RunLoop.main)
+            .sink { [weak self] conversations in
+                self?.history.save(conversations)
+            }
+        _ = terminationObserver
+    }
+
+    /// Quitting does not wait for the debounce, so the last edit is written
+    /// on the way out.
+    private lazy var terminationObserver: Any = NotificationCenter.default.addObserver(
+        forName: NSApplication.willTerminateNotification,
+        object: nil,
+        queue: .main
+    ) { [weak self] _ in
+        MainActor.assumeIsolated { self?.flushHistory() }
+    }
+
+    /// Writes the history out now, for the moments that cannot wait for the
+    /// debounce — the app being asked to quit.
+    func flushHistory() {
+        history.save(conversations)
     }
 
     // MARK: Derived state
@@ -123,12 +168,43 @@ final class ChatViewModel: ObservableObject {
         }
     }
 
-    func share(_ conversation: Conversation) {
-        copyToPasteboard(
-            conversation.messages
-                .map { "\($0.role == .user ? "You" : "Grok"): \($0.text)" }
-                .joined(separator: "\n\n")
+    /// Hands the transcript to the system share sheet, anchored to the row's
+    /// menu button. Without an anchor there is nowhere to attach the picker,
+    /// so the transcript goes to the pasteboard instead.
+    func share(_ conversation: Conversation, from view: NSView?, rect: NSRect = .zero) {
+        let transcript = Self.transcript(of: conversation)
+        guard let view, view.window != nil else {
+            copyToPasteboard(transcript)
+            return
+        }
+
+        let picker = NSSharingServicePicker(items: [transcript])
+        // Mail takes its subject from the service, not from the shared text —
+        // without this the title would be the only thing that travelled, and
+        // the body would carry a heading it does not need.
+        let delegate = SharePickerDelegate(subject: conversation.title)
+        picker.delegate = delegate
+        // Both outlive this call: the picker runs the sheet, the delegate is
+        // consulted once a service is picked.
+        sharePicker = picker
+        shareDelegate = delegate
+
+        picker.show(
+            relativeTo: rect == .zero ? view.bounds : rect,
+            of: view,
+            preferredEdge: .maxY
         )
+    }
+
+    /// The conversation as plain text, the form every share service accepts.
+    ///
+    /// The title is the subject, so the body is the turns alone.
+    static func transcript(of conversation: Conversation) -> String {
+        let body = conversation.messages
+            .filter { !$0.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
+            .map { "\($0.role == .user ? "You" : "Grok"): \($0.text)" }
+            .joined(separator: "\n\n")
+        return body.isEmpty ? conversation.title : body
     }
 
     func toggleSearch() {
@@ -198,7 +274,7 @@ final class ChatViewModel: ObservableObject {
             synthesizer.stopSpeaking(at: .immediate)
             return
         }
-        synthesizer.speak(AVSpeechUtterance(string: message.text))
+        synthesizer.speak(AVSpeechUtterance(string: message.spokenText))
     }
 
     private let synthesizer = AVSpeechSynthesizer()
@@ -409,5 +485,22 @@ final class ChatViewModel: ObservableObject {
         .map { offset, title in
             Conversation(title: title, updatedAt: Date().addingTimeInterval(-Double(offset) * 3600))
         }
+    }
+}
+
+/// Carries the conversation title into services that have a subject of their
+/// own, Mail above all.
+final class SharePickerDelegate: NSObject, NSSharingServicePickerDelegate {
+    private let subject: String
+
+    init(subject: String) {
+        self.subject = subject
+    }
+
+    func sharingServicePicker(
+        _ sharingServicePicker: NSSharingServicePicker,
+        didChoose service: NSSharingService?
+    ) {
+        service?.subject = subject
     }
 }

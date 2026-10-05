@@ -3,7 +3,44 @@
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
+    <entity name="CDConversation" representedClassName="CDConversation" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="isPinned" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDMessage" inverseName="conversation" inverseEntity="CDMessage"/>
+    </entity>
+    <entity name="CDMessage" representedClassName="CDMessage" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="roleRaw" optional="YES" attributeType="String"/>
+        <attribute name="order" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="blocksData" optional="YES" attributeType="Binary"/>
+        <attribute name="attachmentsData" optional="YES" attributeType="Binary"/>
+        <relationship name="conversation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDConversation" inverseName="messages" inverseEntity="CDConversation"/>
+    </entity>
+    <entity name="CDGeneratedImage" representedClassName="CDGeneratedImage" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="prompt" optional="YES" attributeType="String"/>
+        <attribute name="styleRaw" optional="YES" attributeType="String"/>
+        <attribute name="ratioRaw" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="artworkData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+    </entity>
+    <entity name="CDSummarizedDocument" representedClassName="CDSummarizedDocument" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="urlString" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="pageCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="byteCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="summaryData" optional="YES" attributeType="Binary"/>
+        <attribute name="followUpsData" optional="YES" attributeType="Binary"/>
+    </entity>
     <elements>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="CDConversation" positionX="100" positionY="-18" width="128" height="104"/>
+        <element name="CDMessage" positionX="300" positionY="-18" width="128" height="119"/>
+        <element name="CDGeneratedImage" positionX="100" positionY="150" width="128" height="119"/>
+        <element name="CDSummarizedDocument" positionX="300" positionY="150" width="128" height="149"/>
     </elements>
 </model>

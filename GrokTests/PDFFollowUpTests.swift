@@ -16,6 +16,9 @@ final class PDFFollowUpTests: XCTestCase {
 
     private var viewModel: PDFViewModel!
     private var documentURL: URL!
+    /// A store of its own, so the documents saved on this machine are left
+    /// alone.
+    private var controller: PersistenceController!
 
     override func setUp() async throws {
         try await super.setUp()
@@ -25,7 +28,12 @@ final class PDFFollowUpTests: XCTestCase {
         var chat = GatewayChatService(client: client)
         chat.wordInterval = 0
 
-        viewModel = PDFViewModel(service: PDFSummaryService(client: client), chatService: chat)
+        controller = PersistenceController(inMemory: true)
+        viewModel = PDFViewModel(
+            service: PDFSummaryService(client: client),
+            chatService: chat,
+            history: DocumentHistoryStore(controller: controller)
+        )
         documentURL = try Self.makeDocument()
 
         // Reach a finished summary the way the app does: drop a file, then
@@ -43,6 +51,7 @@ final class PDFFollowUpTests: XCTestCase {
         if let documentURL { try? FileManager.default.removeItem(at: documentURL) }
         viewModel = nil
         documentURL = nil
+        controller = nil
         try await super.tearDown()
     }
 
@@ -100,6 +109,28 @@ final class PDFFollowUpTests: XCTestCase {
 
         XCTAssertTrue(viewModel.followUps.isEmpty, "A new document starts a new thread.")
         XCTAssertTrue(viewModel.followUpDraft.isEmpty)
+    }
+
+    func testPickingADocumentFromTheSidebarReopensItsSummary() async throws {
+        StubURLProtocol.stub = .json(TestFixtures.chatResponse)
+        viewModel.followUpDraft = "A question"
+        viewModel.askFollowUp()
+        try await waitForAnswer()
+
+        let listed = try XCTUnwrap(viewModel.summarizedDocuments.first)
+        let summary = try XCTUnwrap(viewModel.summary)
+
+        viewModel.startNewSummary()
+        XCTAssertNil(viewModel.summary, "The flow goes back to the drop zone.")
+
+        // Nothing is stubbed, so reopening must come from what is already held
+        // rather than from a second trip to the Gateway.
+        StubURLProtocol.reset()
+        viewModel.select(listed)
+
+        XCTAssertEqual(viewModel.document?.url, listed.url)
+        XCTAssertEqual(viewModel.summary, summary)
+        XCTAssertEqual(viewModel.followUps.count, 2, "Its questions come back with it.")
     }
 
     /// Waits for the streamed answer to settle.

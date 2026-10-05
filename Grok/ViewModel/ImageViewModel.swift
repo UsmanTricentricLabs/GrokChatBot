@@ -33,10 +33,41 @@ final class ImageViewModel: ObservableObject {
     @Published private(set) var isComposingNewImage = false
 
     private let service: ImageGenerationService
+    private let history: ImageHistoryStore
+    private var historyObserver: AnyCancellable?
     private var generationTask: Task<Void, Never>?
 
-    init(service: ImageGenerationService = GatewayImageGenerationService()) {
+    init(
+        service: ImageGenerationService = GatewayImageGenerationService(),
+        history: ImageHistoryStore = .shared
+    ) {
         self.service = service
+        self.history = history
+        self.images = history.load()
+
+        // Every finished picture reaches the store. The pause lets a
+        // generation settle so one image costs one write, not three.
+        historyObserver = $images
+            .dropFirst()
+            .debounce(for: .seconds(0.4), scheduler: RunLoop.main)
+            .sink { [weak self] images in
+                self?.history.save(images)
+            }
+        _ = terminationObserver
+    }
+
+    /// Quitting does not wait for the debounce, so the last picture is written
+    /// on the way out.
+    private lazy var terminationObserver: Any = NotificationCenter.default.addObserver(
+        forName: NSApplication.willTerminateNotification,
+        object: nil,
+        queue: .main
+    ) { [weak self] _ in
+        MainActor.assumeIsolated { self?.flushHistory() }
+    }
+
+    func flushHistory() {
+        history.save(images)
     }
 
     // MARK: Derived state

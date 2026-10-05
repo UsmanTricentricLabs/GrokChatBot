@@ -39,14 +39,84 @@ final class PDFViewModel: ObservableObject {
         var isUnlocking: Bool = false
     }
 
+    /// Finished summaries, kept so a document picked from the sidebar opens
+    /// its own summary again instead of being re-read. Keyed by file, because
+    /// re-opening the same PDF describes it with a fresh `PDFDocumentInfo`.
+    private var summaries: [URL: PDFSummary] = [:]
+    /// The questions asked about each document, restored with its summary.
+    private var followUpHistory: [URL: [ChatMessage]] = [:]
+
     private let service: PDFSummarizing
     private let chatService: ChatService
+    private let history: DocumentHistoryStore
+    private var historyObserver: AnyCancellable?
     private var summaryTask: Task<Void, Never>?
     private var followUpTask: Task<Void, Never>?
 
-    init(service: PDFSummarizing = PDFSummaryService(), chatService: ChatService = GatewayChatService()) {
+    init(
+        service: PDFSummarizing = PDFSummaryService(),
+        chatService: ChatService = GatewayChatService(),
+        history: DocumentHistoryStore = .shared
+    ) {
         self.service = service
         self.chatService = chatService
+        self.history = history
+
+        // The flow always opens on the drop zone, with the documents read
+        // before it waiting in the sidebar — summary and questions included.
+        let stored = history.load()
+        summarizedDocuments = stored.map(\.info)
+        for document in stored {
+            summaries[document.info.url] = document.summary
+            followUpHistory[document.info.url] = document.followUps
+        }
+
+        // A new summary, or an answer to a question about one, is written out
+        // once it settles rather than on every streamed chunk.
+        historyObserver = Publishers.Merge(
+            $summarizedDocuments.map { _ in () },
+            $followUps.map { _ in () }
+        )
+        .dropFirst()
+        .debounce(for: .seconds(0.4), scheduler: RunLoop.main)
+        .sink { [weak self] in
+            self?.persistHistory()
+        }
+        _ = terminationObserver
+    }
+
+    /// Quitting does not wait for the debounce, so the last summary and the
+    /// last answer are written on the way out.
+    private lazy var terminationObserver: Any = NotificationCenter.default.addObserver(
+        forName: NSApplication.willTerminateNotification,
+        object: nil,
+        queue: .main
+    ) { [weak self] _ in
+        MainActor.assumeIsolated { self?.persistHistory() }
+    }
+
+    /// Writes the sidebar list out with each document's summary and the
+    /// questions asked about it.
+    func persistHistory() {
+        stashFollowUps()
+
+        let records = summarizedDocuments.compactMap { info -> SummarizedDocument? in
+            guard let summary = summaries[info.url] else { return nil }
+            return SummarizedDocument(
+                info: info,
+                summary: summary,
+                followUps: Self.storable(followUpHistory[info.url] ?? [])
+            )
+        }
+        history.save(records)
+    }
+
+    /// A question whose answer never arrived would come back as a spinner, so
+    /// the thread is cut at the last finished exchange.
+    private static func storable(_ messages: [ChatMessage]) -> [ChatMessage] {
+        var storable = messages.filter { $0.role == .user || $0.state == .complete }
+        if storable.last?.role == .user { storable.removeLast() }
+        return storable
     }
 
     // MARK: Derived state
@@ -129,6 +199,7 @@ final class PDFViewModel: ObservableObject {
     func removeDocument() {
         summaryTask?.cancel()
         followUpTask?.cancel()
+        stashFollowUps()
         followUps.removeAll()
         followUpDraft = ""
         passwordRequest = nil
@@ -151,6 +222,7 @@ final class PDFViewModel: ObservableObject {
                 }
                 guard !Task.isCancelled else { return }
                 state = .summarized(info, summary)
+                summaries[info.url] = summary
                 if !summarizedDocuments.contains(where: { $0.url == info.url }) {
                     summarizedDocuments.insert(info, at: 0)
                 }
@@ -173,9 +245,49 @@ final class PDFViewModel: ObservableObject {
         pagesRead = 0
     }
 
+    /// Opens a document from the sidebar list again, with the summary it
+    /// already produced and the questions asked about it.
+    func select(_ info: PDFDocumentInfo) {
+        guard info.url != document?.url else { return }
+
+        summaryTask?.cancel()
+        followUpTask?.cancel()
+        stashFollowUps()
+
+        followUpDraft = ""
+        passwordRequest = nil
+        pagesRead = 0
+        followUps = followUpHistory[info.url] ?? []
+
+        // A document only reaches the list once it has a summary, so the
+        // stored one is what reopening shows; without it the file is simply
+        // offered for summarizing again.
+        if let summary = summaries[info.url] {
+            state = .summarized(info, summary)
+        } else {
+            state = .selected(info)
+        }
+    }
+
+    /// Keeps the open document's questions, so stepping away and back does not
+    /// lose them.
+    private func stashFollowUps() {
+        guard let current = document else { return }
+        followUpHistory[current.url] = followUps
+    }
+
+    /// The summary screen's own "New" button: clear the open document and go
+    /// straight to the file picker.
     func startNewDocument() {
         removeDocument()
         chooseFile()
+    }
+
+    /// Entering the flow from the sidebar, which lands on the empty drop zone
+    /// rather than on the last summary — the same fresh start New Chat and
+    /// Create Image give. Summarized documents stay in the sidebar list.
+    func startNewSummary() {
+        removeDocument()
     }
 
     // MARK: Follow-up questions
@@ -270,6 +382,7 @@ final class PDFViewModel: ObservableObject {
     /// not an error — for a password-protected one.
     func open(_ url: URL, password: String? = nil) {
         followUpTask?.cancel()
+        stashFollowUps()
         followUps.removeAll()
         followUpDraft = ""
 

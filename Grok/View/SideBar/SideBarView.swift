@@ -42,6 +42,9 @@ struct SideBarView: View {
                     asset: GrokAsset.pdfSummary,
                     isSelected: screenSwitchVM.screen == .pdfSummary
                 ) {
+                    // Like New Chat and Create Image: the nav item opens the
+                    // empty drop zone rather than the last summary.
+                    pdfVM.startNewSummary()
                     screenSwitchVM.show(.pdfSummary)
                 }
             }
@@ -123,21 +126,49 @@ struct SideBarDocumentList: View {
                 .padding(.horizontal, 4)
 
             ForEach(pdfVM.summarizedDocuments) { document in
-                HStack(spacing: 0) {
-                    Text(document.name)
-                        .grokText(.labelPlain, color: GrokColor.sidebarInk)
-                        .lineLimit(1)
-                        .truncationMode(.middle)
-                    Spacer(minLength: 0)
-                }
-                .padding(.horizontal, 14)
-                .frame(height: 36)
-                .background(
-                    Capsule().fill(
-                        document.id == pdfVM.document?.id ? GrokColor.sidebarSelection : .clear
-                    )
+                SideBarDocumentRow(
+                    document: document,
+                    isSelected: document.url == pdfVM.document?.url,
+                    pdfVM: pdfVM
                 )
             }
         }
+    }
+}
+
+/// One document row. Clicking it reopens that PDF's summary, the way a chat
+/// row reopens its conversation.
+struct SideBarDocumentRow: View {
+    let document: PDFDocumentInfo
+    let isSelected: Bool
+    @ObservedObject var pdfVM: PDFViewModel
+
+    @State private var isHovering = false
+
+    var body: some View {
+        Button {
+            pdfVM.select(document)
+        } label: {
+            HStack(spacing: 0) {
+                Text(document.name)
+                    .grokText(.labelPlain, color: GrokColor.sidebarInk)
+                    .lineLimit(1)
+                    .truncationMode(.middle)
+                Spacer(minLength: 0)
+            }
+            .padding(.horizontal, 14)
+            .frame(height: 36)
+            .background(Capsule().fill(background))
+            .contentShape(Capsule())
+        }
+        .buttonStyle(GrokButtonStyle())
+        .help(document.name)
+        .onHover { isHovering = $0 }
+        .animation(.easeOut(duration: 0.12), value: isHovering)
+    }
+
+    private var background: Color {
+        if isSelected { return GrokColor.sidebarSelection }
+        return isHovering ? Color.white.opacity(0.08) : .clear
     }
 }

@@ -32,12 +32,16 @@ extension ChatService {
 nonisolated struct GatewayChatService: ChatService {
 
     /// The persona the app has always used for its answers.
+    ///
+    /// Answers are rendered with AIFormattingKit, so the model is free to use
+    /// the Markdown that formatter draws: headings, lists, tables and fenced
+    /// code with a language tag.
     static let defaultSystemPrompt = """
         You are Grok, a direct and genuinely helpful assistant in a macOS app. \
-        Answer in clear prose. Prefer short paragraphs. When a sequence of steps \
-        genuinely helps, use a numbered list where each item opens with a short \
-        bold lead phrase followed by one or two sentences. Do not use headings, \
-        tables or emoji.
+        Answer in clear prose with short paragraphs. Use Markdown when it helps: \
+        headings, bullet or numbered lists with a short bold lead phrase per \
+        item, tables for comparisons, and fenced code blocks tagged with their \
+        language. Do not use emoji.
         """
 
     /// Delay between revealed words.
@@ -72,13 +76,13 @@ nonisolated struct GatewayChatService: ChatService {
                     )
                     try Task.checkCancellation()
 
-                    let blocks = ResponseTextParser.blocks(from: response.message.content)
-                    for snapshot in Self.reveal(blocks) {
+                    let answer = response.message.content.trimmingCharacters(in: .whitespacesAndNewlines)
+                    for snapshot in Self.reveal(answer) {
                         try Task.checkCancellation()
                         continuation.yield(snapshot)
                         try await Task.sleep(nanoseconds: interval)
                     }
-                    continuation.yield(blocks)
+                    continuation.yield([.markdown(answer)])
                     continuation.finish()
                 } catch is CancellationError {
                     continuation.finish()
@@ -108,31 +112,17 @@ nonisolated struct GatewayChatService: ChatService {
         return turns
     }
 
-    /// Progressive snapshots of a finished answer: paragraphs fill word by
-    /// word, lists one row at a time.
-    private static func reveal(_ blocks: [ResponseBlock]) -> [[ResponseBlock]] {
+    /// Progressive snapshots of a finished answer: the Markdown fills word by
+    /// word, so the formatter lays out more of the reply on every tick.
+    private static func reveal(_ answer: String) -> [[ResponseBlock]] {
         var snapshots: [[ResponseBlock]] = []
-        var revealed: [ResponseBlock] = []
+        var revealed = ""
 
-        for block in blocks {
-            switch block {
-            case .paragraph(let text):
-                revealed.append(.paragraph(""))
-                var current = ""
-                for word in text.split(separator: " ", omittingEmptySubsequences: false) {
-                    current += current.isEmpty ? String(word) : " \(word)"
-                    revealed[revealed.count - 1] = .paragraph(current)
-                    snapshots.append(revealed)
-                }
-            case .numberedList(let items):
-                revealed.append(.numberedList([]))
-                var shown: [NumberedItem] = []
-                for item in items {
-                    shown.append(item)
-                    revealed[revealed.count - 1] = .numberedList(shown)
-                    snapshots.append(revealed)
-                }
-            }
+        // Splitting on spaces alone keeps the line breaks inside each token, so
+        // rejoining them reproduces the answer's Markdown exactly.
+        for word in answer.split(separator: " ", omittingEmptySubsequences: false) {
+            revealed += revealed.isEmpty ? String(word) : " \(word)"
+            snapshots.append([.markdown(revealed)])
         }
         return snapshots
     }

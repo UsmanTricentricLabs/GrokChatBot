@@ -119,6 +119,25 @@ enum TestFixtures {
         }
         """
 
+    /// The same reply with chosen content, for tests about how an answer's
+    /// Markdown survives the trip to the view.
+    static func chatResponse(content: String) -> String {
+        let escaped = content
+            .replacingOccurrences(of: "\\", with: "\\\\")
+            .replacingOccurrences(of: "\"", with: "\\\"")
+            .replacingOccurrences(of: "\n", with: "\\n")
+        return """
+            {
+              "request_id": "req_test_chat",
+              "created_at": "2026-10-01T12:00:00.000Z",
+              "model": "grok-4.3",
+              "provider": "xai",
+              "message": { "role": "assistant", "content": "\(escaped)" },
+              "finish_reason": "stop"
+            }
+            """
+    }
+
     /// A 1×1 PNG, so decoding produces a real image without shipping a fixture.
     static let pngBase64 = """
         iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==
