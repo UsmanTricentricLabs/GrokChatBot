@@ -27,8 +27,11 @@
 "chat.autoPrompt.file" = "لخّص «%@» وأخبرني بأهم ما فيه.";
 "chat.autoPrompt.files" = "لخّص هذه الملفات وأخبرني بأهم ما فيها.";
 "chat.autoPrompt.image" = "ماذا يوجد في هذه الصورة؟";
+"chat.pin" = "تثبيت";
 "chat.readAloud" = "القراءة بصوت عالٍ";
+"chat.rename" = "إعادة تسمية";
 "chat.thinking" = "جارٍ التفكير";
+"chat.unpin" = "إلغاء التثبيت";
 
 /* MARK: common */
 "common.askAnything" = "اسأل عن أي شيء...";
@@ -36,6 +39,7 @@
 "common.close" = "إغلاق";
 "common.copied" = "تم النسخ";
 "common.copy" = "نسخ";
+"common.delete" = "حذف";
 "common.dismiss" = "تجاهل";
 "common.moveBack" = "رجوع";
 "common.notNow" = "ليس الآن";
@@ -210,6 +214,8 @@
 
 /* MARK: sidebar */
 "sidebar.chatOptions" = "خيارات المحادثة";
+"sidebar.deleteImage" = "حذف الصورة";
+"sidebar.documentOptions" = "خيارات المستند";
 "sidebar.empty.chats.subtitle" = "ستظهر هنا المحادثات التي تبدأها";
 "sidebar.empty.chats.title" = "لا توجد محادثات بعد!";
 "sidebar.empty.images.subtitle" = "ستظهر هنا إبداعاتك";

@@ -27,8 +27,11 @@
 "chat.autoPrompt.file" = "总结“%@”，并告诉我其中最重要的内容。";
 "chat.autoPrompt.files" = "总结这些文件，并告诉我其中最重要的内容。";
 "chat.autoPrompt.image" = "这张图片里有什么？";
+"chat.pin" = "置顶";
 "chat.readAloud" = "朗读";
+"chat.rename" = "重命名";
 "chat.thinking" = "思考中";
+"chat.unpin" = "取消置顶";
 
 /* MARK: common */
 "common.askAnything" = "问我任何问题...";
@@ -36,6 +39,7 @@
 "common.close" = "关闭";
 "common.copied" = "已拷贝";
 "common.copy" = "拷贝";
+"common.delete" = "删除";
 "common.dismiss" = "忽略";
 "common.moveBack" = "返回";
 "common.notNow" = "以后再说";
@@ -210,6 +214,8 @@
 
 /* MARK: sidebar */
 "sidebar.chatOptions" = "聊天选项";
+"sidebar.deleteImage" = "删除图片";
+"sidebar.documentOptions" = "文稿选项";
 "sidebar.empty.chats.subtitle" = "你发起的对话会显示在这里";
 "sidebar.empty.chats.title" = "还没有聊天！";
 "sidebar.empty.images.subtitle" = "你的作品会显示在这里";

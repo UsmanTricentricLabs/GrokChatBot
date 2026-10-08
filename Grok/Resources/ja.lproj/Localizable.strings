@@ -27,8 +27,11 @@
 "chat.autoPrompt.file" = "「%@」を要約して、特に重要な点を教えてください。";
 "chat.autoPrompt.files" = "これらのファイルを要約して、特に重要な点を教えてください。";
 "chat.autoPrompt.image" = "この画像には何が写っていますか？";
+"chat.pin" = "ピン留め";
 "chat.readAloud" = "読み上げる";
+"chat.rename" = "名称変更";
 "chat.thinking" = "考えています";
+"chat.unpin" = "ピンを外す";
 
 /* MARK: common */
 "common.askAnything" = "何でも聞いてください...";
@@ -36,6 +39,7 @@
 "common.close" = "閉じる";
 "common.copied" = "コピーしました";
 "common.copy" = "コピー";
+"common.delete" = "削除";
 "common.dismiss" = "閉じる";
 "common.moveBack" = "戻る";
 "common.notNow" = "後で";
@@ -210,6 +214,8 @@
 
 /* MARK: sidebar */
 "sidebar.chatOptions" = "チャットのオプション";
+"sidebar.deleteImage" = "画像を削除";
+"sidebar.documentOptions" = "書類のオプション";
 "sidebar.empty.chats.subtitle" = "開始した会話がここに表示されます";
 "sidebar.empty.chats.title" = "まだチャットがありません";
 "sidebar.empty.images.subtitle" = "作成した画像がここに表示されます";

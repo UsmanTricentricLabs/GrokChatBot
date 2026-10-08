@@ -127,7 +127,7 @@ struct HomeScreen: View {
 
     private var thread: some View {
         ScrollViewReader { scroller in
-            ScrollView(.vertical, showsIndicators: true) {
+            ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .trailing, spacing: 16) {
                     ForEach(chatVM.messages) { message in
                         messageRow(message)

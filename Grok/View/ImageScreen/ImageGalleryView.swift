@@ -61,6 +61,11 @@ struct ImageGalleryView: View {
                                 }
                                 .buttonStyle(GrokButtonStyle())
                                 .help(image.prompt)
+                                .contextMenu {
+                                    Button("common.delete".localized, role: .destructive) {
+                                        imageVM.delete(image)
+                                    }
+                                }
                             }
                         }
                     }

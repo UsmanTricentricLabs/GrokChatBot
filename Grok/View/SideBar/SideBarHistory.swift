@@ -185,11 +185,11 @@ struct SideBarConversationMenu: View {
         let spot = anchor.convert(anchor.bounds, to: nil)
 
         let menu = NSMenu()
-        menu.addItem(actions.item("Rename", onRename))
-        menu.addItem(actions.item(conversation.isPinned ? "Unpin" : "Pin") {
+        menu.addItem(actions.item("chat.rename".localized, onRename))
+        menu.addItem(actions.item(conversation.isPinned ? "chat.unpin".localized : "chat.pin".localized) {
             chatVM.togglePin(conversation)
         })
-        menu.addItem(actions.item("Share") {
+        menu.addItem(actions.item("common.share".localized) {
             // The picker needs the menu gone before it can take over the
             // anchor, so it goes out on the next turn of the loop.
             DispatchQueue.main.async {
@@ -197,7 +197,7 @@ struct SideBarConversationMenu: View {
             }
         })
         menu.addItem(.separator())
-        menu.addItem(actions.item("Delete") { chatVM.delete(conversation) })
+        menu.addItem(actions.item("common.delete".localized) { chatVM.delete(conversation) })
 
         isMenuOpen = true
         menu.popUp(

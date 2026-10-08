@@ -27,8 +27,11 @@
 "chat.autoPrompt.file" = "Résume « %@ » et dis-moi ce qui compte le plus.";
 "chat.autoPrompt.files" = "Résume ces fichiers et dis-moi ce qui compte le plus.";
 "chat.autoPrompt.image" = "Qu’y a-t-il sur cette image ?";
+"chat.pin" = "Épingler";
 "chat.readAloud" = "Lire à voix haute";
+"chat.rename" = "Renommer";
 "chat.thinking" = "Réflexion";
+"chat.unpin" = "Détacher";
 
 /* MARK: common */
 "common.askAnything" = "Posez votre question...";
@@ -36,6 +39,7 @@
 "common.close" = "Fermer";
 "common.copied" = "Copié";
 "common.copy" = "Copier";
+"common.delete" = "Supprimer";
 "common.dismiss" = "Ignorer";
 "common.moveBack" = "Retour";
 "common.notNow" = "Pas maintenant";
@@ -210,6 +214,8 @@
 
 /* MARK: sidebar */
 "sidebar.chatOptions" = "Options du chat";
+"sidebar.deleteImage" = "Supprimer l’image";
+"sidebar.documentOptions" = "Options du document";
 "sidebar.empty.chats.subtitle" = "Les conversations que vous démarrez apparaîtront ici";
 "sidebar.empty.chats.title" = "Aucun chat pour l’instant !";
 "sidebar.empty.images.subtitle" = "Vos créations apparaîtront ici";

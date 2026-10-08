@@ -261,6 +261,14 @@ final class ImageViewModel: ObservableObject {
         body(&images[index])
     }
 
+    /// Deletes a generated image from the history.
+    ///
+    /// The history is persisted off the published array, so dropping it here is
+    /// all that is needed — the store follows.
+    func delete(_ image: GeneratedImage) {
+        remove(image.id)
+    }
+
     private func remove(_ id: UUID) {
         images.removeAll { $0.id == id }
         sessionImageIDs.removeAll { $0 == id }

@@ -33,12 +33,12 @@ struct LanguageDropDown: View {
                     }
                 }
             }
-            .padding(8)
+            .padding(6)
         }
-        .frame(width: 260)
+        .frame(width: 220)
         // Tall enough for most of the list, short enough to stay a popover
         // rather than a second window.
-        .frame(maxHeight: 420)
+        .frame(maxHeight: 340)
     }
 }
 
@@ -50,17 +50,17 @@ private struct LanguageRow: View {
 
     var body: some View {
         Button(action: action) {
-            HStack(spacing: 12) {
+            HStack(spacing: 10) {
                 VStack(alignment: .leading, spacing: 0) {
                     Text(language.endonym)
-                        .grokText(.body, color: GrokColor.black1)
+                        .grokText(.fileTitle, color: GrokColor.black1)
                         .lineLimit(1)
 
                     // Redundant for English, and a row that repeats itself
                     // reads like a mistake.
                     if language.englishName != language.endonym {
                         Text(language.englishName)
-                            .grokText(.metadata, color: GrokColor.black6)
+                            .grokText(.micro, color: GrokColor.black6)
                             .lineLimit(1)
                     }
                 }
@@ -71,11 +71,11 @@ private struct LanguageRow: View {
                 Spacer(minLength: 0)
 
                 if isSelected {
-                    SymbolIcon("checkmark", size: 13, weight: .semibold, color: GrokColor.black1)
+                    SymbolIcon("checkmark", size: 12, weight: .semibold, color: GrokColor.black1)
                 }
             }
-            .padding(.horizontal, 12)
-            .frame(height: 48)
+            .padding(.horizontal, 10)
+            .frame(height: 40)
             .contentShape(Rectangle())
             .hoverBackground(.clear, hover: GrokColor.white3, cornerRadius: 10)
         }

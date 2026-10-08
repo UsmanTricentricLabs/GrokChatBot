@@ -63,8 +63,8 @@ struct SettingDropDown: View {
                 action: restorePurchases
             )
         }
-        .padding(8)
-        .frame(width: 260)
+        .padding(6)
+        .frame(width: 220)
         .alert(item: $restoreResult) { result in
             Alert(title: Text(result.title), message: Text(result.detail), dismissButton: .default(Text("common.ok".localized)))
         }
@@ -158,11 +158,11 @@ private struct SettingRow: View {
 
     var body: some View {
         Button(action: action) {
-            HStack(spacing: 14) {
-                SymbolIcon(symbol, size: 18, color: GrokColor.black1)
-                    .frame(width: 22)
+            HStack(spacing: 12) {
+                SymbolIcon(symbol, size: 16, color: GrokColor.black1)
+                    .frame(width: 20)
                 Text(title)
-                    .grokText(.body, color: GrokColor.black1)
+                    .grokText(.controlPlain, color: GrokColor.black1)
                     .fixedSize()
                 Spacer(minLength: 0)
                 if isBusy {
@@ -170,8 +170,8 @@ private struct SettingRow: View {
                         .controlSize(.small)
                 }
             }
-            .padding(.horizontal, 12)
-            .frame(height: 44)
+            .padding(.horizontal, 10)
+            .frame(height: 38)
             .contentShape(Rectangle())
             .hoverBackground(.clear, hover: GrokColor.white3, cornerRadius: 10)
         }

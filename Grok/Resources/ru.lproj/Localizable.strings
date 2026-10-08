@@ -27,8 +27,11 @@
 "chat.autoPrompt.file" = "Перескажи «%@» и скажи, что в нём самое важное.";
 "chat.autoPrompt.files" = "Перескажи эти файлы и скажи, что в них самое важное.";
 "chat.autoPrompt.image" = "Что изображено на этой картинке?";
+"chat.pin" = "Закрепить";
 "chat.readAloud" = "Прочитать вслух";
+"chat.rename" = "Переименовать";
 "chat.thinking" = "Думаю";
+"chat.unpin" = "Открепить";
 
 /* MARK: common */
 "common.askAnything" = "Спросите о чём угодно...";
@@ -36,6 +39,7 @@
 "common.close" = "Закрыть";
 "common.copied" = "Скопировано";
 "common.copy" = "Копировать";
+"common.delete" = "Удалить";
 "common.dismiss" = "Скрыть";
 "common.moveBack" = "Назад";
 "common.notNow" = "Не сейчас";
@@ -210,6 +214,8 @@
 
 /* MARK: sidebar */
 "sidebar.chatOptions" = "Параметры чата";
+"sidebar.deleteImage" = "Удалить изображение";
+"sidebar.documentOptions" = "Параметры документа";
 "sidebar.empty.chats.subtitle" = "Начатые вами беседы появятся здесь";
 "sidebar.empty.chats.title" = "Чатов пока нет!";
 "sidebar.empty.images.subtitle" = "Ваши работы появятся здесь";

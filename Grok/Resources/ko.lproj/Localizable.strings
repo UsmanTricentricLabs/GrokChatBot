@@ -27,8 +27,11 @@
 "chat.autoPrompt.file" = "“%@”을(를) 요약하고 가장 중요한 점을 알려 주세요.";
 "chat.autoPrompt.files" = "이 파일들을 요약하고 가장 중요한 점을 알려 주세요.";
 "chat.autoPrompt.image" = "이 이미지에는 무엇이 있나요?";
+"chat.pin" = "고정";
 "chat.readAloud" = "소리내어 읽기";
+"chat.rename" = "이름 변경";
 "chat.thinking" = "생각 중";
+"chat.unpin" = "고정 해제";
 
 /* MARK: common */
 "common.askAnything" = "무엇이든 물어보세요...";
@@ -36,6 +39,7 @@
 "common.close" = "닫기";
 "common.copied" = "복사됨";
 "common.copy" = "복사";
+"common.delete" = "삭제";
 "common.dismiss" = "닫기";
 "common.moveBack" = "뒤로";
 "common.notNow" = "나중에";
@@ -210,6 +214,8 @@
 
 /* MARK: sidebar */
 "sidebar.chatOptions" = "채팅 옵션";
+"sidebar.deleteImage" = "이미지 삭제";
+"sidebar.documentOptions" = "문서 옵션";
 "sidebar.empty.chats.subtitle" = "시작한 대화가 여기에 표시됩니다";
 "sidebar.empty.chats.title" = "아직 채팅이 없습니다";
 "sidebar.empty.images.subtitle" = "만든 이미지가 여기에 표시됩니다";

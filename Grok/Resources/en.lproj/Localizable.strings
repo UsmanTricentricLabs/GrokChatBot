@@ -27,8 +27,11 @@
 "chat.autoPrompt.file" = "Summarize “%@” and tell me what matters most in it.";
 "chat.autoPrompt.files" = "Summarize these files and tell me what matters most in them.";
 "chat.autoPrompt.image" = "What is in this image?";
+"chat.pin" = "Pin";
 "chat.readAloud" = "Read aloud";
+"chat.rename" = "Rename";
 "chat.thinking" = "Thinking";
+"chat.unpin" = "Unpin";
 
 /* MARK: common */
 "common.askAnything" = "Ask Anything...";
@@ -36,6 +39,7 @@
 "common.close" = "Close";
 "common.copied" = "Copied";
 "common.copy" = "Copy";
+"common.delete" = "Delete";
 "common.dismiss" = "Dismiss";
 "common.moveBack" = "Move back";
 "common.notNow" = "Not Now";
@@ -210,6 +214,8 @@
 
 /* MARK: sidebar */
 "sidebar.chatOptions" = "Chat options";
+"sidebar.deleteImage" = "Delete image";
+"sidebar.documentOptions" = "Document options";
 "sidebar.empty.chats.subtitle" = "Conversations you start will show up here";
 "sidebar.empty.chats.title" = "No chats yet!";
 "sidebar.empty.images.subtitle" = "Your creations will show up here";

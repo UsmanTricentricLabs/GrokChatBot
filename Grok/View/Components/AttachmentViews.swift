@@ -154,7 +154,7 @@ struct AttachmentPasswordSheet: View {
             HStack(spacing: 10) {
                 Spacer()
 
-                Button("Cancel", action: onCancel)
+                Button("common.cancel".localized, action: onCancel)
                     .keyboardShortcut(.cancelAction)
 
                 Button(isUnlocking ? "Unlocking…" : "Unlock", action: submit)

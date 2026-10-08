@@ -27,8 +27,11 @@
 "chat.autoPrompt.file" = "Resumeix “%@” i digues-me què és el més important.";
 "chat.autoPrompt.files" = "Resumeix aquests fitxers i digues-me què és el més important.";
 "chat.autoPrompt.image" = "Què hi ha en aquesta imatge?";
+"chat.pin" = "Fixa";
 "chat.readAloud" = "Llegeix en veu alta";
+"chat.rename" = "Canvia el nom";
 "chat.thinking" = "Pensant";
+"chat.unpin" = "Deixa de fixar";
 
 /* MARK: common */
 "common.askAnything" = "Pregunta el que vulguis...";
@@ -36,6 +39,7 @@
 "common.close" = "Tanca";
 "common.copied" = "Copiat";
 "common.copy" = "Copia";
+"common.delete" = "Elimina";
 "common.dismiss" = "Descarta";
 "common.moveBack" = "Torna";
 "common.notNow" = "Ara no";
@@ -210,6 +214,8 @@
 
 /* MARK: sidebar */
 "sidebar.chatOptions" = "Opcions del xat";
+"sidebar.deleteImage" = "Elimina la imatge";
+"sidebar.documentOptions" = "Opcions del document";
 "sidebar.empty.chats.subtitle" = "Les converses que iniciïs apareixeran aquí";
 "sidebar.empty.chats.title" = "Encara no hi ha xats!";
 "sidebar.empty.images.subtitle" = "Les teves creacions apareixeran aquí";

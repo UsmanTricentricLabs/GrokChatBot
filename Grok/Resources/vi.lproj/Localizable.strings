@@ -27,8 +27,11 @@
 "chat.autoPrompt.file" = "Tóm tắt “%@” và cho tôi biết điều gì quan trọng nhất.";
 "chat.autoPrompt.files" = "Tóm tắt các tệp này và cho tôi biết điều gì quan trọng nhất.";
 "chat.autoPrompt.image" = "Trong hình này có gì?";
+"chat.pin" = "Ghim";
 "chat.readAloud" = "Đọc to";
+"chat.rename" = "Đổi tên";
 "chat.thinking" = "Đang suy nghĩ";
+"chat.unpin" = "Bỏ ghim";
 
 /* MARK: common */
 "common.askAnything" = "Hỏi bất cứ điều gì...";
@@ -36,6 +39,7 @@
 "common.close" = "Đóng";
 "common.copied" = "Đã sao chép";
 "common.copy" = "Sao chép";
+"common.delete" = "Xoá";
 "common.dismiss" = "Bỏ qua";
 "common.moveBack" = "Quay lại";
 "common.notNow" = "Để sau";
@@ -210,6 +214,8 @@
 
 /* MARK: sidebar */
 "sidebar.chatOptions" = "Tuỳ chọn trò chuyện";
+"sidebar.deleteImage" = "Xoá hình ảnh";
+"sidebar.documentOptions" = "Tuỳ chọn tài liệu";
 "sidebar.empty.chats.subtitle" = "Các cuộc trò chuyện bạn bắt đầu sẽ hiện ở đây";
 "sidebar.empty.chats.title" = "Chưa có cuộc trò chuyện nào!";
 "sidebar.empty.images.subtitle" = "Tác phẩm của bạn sẽ hiện ở đây";

@@ -156,6 +156,10 @@ struct SideBarDocumentRow: View {
 
     @State private var isHovering = false
 
+    /// Kept up while the menu is open, so the row does not drop its button the
+    /// moment the pointer leaves it for the menu.
+    @State private var isMenuOpen = false
+
     var body: some View {
         Button {
             pdfVM.select(document)
@@ -167,13 +171,37 @@ struct SideBarDocumentRow: View {
                     .truncationMode(.middle)
                 Spacer(minLength: 0)
             }
-            .padding(.horizontal, 14)
+            .padding(.leading, 14)
+            // Room for the menu button, so a long name is truncated rather
+            // than running underneath it.
+            .padding(.trailing, 34)
             .frame(height: 36)
             .background(Capsule().fill(background))
             .contentShape(Capsule())
         }
         .buttonStyle(GrokButtonStyle())
         .help(document.name)
+        .overlay(alignment: .trailing) {
+            if isHovering || isMenuOpen {
+                SideBarRowMenu(
+                    entries: [
+                        SideBarMenuEntry(title: "common.delete".localized, isDestructive: true) {
+                            pdfVM.delete(document)
+                        }
+                    ],
+                    isMenuOpen: $isMenuOpen,
+                    help: "sidebar.documentOptions".localized
+                )
+                .padding(.trailing, 8)
+            }
+        }
+        // Right-clicking the row does the same thing, which is what the Finder
+        // habit reaches for first.
+        .contextMenu {
+            Button("common.delete".localized, role: .destructive) {
+                pdfVM.delete(document)
+            }
+        }
         .onHover { isHovering = $0 }
         .animation(.easeOut(duration: 0.12), value: isHovering)
     }

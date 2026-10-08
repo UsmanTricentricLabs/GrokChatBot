@@ -269,6 +269,22 @@ final class PDFViewModel: ObservableObject {
         }
     }
 
+    /// Deletes a summarized document from the sidebar list, along with the
+    /// summary and the questions asked about it.
+    ///
+    /// Deleting the document that is currently open also clears the screen,
+    /// since leaving a summary on display for a document no longer in the list
+    /// is a state the user cannot get back to.
+    func delete(_ info: PDFDocumentInfo) {
+        if info.url == document?.url {
+            removeDocument()
+        }
+
+        summarizedDocuments.removeAll { $0.url == info.url }
+        summaries[info.url] = nil
+        followUpHistory[info.url] = nil
+    }
+
     /// Keeps the open document's questions, so stepping away and back does not
     /// lose them.
     private func stashFollowUps() {
