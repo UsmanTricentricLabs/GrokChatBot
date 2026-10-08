@@ -10,7 +10,7 @@ import AppKit
 nonisolated enum ArtworkExportError: LocalizedError, Equatable {
     case encodingFailed
 
-    var errorDescription: String? { "The image could not be exported." }
+    var errorDescription: String? { "image.exportFailed".localized }
 }
 
 /// Writes a generated image to disk as PNG — used by the Save action on an

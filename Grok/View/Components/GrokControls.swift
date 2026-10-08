@@ -97,7 +97,7 @@ struct ConfirmingIconButton<Idle: View>: View {
     var confirmationSize: CGFloat = 15
     var confirmationColor: Color = GrokColor.black1
     var help: String
-    var confirmedHelp: String = "Copied"
+    var confirmedHelp: String = "common.copied".localized
     /// How long the checkmark stays before the glyph returns.
     var duration: TimeInterval = 1.4
     let action: () -> Void

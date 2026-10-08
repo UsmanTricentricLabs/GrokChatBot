@@ -20,7 +20,10 @@ nonisolated enum ImageStyle: String, CaseIterable, Identifiable, Hashable {
     case minimal = "Minimal"
 
     var id: String { rawValue }
-    var title: String { rawValue }
+
+    /// The raw value is what is stored with the image, so it stays English;
+    /// the title is what is shown, and follows the app's language.
+    var title: String { ("image.style." + rawValue.replacingOccurrences(of: " ", with: "").lowercased()).localized }
 
     var symbol: String {
         switch self {

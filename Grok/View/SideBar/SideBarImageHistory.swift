@@ -20,13 +20,13 @@ struct SideBarImageHistory: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 0) {
-                Text("Images")
+                Text("sidebar.section.images".localized)
                     .grokText(.label, color: GrokColor.sidebarInk)
                 Spacer(minLength: 0)
                 Button {
                     imageVM.isGalleryPresented = true
                 } label: {
-                    Text("See all")
+                    Text("common.seeAll".localized)
                         .grokText(.labelPlain, color: GrokColor.sidebarMutedInk)
                 }
                 .buttonStyle(GrokButtonStyle())

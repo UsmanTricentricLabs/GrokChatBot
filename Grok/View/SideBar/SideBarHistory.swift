@@ -34,14 +34,14 @@ struct SideBarHistory: View {
                             .frame(width: 20, height: 20)
                     }
                     .buttonStyle(GrokButtonStyle())
-                    .help("Search chats")
+                    .help("sidebar.searchChats".localized)
                 }
                 .frame(height: 24)
                 .padding(.horizontal, 4)
             }
 
             if chatVM.visibleConversations.isEmpty {
-                Text(chatVM.isSearching ? "No matches" : "No chats yet")
+                Text(chatVM.isSearching ? "sidebar.noMatches".localized : "sidebar.noChats".localized)
                     .grokText(.labelPlain, color: GrokColor.sidebarSubtleInk)
                     .padding(.horizontal, 14)
             } else {
@@ -173,7 +173,7 @@ struct SideBarConversationMenu: View {
         }
         .buttonStyle(GrokButtonStyle())
         .background(ViewAnchor(view: $anchor))
-        .help("Chat options")
+        .help("sidebar.chatOptions".localized)
     }
 
     private func present() {

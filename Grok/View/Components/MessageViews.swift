@@ -49,7 +49,7 @@ struct AssistantMessageView: View {
         case .thinking:
             HStack(spacing: 10) {
                 GrokMark(size: 22)
-                ShimmerText(text: "Thinking")
+                ShimmerText(text: "chat.thinking".localized)
             }
             .frame(height: 28)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -126,13 +126,13 @@ struct MessageActionRow: View {
                 diameter: 20,
                 hover: .clear,
                 confirmationSize: 13,
-                help: "Copy",
+                help: "common.copy".localized,
                 action: onCopy
             ) {
                 GrokIcon(GrokAsset.copy, size: 16, color: GrokColor.white6)
             }
-            action(GrokAsset.speaker, size: 17, help: "Read aloud", action: onSpeak)
-            action(GrokAsset.regenerate, size: 17, help: "Regenerate", action: onRegenerate)
+            action(GrokAsset.speaker, size: 17, help: "chat.readAloud".localized, action: onSpeak)
+            action(GrokAsset.regenerate, size: 17, help: "common.regenerate".localized, action: onRegenerate)
         }
         .frame(height: 20)
     }
@@ -173,7 +173,7 @@ struct ErrorAnswerView: View {
             // actually help.
             if failure.isRetryable {
                 PillButton(
-                    title: "Try Again",
+                    title: "common.tryAgain".localized,
                     style: .body,
                     height: 36,
                     horizontalPadding: 14,

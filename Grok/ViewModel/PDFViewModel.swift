@@ -141,7 +141,7 @@ final class PDFViewModel: ObservableObject {
 
     var progressLabel: String {
         guard case .processing(let info) = state else { return "" }
-        return "Reading page \(max(pagesRead, 1)) of \(info.pageCount)…"
+        return "pdf.readingPage".localized(max(pagesRead, 1), info.pageCount)
     }
 
     /// The hero and drop zone show only while no summary exists.
@@ -191,7 +191,7 @@ final class PDFViewModel: ObservableObject {
         panel.allowedContentTypes = [.pdf]
         panel.allowsMultipleSelection = false
         panel.canChooseDirectories = false
-        panel.message = "Choose a PDF of up to \(FileImportLimits.formattedByteLimit)."
+        panel.message = "pdf.choosePrompt".localized(FileImportLimits.formattedByteLimit)
         guard panel.runModal() == .OK, let url = panel.url else { return }
         open(url)
     }

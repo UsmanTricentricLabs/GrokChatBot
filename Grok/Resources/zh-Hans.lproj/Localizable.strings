@@ -1,0 +1,238 @@
+/*
+  Localizable.strings
+  Grok
+
+  Chinese (Simplified)
+
+  Keys are grouped by the part of the app they belong to. Format specifiers
+  carry their position (%1$@) wherever a line takes more than one value, so a
+  translation may reorder them freely.
+*/
+
+
+/* MARK: attachment */
+"attachment.kind.pdf" = "PDF 文稿";
+"attachment.kind.text" = "文本文件";
+"attachment.locked.detail" = "请输入“%@”的密码以添加附件。";
+"attachment.locked.title" = "此 PDF 受密码保护";
+"attachment.remove" = "移除附件";
+"attachment.tooLarge" = "“%1$@”大小为 %2$@。文件上限为 %3$@。";
+"attachment.unreadable" = "无法打开此文件。";
+"attachment.wrongPassword" = "该密码无法解锁此文稿。";
+
+/* MARK: chat */
+"chat.attach" = "添加";
+"chat.attachHelp" = "添加文本文件、PDF 或图片";
+"chat.attachMessage" = "添加文本文件、PDF 或图片（每个最大 %@）。";
+"chat.autoPrompt.file" = "总结“%@”，并告诉我其中最重要的内容。";
+"chat.autoPrompt.files" = "总结这些文件，并告诉我其中最重要的内容。";
+"chat.autoPrompt.image" = "这张图片里有什么？";
+"chat.readAloud" = "朗读";
+"chat.thinking" = "思考中";
+
+/* MARK: common */
+"common.askAnything" = "问我任何问题...";
+"common.cancel" = "取消";
+"common.close" = "关闭";
+"common.copied" = "已拷贝";
+"common.copy" = "拷贝";
+"common.dismiss" = "忽略";
+"common.moveBack" = "返回";
+"common.notNow" = "以后再说";
+"common.ok" = "好";
+"common.openSettings" = "打开设置";
+"common.regenerate" = "重新生成";
+"common.remove" = "移除";
+"common.save" = "存储";
+"common.seeAll" = "查看全部";
+"common.send" = "发送";
+"common.share" = "共享";
+"common.stop" = "停止";
+"common.tryAgain" = "重试";
+
+/* MARK: date */
+"date.today" = "今天";
+"date.yesterday" = "昨天";
+
+/* MARK: dictation */
+"dictation.mic.detail" = "Grok 需要使用麦克风进行听写。请在“系统设置”›“隐私与安全性”›“麦克风”中开启后重试。";
+"dictation.mic.failed" = "无法启动麦克风。请确认没有其他 App 正在使用，然后重试。";
+"dictation.mic.title" = "麦克风访问已关闭";
+"dictation.speech.detail" = "Grok 需要语音识别才能将语音转为文字。请在“系统设置”›“隐私与安全性”›“语音识别”中开启后重试。";
+"dictation.speech.title" = "语音识别已关闭";
+"dictation.speech.unavailable" = "语音识别暂时不可用。请检查网络连接后重试。";
+"dictation.start" = "听写";
+"dictation.stop" = "停止听写";
+"dictation.unavailable.title" = "听写不可用";
+
+/* MARK: error */
+"error.budget.now" = "你已达到当前的 AI 使用上限。";
+"error.budget.resets" = "你已达到 AI 使用上限，将于%@重置。";
+"error.generic.detail" = "请检查网络连接后重试。你的消息已保存。";
+"error.generic.title" = "生成回复时出错了。";
+"error.invalidRequest" = "Grok 无法处理该请求。请换一种说法试试。";
+"error.messageSaved" = "你的消息已保存。";
+"error.network" = "你似乎已离线。请检查网络连接后重试。";
+"error.payloadTooLarge" = "该消息太大，无法发送。请尝试缩短。";
+"error.rateLimited.seconds" = "请求过于频繁。请在 %d 秒后重试。";
+"error.rateLimited.soon" = "请求过于频繁。请稍后重试。";
+"error.shortenAndResend" = "请缩短后重新发送。";
+"error.subscriptionRequired" = "此功能需要有效的订阅。";
+"error.temporary" = "Grok 暂时不可用。";
+"error.temporary.later" = "Grok 暂时不可用。请稍后重试。";
+"error.tryShortly" = "请稍后重试。你的消息已保存。";
+
+/* MARK: feature */
+"feature.chat.detail" = "更聪明的回答，更深入的推理";
+"feature.chat.title" = "高级聊天";
+"feature.image.detail" = "将创意变成各种风格的图片";
+"feature.image.title" = "创建图片";
+"feature.pdf.detail" = "几秒钟提炼任意文稿的要点";
+"feature.pdf.title" = "PDF 摘要";
+
+/* MARK: header */
+"header.language" = "语言";
+"header.settings" = "设置";
+"header.showSidebar" = "显示边栏";
+
+/* MARK: home */
+"home.hero.subtitle" = "提出问题、探索灵感，或创造新事物";
+"home.hero.title" = "有什么可以帮你？";
+
+/* MARK: iap */
+"iap.cadence.monthly" = "按月";
+"iap.cadence.weekly" = "按周";
+"iap.cadence.yearly" = "按年";
+"iap.caption.billed" = "%@结算";
+"iap.caption.monthlyEquivalent" = "每月仅 %@";
+"iap.caption.savings" = "每月仅 %1$@ · 省 %2$d%%";
+"iap.perPeriod" = "每%@";
+"iap.priceSummary" = "每%2$@ %1$@，可随时取消";
+"iap.productNotLoaded" = "该方案仍在加载中。请稍后重试。";
+"iap.trialBadge" = "%@免费试用";
+"iap.trialSummary" = "免费试用 %1$@，之后 %2$@/%3$@。可随时取消。";
+"iap.unit.day" = "天";
+"iap.unit.days" = "天";
+"iap.unit.month" = "个月";
+"iap.unit.months" = "个月";
+"iap.unit.week" = "周";
+"iap.unit.weeks" = "周";
+"iap.unit.year" = "年";
+"iap.unit.years" = "年";
+
+/* MARK: image */
+"image.aspectRatio" = "长宽比";
+"image.creating" = "正在创建你的图片";
+"image.editPrompt" = "编辑提示词";
+"image.exportFailed" = "无法导出图片。";
+"image.gallery.title" = "你的图片";
+"image.generate" = "生成";
+"image.hero.subtitle" = "描述一张图片、挑选风格，Grok 帮你实现";
+"image.hero.title" = "你想创作什么？";
+"image.placeholder.edit" = "描述要修改的地方，或一张新图片...";
+"image.placeholder.new" = "描述你想创建的图片...";
+"image.style" = "风格";
+"image.style.3drender" = "3D 渲染";
+"image.style.anime" = "动漫";
+"image.style.cinematic" = "电影感";
+"image.style.illustration" = "插画";
+"image.style.minimal" = "极简";
+"image.style.photographic" = "写实摄影";
+"image.style.sketch" = "素描";
+"image.style.watercolor" = "水彩";
+
+/* MARK: imageStarter */
+"imageStarter.poster.detail" = "适合海报与专辑封面的大胆构图";
+"imageStarter.poster.prompt" = "为日落时分的独立音乐节设计的大胆字体海报";
+"imageStarter.poster.title" = "海报与封面";
+"imageStarter.product.detail" = "简洁背景上的影棚布光静物";
+"imageStarter.product.prompt" = "无缝背景上的陶瓷咖啡杯，影棚布光，柔和阴影";
+"imageStarter.product.title" = "产品图";
+"imageStarter.scenes.detail" = "风景、室内与想象中的场所";
+"imageStarter.scenes.prompt" = "黄昏时分岩崖上的灯塔，海浪在下方拍岸，灯室透出温暖的光";
+"imageStarter.scenes.title" = "场景与世界";
+
+/* MARK: paywall */
+"paywall.badge.popular" = "最受欢迎";
+"paywall.badge.value" = "超值之选";
+"paywall.cta.continue" = "继续";
+"paywall.cta.freeTrial" = "开始免费试用";
+"paywall.headline" = "更多工具。\n更多可能。";
+"paywall.noRestore" = "未找到此 Apple 账户的历史购买记录。";
+"paywall.privacy" = "隐私政策";
+"paywall.restore" = "恢复购买";
+"paywall.restoring" = "正在恢复…";
+"paywall.subheadline" = "在你的 Mac 上解锁图片生成、PDF 摘要以及 Grok 的全部能力。";
+"paywall.terms" = "服务条款";
+"paywall.uploadImage" = "上传图片";
+
+/* MARK: pdf */
+"pdf.askPlaceholder" = "就这份 PDF 提问...";
+"pdf.chooseFile" = "选择文件";
+"pdf.choosePrompt" = "请选择不超过 %@ 的 PDF。";
+"pdf.copySummary" = "拷贝摘要";
+"pdf.drop.idle" = "将 PDF 拖放到这里";
+"pdf.drop.limit" = "最大 %@";
+"pdf.drop.release" = "松开即可上传";
+"pdf.drop.releaseHint" = "松开即可开始";
+"pdf.hero.subtitle" = "上传文稿，几秒钟获取要点";
+"pdf.hero.title" = "摘要任意 PDF";
+"pdf.importantSections" = "重要章节";
+"pdf.keyPoints" = "要点";
+"pdf.length" = "篇幅";
+"pdf.length.brief" = "简短";
+"pdf.length.detailed" = "详细";
+"pdf.length.standard" = "标准";
+"pdf.newPDF" = "新建 PDF";
+"pdf.noText" = "此 PDF 没有可选文本，因此无法生成摘要。";
+"pdf.pageLabel" = "第 %d 页";
+"pdf.readingPage" = "正在读取第 %1$d 页，共 %2$d 页…";
+"pdf.summarize" = "生成摘要";
+"pdf.summarizedJustNow" = "%@ · 刚刚生成摘要";
+"pdf.summary" = "摘要";
+
+/* MARK: plan */
+"plan.monthly" = "按月";
+"plan.weekly" = "按周";
+"plan.yearly" = "按年";
+
+/* MARK: restore */
+"restore.failed.title" = "恢复失败";
+"restore.none.detail" = "未找到此 Apple 账户的历史购买记录。";
+"restore.none.title" = "没有可恢复的内容";
+"restore.success.detail" = "使用此 Apple 账户购买的内容已重新可用。";
+"restore.success.title" = "购买已恢复";
+
+/* MARK: settings */
+"settings.help" = "帮助与支持";
+"settings.rateUs" = "给我们评分";
+"settings.restore" = "恢复购买";
+
+/* MARK: sidebar */
+"sidebar.chatOptions" = "聊天选项";
+"sidebar.empty.chats.subtitle" = "你发起的对话会显示在这里";
+"sidebar.empty.chats.title" = "还没有聊天！";
+"sidebar.empty.images.subtitle" = "你的作品会显示在这里";
+"sidebar.empty.images.title" = "还没有图片！";
+"sidebar.empty.pdfs.subtitle" = "你创建的摘要会显示在这里";
+"sidebar.empty.pdfs.title" = "还没有 PDF！";
+"sidebar.newChat" = "新建聊天";
+"sidebar.noChats" = "还没有聊天";
+"sidebar.noMatches" = "无匹配结果";
+"sidebar.searchChats" = "搜索聊天";
+"sidebar.section.chat" = "聊天";
+"sidebar.section.documents" = "文稿";
+"sidebar.section.images" = "图片";
+"sidebar.upgrade.action" = "立即升级";
+"sidebar.upgrade.title" = "升级方案，解锁更多功能";
+
+/* MARK: starter */
+"starter.code.detail" = "轻松编写、测试和重构复杂代码";
+"starter.code.prompt" = "找出这段代码中的缺陷，解释它为何发生，并给出修复后的版本以及一个本可以捕获它的测试：\n";
+"starter.code.title" = "编码与调试";
+"starter.data.detail" = "分析数据集并提炼可执行的关键指标";
+"starter.data.prompt" = "从这些数据中提炼关键趋势，标出任何异常值，并告诉我该怎么做：\n";
+"starter.data.title" = "数据与洞察";
+"starter.write.detail" = "撰写出彩文案，或瞬间浓缩长文";
+"starter.write.prompt" = "用三句话总结这段内容，然后把它改写成一则可以发给客户的简短亲切的公告：\n";
+"starter.write.title" = "写作与摘要";

@@ -22,7 +22,7 @@ struct PDFSummaryView: View {
             ScrollViewReader { scroller in
                 ScrollView(.vertical, showsIndicators: true) {
                 VStack(alignment: .leading, spacing: 32) {
-                    section(title: "Summary") {
+                    section(title: "pdf.summary".localized) {
                         VStack(alignment: .leading, spacing: 10) {
                             Text(summary.title)
                                 .grokText(.title, color: GrokColor.black1)
@@ -34,7 +34,7 @@ struct PDFSummaryView: View {
                     }
 
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("Key Points")
+                        Text("pdf.keyPoints".localized)
                             .grokText(.subheading, color: GrokColor.black1)
 
                         ForEach(Array(summary.keyPoints.enumerated()), id: \.offset) { index, point in
@@ -51,7 +51,7 @@ struct PDFSummaryView: View {
 
                     if !summary.sections.isEmpty {
                         VStack(alignment: .leading, spacing: 6) {
-                            Text("Important Sections")
+                            Text("pdf.importantSections".localized)
                                 .grokText(.subheading, color: GrokColor.black1)
 
                             ForEach(summary.sections) { section in
@@ -136,7 +136,7 @@ struct PDFSummaryView: View {
                     .grokText(.fileTitle, color: GrokColor.black1)
                     .lineLimit(1)
                     .truncationMode(.middle)
-                Text("\(document.subtitle) · Summarized just now")
+                Text("pdf.summarizedJustNow".localized(document.subtitle))
                     .grokText(.metadata, color: GrokColor.black6)
             }
 
@@ -146,7 +146,7 @@ struct PDFSummaryView: View {
                 ConfirmingIconButton(
                     resting: GrokColor.white4,
                     hover: GrokColor.white2,
-                    help: "Copy summary",
+                    help: "pdf.copySummary".localized,
                     action: pdfVM.copySummary
                 ) {
                     GrokIcon(GrokAsset.copy, size: 16, color: GrokColor.black1)
@@ -155,7 +155,7 @@ struct PDFSummaryView: View {
                 ShareAction { view in pdfVM.share(from: view) }
 
                 PillButton(
-                    title: "New PDF",
+                    title: "pdf.newPDF".localized,
                     style: .controlCompact,
                     height: 36,
                     horizontalPadding: 14,
@@ -213,7 +213,7 @@ struct PDFProcessingView: View {
             GrokProgressBar(progress: progress)
 
             PillButton(
-                title: "Cancel",
+                title: "common.cancel".localized,
                 style: .controlPlain,
                 height: 36,
                 background: GrokColor.white4,

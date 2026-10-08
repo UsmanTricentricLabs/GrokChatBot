@@ -1,0 +1,238 @@
+/*
+  Localizable.strings
+  Grok
+
+  English (source)
+
+  Keys are grouped by the part of the app they belong to. Format specifiers
+  carry their position (%1$@) wherever a line takes more than one value, so a
+  translation may reorder them freely.
+*/
+
+
+/* MARK: attachment */
+"attachment.kind.pdf" = "PDF document";
+"attachment.kind.text" = "text file";
+"attachment.locked.detail" = "Enter the password for “%@” to attach it.";
+"attachment.locked.title" = "This PDF is password-protected";
+"attachment.remove" = "Remove attachment";
+"attachment.tooLarge" = "“%1$@” is %2$@. Files are limited to %3$@.";
+"attachment.unreadable" = "This file could not be opened.";
+"attachment.wrongPassword" = "That password didn’t unlock the document.";
+
+/* MARK: chat */
+"chat.attach" = "Attach";
+"chat.attachHelp" = "Attach a text file, PDF or image";
+"chat.attachMessage" = "Attach a text file, PDF or image (up to %@ each).";
+"chat.autoPrompt.file" = "Summarize “%@” and tell me what matters most in it.";
+"chat.autoPrompt.files" = "Summarize these files and tell me what matters most in them.";
+"chat.autoPrompt.image" = "What is in this image?";
+"chat.readAloud" = "Read aloud";
+"chat.thinking" = "Thinking";
+
+/* MARK: common */
+"common.askAnything" = "Ask Anything...";
+"common.cancel" = "Cancel";
+"common.close" = "Close";
+"common.copied" = "Copied";
+"common.copy" = "Copy";
+"common.dismiss" = "Dismiss";
+"common.moveBack" = "Move back";
+"common.notNow" = "Not Now";
+"common.ok" = "OK";
+"common.openSettings" = "Open Settings";
+"common.regenerate" = "Regenerate";
+"common.remove" = "Remove";
+"common.save" = "Save";
+"common.seeAll" = "See all";
+"common.send" = "Send";
+"common.share" = "Share";
+"common.stop" = "Stop";
+"common.tryAgain" = "Try Again";
+
+/* MARK: date */
+"date.today" = "Today";
+"date.yesterday" = "Yesterday";
+
+/* MARK: dictation */
+"dictation.mic.detail" = "Grok needs the microphone to dictate. Turn it on in System Settings › Privacy & Security › Microphone, then try again.";
+"dictation.mic.failed" = "The microphone could not be started. Make sure no other app is using it, then try again.";
+"dictation.mic.title" = "Microphone access is off";
+"dictation.speech.detail" = "Grok needs speech recognition to turn your voice into text. Turn it on in System Settings › Privacy & Security › Speech Recognition, then try again.";
+"dictation.speech.title" = "Speech recognition is off";
+"dictation.speech.unavailable" = "Speech recognition isn’t available right now. Check your connection and try again.";
+"dictation.start" = "Dictate";
+"dictation.stop" = "Stop dictation";
+"dictation.unavailable.title" = "Dictation isn’t available";
+
+/* MARK: error */
+"error.budget.now" = "You've reached your AI limit for now.";
+"error.budget.resets" = "You've reached your AI limit. It resets %@.";
+"error.generic.detail" = "Check your connection and try again. Your message is saved.";
+"error.generic.title" = "Something went wrong while generating a response.";
+"error.invalidRequest" = "Grok couldn't process that request. Try rephrasing it.";
+"error.messageSaved" = "Your message is saved.";
+"error.network" = "You appear to be offline. Check your connection and try again.";
+"error.payloadTooLarge" = "That message is too large to send. Try shortening it.";
+"error.rateLimited.seconds" = "Too many requests. Try again in %d seconds.";
+"error.rateLimited.soon" = "Too many requests. Try again in a moment.";
+"error.shortenAndResend" = "Shorten it and send again.";
+"error.subscriptionRequired" = "This feature needs an active subscription.";
+"error.temporary" = "Grok is temporarily unavailable.";
+"error.temporary.later" = "Grok is temporarily unavailable. Please try again later.";
+"error.tryShortly" = "Please try again shortly. Your message is saved.";
+
+/* MARK: feature */
+"feature.chat.detail" = "Smarter answers and deeper reasoning";
+"feature.chat.title" = "Advanced Chat";
+"feature.image.detail" = "Turn ideas into images in every style";
+"feature.image.title" = "Create Image";
+"feature.pdf.detail" = "Key points from any document in seconds";
+"feature.pdf.title" = "PDF Summary";
+
+/* MARK: header */
+"header.language" = "Language";
+"header.settings" = "Settings";
+"header.showSidebar" = "Show sidebar";
+
+/* MARK: home */
+"home.hero.subtitle" = "Ask anything, explore ideas, or create something new";
+"home.hero.title" = "How can I help?";
+
+/* MARK: iap */
+"iap.cadence.monthly" = "monthly";
+"iap.cadence.weekly" = "weekly";
+"iap.cadence.yearly" = "yearly";
+"iap.caption.billed" = "Billed %@";
+"iap.caption.monthlyEquivalent" = "Just %@/month";
+"iap.caption.savings" = "Just %1$@/month · Save %2$d%%";
+"iap.perPeriod" = "Per %@";
+"iap.priceSummary" = "%1$@ per %2$@, cancel anytime";
+"iap.productNotLoaded" = "This plan is still loading. Please try again in a moment.";
+"iap.trialBadge" = "%@ Free Trial";
+"iap.trialSummary" = "Try free for %1$@, then %2$@/%3$@. Cancel anytime.";
+"iap.unit.day" = "Day";
+"iap.unit.days" = "Days";
+"iap.unit.month" = "Month";
+"iap.unit.months" = "Months";
+"iap.unit.week" = "Week";
+"iap.unit.weeks" = "Weeks";
+"iap.unit.year" = "Year";
+"iap.unit.years" = "Years";
+
+/* MARK: image */
+"image.aspectRatio" = "Aspect ratio";
+"image.creating" = "Creating your image";
+"image.editPrompt" = "Edit prompt";
+"image.exportFailed" = "The image could not be exported.";
+"image.gallery.title" = "Your Images";
+"image.generate" = "Generate";
+"image.hero.subtitle" = "Describe an image, pick a style, and Grok brings it to life";
+"image.hero.title" = "What will you create?";
+"image.placeholder.edit" = "Describe changes, or a new image...";
+"image.placeholder.new" = "Describe the image you want to create...";
+"image.style" = "Style";
+"image.style.3drender" = "3D Render";
+"image.style.anime" = "Anime";
+"image.style.cinematic" = "Cinematic";
+"image.style.illustration" = "Illustration";
+"image.style.minimal" = "Minimal";
+"image.style.photographic" = "Photographic";
+"image.style.sketch" = "Sketch";
+"image.style.watercolor" = "Watercolor";
+
+/* MARK: imageStarter */
+"imageStarter.poster.detail" = "Bold compositions for posters and album art";
+"imageStarter.poster.prompt" = "A bold typographic poster for an indie music festival at sunset";
+"imageStarter.poster.title" = "Poster & Cover";
+"imageStarter.product.detail" = "Studio-lit objects on clean, simple backdrops";
+"imageStarter.product.prompt" = "A ceramic coffee cup on a seamless backdrop, studio lighting, soft shadows";
+"imageStarter.product.title" = "Product Shot";
+"imageStarter.scenes.detail" = "Landscapes, interiors, and imagined places";
+"imageStarter.scenes.prompt" = "A lighthouse on a rocky cliff at dusk, waves crashing below, warm light glowing from the lamp";
+"imageStarter.scenes.title" = "Scenes & Worlds";
+
+/* MARK: paywall */
+"paywall.badge.popular" = "Most Popular";
+"paywall.badge.value" = "Best Value";
+"paywall.cta.continue" = "Continue";
+"paywall.cta.freeTrial" = "Start free trial";
+"paywall.headline" = "More tools.\nMore possibilities.";
+"paywall.noRestore" = "No previous purchases found for this Apple Account.";
+"paywall.privacy" = "Privacy Policy";
+"paywall.restore" = "Restore Purchases";
+"paywall.restoring" = "Restoring…";
+"paywall.subheadline" = "Unlock image generation, PDF summaries and the full power of Grok on your Mac.";
+"paywall.terms" = "Terms of Service";
+"paywall.uploadImage" = "Upload Image";
+
+/* MARK: pdf */
+"pdf.askPlaceholder" = "Ask a question about this PDF...";
+"pdf.chooseFile" = "Choose File";
+"pdf.choosePrompt" = "Choose a PDF of up to %@.";
+"pdf.copySummary" = "Copy summary";
+"pdf.drop.idle" = "Drop a PDF here";
+"pdf.drop.limit" = "Up to %@";
+"pdf.drop.release" = "Release to upload";
+"pdf.drop.releaseHint" = "Release to start";
+"pdf.hero.subtitle" = "Upload a document and get the key points in seconds";
+"pdf.hero.title" = "Summarize any PDF";
+"pdf.importantSections" = "Important Sections";
+"pdf.keyPoints" = "Key Points";
+"pdf.length" = "Length";
+"pdf.length.brief" = "Brief";
+"pdf.length.detailed" = "Detailed";
+"pdf.length.standard" = "Standard";
+"pdf.newPDF" = "New PDF";
+"pdf.noText" = "This PDF has no selectable text, so it can’t be summarized.";
+"pdf.pageLabel" = "p. %d";
+"pdf.readingPage" = "Reading page %1$d of %2$d…";
+"pdf.summarize" = "Summarize";
+"pdf.summarizedJustNow" = "%@ · Summarized just now";
+"pdf.summary" = "Summary";
+
+/* MARK: plan */
+"plan.monthly" = "Monthly";
+"plan.weekly" = "Weekly";
+"plan.yearly" = "Yearly";
+
+/* MARK: restore */
+"restore.failed.title" = "Restore Failed";
+"restore.none.detail" = "No previous purchases were found for this Apple Account.";
+"restore.none.title" = "Nothing to Restore";
+"restore.success.detail" = "Anything bought with this Apple Account is available again.";
+"restore.success.title" = "Purchases Restored";
+
+/* MARK: settings */
+"settings.help" = "Help & Support";
+"settings.rateUs" = "Rate Us";
+"settings.restore" = "Restore Purchase";
+
+/* MARK: sidebar */
+"sidebar.chatOptions" = "Chat options";
+"sidebar.empty.chats.subtitle" = "Conversations you start will show up here";
+"sidebar.empty.chats.title" = "No chats yet!";
+"sidebar.empty.images.subtitle" = "Your creations will show up here";
+"sidebar.empty.images.title" = "No images yet!";
+"sidebar.empty.pdfs.subtitle" = "Summaries you create will show up here";
+"sidebar.empty.pdfs.title" = "No PDFs yet!";
+"sidebar.newChat" = "New Chat";
+"sidebar.noChats" = "No chats yet";
+"sidebar.noMatches" = "No matches";
+"sidebar.searchChats" = "Search chats";
+"sidebar.section.chat" = "Chat";
+"sidebar.section.documents" = "Documents";
+"sidebar.section.images" = "Images";
+"sidebar.upgrade.action" = "Upgrade Now";
+"sidebar.upgrade.title" = "Upgrade your plan to unlock more";
+
+/* MARK: starter */
+"starter.code.detail" = "Write, test, and refactor complex code effortlessly";
+"starter.code.prompt" = "Find the bug in this code, explain why it happens, and show a fixed version with a test that would have caught it:\n";
+"starter.code.title" = "Code & Debug";
+"starter.data.detail" = "Analyze datasets and extract actionable key metrics";
+"starter.data.prompt" = "Pull the key trends out of these numbers, flag anything that looks like an outlier, and tell me what to do about it:\n";
+"starter.data.title" = "Data & Insights";
+"starter.write.detail" = "Draft compelling copy or condense lengthy texts instantly";
+"starter.write.prompt" = "Summarize this in three sentences, then rewrite it as a short, friendly announcement I could send to customers:\n";
+"starter.write.title" = "Write & Summarize";

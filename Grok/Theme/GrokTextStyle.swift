@@ -57,6 +57,26 @@ struct GrokTextStyle {
     static let micro = GrokTextStyle(size: 12, weight: .regular, lineHeight: 16)
     static let metadata = GrokTextStyle(size: 12, weight: .regular, lineHeight: 18)
     static let fileTitle = GrokTextStyle(size: 15, weight: .medium, lineHeight: 22)
+
+    // MARK: Paywall
+    //
+    // The upgrade dialog is drawn a step larger than the rest of the app, so
+    // it carries its own headline, price and button sizes.
+
+    /// "More tools. More possibilities."
+    static let paywallTitle = GrokTextStyle(size: 40, weight: .bold, lineHeight: 48)
+    /// The headline figure on a plan card.
+    static let paywallPrice = GrokTextStyle(size: 26, weight: .bold, lineHeight: 32)
+    /// The call to action.
+    static let paywallAction = GrokTextStyle(size: 17, weight: .medium, lineHeight: 24)
+    /// A feature's name in the list beside the preview.
+    static let paywallFeature = GrokTextStyle(size: 16, weight: .medium, lineHeight: 22)
+    /// A feature's one-line explanation, the billing note, the period suffix.
+    static let paywallDetail = GrokTextStyle(size: 13, weight: .regular, lineHeight: 20)
+    /// "Most Popular" and "Best Value" on a plan card.
+    static let paywallBadge = GrokTextStyle(size: 12, weight: .medium, lineHeight: 22)
+    /// Terms, Privacy and Restore along the dialog's foot.
+    static let paywallFootnote = GrokTextStyle(size: 12, weight: .regular, lineHeight: 20)
 }
 
 extension View {

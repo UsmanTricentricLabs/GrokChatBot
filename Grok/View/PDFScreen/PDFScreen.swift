@@ -31,7 +31,7 @@ struct PDFScreen: View {
                     PromptInputBarContainer {
                         PromptInputBar(
                             text: $pdfVM.followUpDraft,
-                            placeholder: "Ask a question about this PDF...",
+                            placeholder: "pdf.askPlaceholder".localized,
                             onSubmit: pdfVM.askFollowUp
                         ) {
                             HStack(spacing: 6) {
@@ -92,8 +92,8 @@ struct PDFScreen: View {
         CenteredScrollView(bottomInset: 60) {
             VStack(spacing: isCompact ? 32 : 60) {
                 HeroHeader(
-                    title: "Summarize any PDF",
-                    subtitle: "Upload a document and get the key points in seconds",
+                    title: "pdf.hero.title".localized,
+                    subtitle: "pdf.hero.subtitle".localized,
                     isCompact: isCompact
                 )
 
@@ -128,7 +128,7 @@ struct PDFScreen: View {
                 )
 
                 HStack(spacing: 12) {
-                    Text("Length")
+                    Text("pdf.length".localized)
                         .grokText(.caption, color: GrokColor.black6)
                         .padding(.leading, 16)
 
@@ -143,7 +143,7 @@ struct PDFScreen: View {
                     Button(action: pdfVM.summarize) {
                         HStack(spacing: 8) {
                             SymbolIcon("sparkles", size: 16, color: .white)
-                            Text("Summarize")
+                            Text("pdf.summarize".localized)
                                 .grokText(.bodyMedium, color: .white)
                                 .fixedSize()
                         }

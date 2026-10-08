@@ -29,7 +29,7 @@ nonisolated struct AIErrorPresentation: Equatable {
         } else if (error as? URLError) != nil {
             let offline = GatewayError.network
             title = offline.errorDescription ?? Self.genericTitle
-            detail = "Your message is saved."
+            detail = "error.messageSaved".localized
             isRetryable = true
             requiresSubscription = false
         } else {
@@ -40,21 +40,21 @@ nonisolated struct AIErrorPresentation: Equatable {
         }
     }
 
-    private static let genericTitle = "Something went wrong while generating a response."
-    private static let genericDetail = "Check your connection and try again. Your message is saved."
+    private static var genericTitle: String { "error.generic.title".localized }
+    private static var genericDetail: String { "error.generic.detail".localized }
 
     private static func detail(for error: GatewayError) -> String {
         switch error {
         case .network, .temporary, .providerRejected, .rateLimited:
             return genericDetail
         case .subscriptionRequired:
-            return "Your message is saved."
+            return "error.messageSaved".localized
         case .budgetExceeded, .appBudgetExceeded:
-            return "Your message is saved."
+            return "error.messageSaved".localized
         case .payloadTooLarge:
-            return "Shorten it and send again."
+            return "error.shortenAndResend".localized
         case .invalidRequest, .configuration:
-            return "Please try again shortly. Your message is saved."
+            return "error.tryShortly".localized
         }
     }
 }

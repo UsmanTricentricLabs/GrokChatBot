@@ -34,31 +34,46 @@ struct SideBarEmptyState: View {
 }
 
 /// The frosted upgrade card pinned to the bottom of the sidebar.
+///
+/// The whole card is the target, not just the button inside it: the card has
+/// no other purpose, so anywhere on it opening the paywall is what the pointer
+/// suggests. The inner label keeps its own background to stay on design, but
+/// it is drawn rather than clickable so the two cannot take the click apart.
 struct SideBarUpgradeCard: View {
     let action: () -> Void
 
-    var body: some View {
-        VStack(spacing: 10) {
-            Text("Upgrade your plan to unlock more")
-                .grokText(.upgradeTitle, color: GrokColor.sidebarInk)
-                .multilineTextAlignment(.center)
-                .fixedSize(horizontal: false, vertical: true)
+    @State private var isHovering = false
 
-            Button(action: action) {
-                Text("Upgrade Now")
+    var body: some View {
+        Button(action: action) {
+            VStack(spacing: 10) {
+                Text("sidebar.upgrade.title".localized)
+                    .grokText(.upgradeTitle, color: GrokColor.sidebarInk)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                Text("sidebar.upgrade.action".localized)
                     .grokText(.upgradeAction, color: GrokColor.black1)
                     .frame(maxWidth: .infinity)
                     .frame(height: 40)
-                    .hoverBackground(GrokColor.white1, hover: GrokColor.white2, cornerRadius: 10)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            .fill(isHovering ? GrokColor.white2 : GrokColor.white1)
+                    )
             }
-            .buttonStyle(GrokButtonStyle())
+            .padding(.horizontal, 12)
+            .padding(.top, 16)
+            .padding(.bottom, 12)
+            .background(
+                RoundedRectangle(cornerRadius: GrokMetrics.tileRadius, style: .continuous)
+                    .fill(Color.white.opacity(isHovering ? 0.16 : 0.1))
+            )
+            .contentShape(
+                RoundedRectangle(cornerRadius: GrokMetrics.tileRadius, style: .continuous)
+            )
         }
-        .padding(.horizontal, 12)
-        .padding(.top, 16)
-        .padding(.bottom, 12)
-        .background(
-            RoundedRectangle(cornerRadius: GrokMetrics.tileRadius, style: .continuous)
-                .fill(Color.white.opacity(0.1))
-        )
+        .buttonStyle(GrokButtonStyle())
+        .onHover { isHovering = $0 }
+        .animation(.easeOut(duration: 0.12), value: isHovering)
     }
 }

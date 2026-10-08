@@ -1,0 +1,238 @@
+/*
+  Localizable.strings
+  Grok
+
+  Japanese
+
+  Keys are grouped by the part of the app they belong to. Format specifiers
+  carry their position (%1$@) wherever a line takes more than one value, so a
+  translation may reorder them freely.
+*/
+
+
+/* MARK: attachment */
+"attachment.kind.pdf" = "PDF 書類";
+"attachment.kind.text" = "テキストファイル";
+"attachment.locked.detail" = "「%@」を添付するにはパスワードを入力してください。";
+"attachment.locked.title" = "この PDF はパスワードで保護されています";
+"attachment.remove" = "添付を削除";
+"attachment.tooLarge" = "「%1$@」は %2$@ です。ファイルは %3$@ までに制限されています。";
+"attachment.unreadable" = "このファイルを開けませんでした。";
+"attachment.wrongPassword" = "そのパスワードでは書類のロックを解除できませんでした。";
+
+/* MARK: chat */
+"chat.attach" = "添付";
+"chat.attachHelp" = "テキストファイル、PDF、画像を添付";
+"chat.attachMessage" = "テキストファイル、PDF、画像を添付できます（各 %@ まで）。";
+"chat.autoPrompt.file" = "「%@」を要約して、特に重要な点を教えてください。";
+"chat.autoPrompt.files" = "これらのファイルを要約して、特に重要な点を教えてください。";
+"chat.autoPrompt.image" = "この画像には何が写っていますか？";
+"chat.readAloud" = "読み上げる";
+"chat.thinking" = "考えています";
+
+/* MARK: common */
+"common.askAnything" = "何でも聞いてください...";
+"common.cancel" = "キャンセル";
+"common.close" = "閉じる";
+"common.copied" = "コピーしました";
+"common.copy" = "コピー";
+"common.dismiss" = "閉じる";
+"common.moveBack" = "戻る";
+"common.notNow" = "後で";
+"common.ok" = "OK";
+"common.openSettings" = "設定を開く";
+"common.regenerate" = "再生成";
+"common.remove" = "削除";
+"common.save" = "保存";
+"common.seeAll" = "すべて表示";
+"common.send" = "送信";
+"common.share" = "共有";
+"common.stop" = "停止";
+"common.tryAgain" = "再試行";
+
+/* MARK: date */
+"date.today" = "今日";
+"date.yesterday" = "昨日";
+
+/* MARK: dictation */
+"dictation.mic.detail" = "音声入力にはマイクが必要です。「システム設定」›「プライバシーとセキュリティ」›「マイク」でオンにしてから、もう一度お試しください。";
+"dictation.mic.failed" = "マイクを開始できませんでした。他のアプリが使用していないことを確認して、もう一度お試しください。";
+"dictation.mic.title" = "マイクへのアクセスがオフです";
+"dictation.speech.detail" = "音声をテキストに変換するには音声認識が必要です。「システム設定」›「プライバシーとセキュリティ」›「音声認識」でオンにしてから、もう一度お試しください。";
+"dictation.speech.title" = "音声認識がオフです";
+"dictation.speech.unavailable" = "音声認識は現在利用できません。接続を確認して、もう一度お試しください。";
+"dictation.start" = "音声入力";
+"dictation.stop" = "音声入力を停止";
+"dictation.unavailable.title" = "音声入力を利用できません";
+
+/* MARK: error */
+"error.budget.now" = "現在の AI 利用上限に達しました。";
+"error.budget.resets" = "AI 利用上限に達しました。%@にリセットされます。";
+"error.generic.detail" = "接続を確認して、もう一度お試しください。メッセージは保存されています。";
+"error.generic.title" = "応答の生成中に問題が発生しました。";
+"error.invalidRequest" = "Grok はそのリクエストを処理できませんでした。表現を変えてお試しください。";
+"error.messageSaved" = "メッセージは保存されています。";
+"error.network" = "オフラインのようです。接続を確認して、もう一度お試しください。";
+"error.payloadTooLarge" = "このメッセージは大きすぎて送信できません。短くしてお試しください。";
+"error.rateLimited.seconds" = "リクエストが多すぎます。%d 秒後にもう一度お試しください。";
+"error.rateLimited.soon" = "リクエストが多すぎます。しばらくしてからお試しください。";
+"error.shortenAndResend" = "短くして再送信してください。";
+"error.subscriptionRequired" = "この機能には有効なサブスクリプションが必要です。";
+"error.temporary" = "Grok は一時的に利用できません。";
+"error.temporary.later" = "Grok は一時的に利用できません。しばらくしてからお試しください。";
+"error.tryShortly" = "しばらくしてからお試しください。メッセージは保存されています。";
+
+/* MARK: feature */
+"feature.chat.detail" = "より賢い回答と、より深い推論";
+"feature.chat.title" = "高度なチャット";
+"feature.image.detail" = "アイデアをあらゆるスタイルの画像に";
+"feature.image.title" = "画像を作成";
+"feature.pdf.detail" = "どんな書類の要点も数秒で";
+"feature.pdf.title" = "PDF 要約";
+
+/* MARK: header */
+"header.language" = "言語";
+"header.settings" = "設定";
+"header.showSidebar" = "サイドバーを表示";
+
+/* MARK: home */
+"home.hero.subtitle" = "何でも質問し、アイデアを広げ、新しいものを作りましょう";
+"home.hero.title" = "どんなご用件ですか？";
+
+/* MARK: iap */
+"iap.cadence.monthly" = "月額";
+"iap.cadence.weekly" = "週額";
+"iap.cadence.yearly" = "年額";
+"iap.caption.billed" = "%@請求";
+"iap.caption.monthlyEquivalent" = "月あたり %@";
+"iap.caption.savings" = "月あたり %1$@ · %2$d%% お得";
+"iap.perPeriod" = "%@あたり";
+"iap.priceSummary" = "%2$@あたり %1$@、いつでも解約可能";
+"iap.productNotLoaded" = "このプランは読み込み中です。しばらくしてからお試しください。";
+"iap.trialBadge" = "%@無料トライアル";
+"iap.trialSummary" = "%1$@無料、その後 %2$@/%3$@。いつでも解約できます。";
+"iap.unit.day" = "日";
+"iap.unit.days" = "日";
+"iap.unit.month" = "か月";
+"iap.unit.months" = "か月";
+"iap.unit.week" = "週間";
+"iap.unit.weeks" = "週間";
+"iap.unit.year" = "年";
+"iap.unit.years" = "年";
+
+/* MARK: image */
+"image.aspectRatio" = "アスペクト比";
+"image.creating" = "画像を作成しています";
+"image.editPrompt" = "プロンプトを編集";
+"image.exportFailed" = "画像を書き出せませんでした。";
+"image.gallery.title" = "あなたの画像";
+"image.generate" = "生成";
+"image.hero.subtitle" = "画像を説明してスタイルを選ぶと、Grok が形にします";
+"image.hero.title" = "何を作りますか？";
+"image.placeholder.edit" = "変更点、または新しい画像を説明してください...";
+"image.placeholder.new" = "作りたい画像を説明してください...";
+"image.style" = "スタイル";
+"image.style.3drender" = "3D レンダー";
+"image.style.anime" = "アニメ";
+"image.style.cinematic" = "シネマティック";
+"image.style.illustration" = "イラスト";
+"image.style.minimal" = "ミニマル";
+"image.style.photographic" = "写真風";
+"image.style.sketch" = "スケッチ";
+"image.style.watercolor" = "水彩";
+
+/* MARK: imageStarter */
+"imageStarter.poster.detail" = "ポスターやアルバムアートのための大胆な構図";
+"imageStarter.poster.prompt" = "夕暮れのインディー音楽フェスのための大胆なタイポグラフィポスター";
+"imageStarter.poster.title" = "ポスターとカバー";
+"imageStarter.product.detail" = "すっきりしたシンプルな背景にスタジオ照明の被写体";
+"imageStarter.product.prompt" = "シームレスな背景に置かれた陶器のコーヒーカップ、スタジオ照明、柔らかな影";
+"imageStarter.product.title" = "商品写真";
+"imageStarter.scenes.detail" = "風景、インテリア、想像上の場所";
+"imageStarter.scenes.prompt" = "夕暮れの岩場の崖に立つ灯台、眼下で砕ける波、灯から漏れる暖かな光";
+"imageStarter.scenes.title" = "シーンと世界";
+
+/* MARK: paywall */
+"paywall.badge.popular" = "人気";
+"paywall.badge.value" = "お得";
+"paywall.cta.continue" = "続ける";
+"paywall.cta.freeTrial" = "無料トライアルを開始";
+"paywall.headline" = "もっと多くのツールを。\nもっと多くの可能性を。";
+"paywall.noRestore" = "この Apple アカウントでの過去の購入が見つかりませんでした。";
+"paywall.privacy" = "プライバシーポリシー";
+"paywall.restore" = "購入を復元";
+"paywall.restoring" = "復元中…";
+"paywall.subheadline" = "画像生成、PDF 要約、そして Mac で使える Grok のすべての機能を解放しましょう。";
+"paywall.terms" = "利用規約";
+"paywall.uploadImage" = "画像をアップロード";
+
+/* MARK: pdf */
+"pdf.askPlaceholder" = "この PDF について質問する...";
+"pdf.chooseFile" = "ファイルを選択";
+"pdf.choosePrompt" = "%@ までの PDF を選んでください。";
+"pdf.copySummary" = "要約をコピー";
+"pdf.drop.idle" = "ここに PDF をドロップ";
+"pdf.drop.limit" = "%@ まで";
+"pdf.drop.release" = "離してアップロード";
+"pdf.drop.releaseHint" = "離して開始";
+"pdf.hero.subtitle" = "書類をアップロードすれば、要点が数秒で手に入ります";
+"pdf.hero.title" = "どんな PDF も要約";
+"pdf.importantSections" = "重要なセクション";
+"pdf.keyPoints" = "要点";
+"pdf.length" = "長さ";
+"pdf.length.brief" = "簡潔";
+"pdf.length.detailed" = "詳細";
+"pdf.length.standard" = "標準";
+"pdf.newPDF" = "新規 PDF";
+"pdf.noText" = "この PDF には選択可能なテキストがないため、要約できません。";
+"pdf.pageLabel" = "%d ページ";
+"pdf.readingPage" = "%2$d ページ中 %1$d ページ目を読み込み中…";
+"pdf.summarize" = "要約";
+"pdf.summarizedJustNow" = "%@ · たった今要約しました";
+"pdf.summary" = "要約";
+
+/* MARK: plan */
+"plan.monthly" = "月額プラン";
+"plan.weekly" = "週額プラン";
+"plan.yearly" = "年額プラン";
+
+/* MARK: restore */
+"restore.failed.title" = "復元に失敗しました";
+"restore.none.detail" = "この Apple アカウントでの過去の購入は見つかりませんでした。";
+"restore.none.title" = "復元するものがありません";
+"restore.success.detail" = "この Apple アカウントで購入したものが再び利用できます。";
+"restore.success.title" = "購入を復元しました";
+
+/* MARK: settings */
+"settings.help" = "ヘルプとサポート";
+"settings.rateUs" = "評価する";
+"settings.restore" = "購入を復元";
+
+/* MARK: sidebar */
+"sidebar.chatOptions" = "チャットのオプション";
+"sidebar.empty.chats.subtitle" = "開始した会話がここに表示されます";
+"sidebar.empty.chats.title" = "まだチャットがありません";
+"sidebar.empty.images.subtitle" = "作成した画像がここに表示されます";
+"sidebar.empty.images.title" = "まだ画像がありません";
+"sidebar.empty.pdfs.subtitle" = "作成した要約がここに表示されます";
+"sidebar.empty.pdfs.title" = "まだ PDF がありません";
+"sidebar.newChat" = "新規チャット";
+"sidebar.noChats" = "まだチャットがありません";
+"sidebar.noMatches" = "一致なし";
+"sidebar.searchChats" = "チャットを検索";
+"sidebar.section.chat" = "チャット";
+"sidebar.section.documents" = "書類";
+"sidebar.section.images" = "画像";
+"sidebar.upgrade.action" = "今すぐアップグレード";
+"sidebar.upgrade.title" = "プランをアップグレードして、もっと使おう";
+
+/* MARK: starter */
+"starter.code.detail" = "複雑なコードも楽に記述・テスト・リファクタリング";
+"starter.code.prompt" = "このコードのバグを見つけ、なぜ起きるのかを説明し、それを検出できるテストとともに修正版を示してください:\n";
+"starter.code.title" = "コードとデバッグ";
+"starter.data.detail" = "データセットを分析し、重要な指標を抽出";
+"starter.data.prompt" = "これらの数字から主要な傾向を抽出し、外れ値があれば指摘して、どう対応すべきか教えてください:\n";
+"starter.data.title" = "データと分析";
+"starter.write.detail" = "魅力的な文章を書いたり、長文を要約したり";
+"starter.write.prompt" = "これを3文で要約し、そのうえで顧客に送れる短く親しみやすいお知らせに書き直してください:\n";
+"starter.write.title" = "作成と要約";

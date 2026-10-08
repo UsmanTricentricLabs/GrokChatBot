@@ -18,8 +18,8 @@ nonisolated enum PDFImportError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .unreadable: return "This file could not be opened."
-        case .noExtractableText: return "This PDF has no selectable text, so it can’t be summarized."
+        case .unreadable: return "attachment.unreadable".localized
+        case .noExtractableText: return "pdf.noText".localized
         }
     }
 }

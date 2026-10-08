@@ -42,29 +42,29 @@ nonisolated enum GatewayError: LocalizedError, Equatable {
     var errorDescription: String? {
         switch self {
         case .subscriptionRequired:
-            return "This feature needs an active subscription."
+            return "error.subscriptionRequired".localized
         case .budgetExceeded(let resetsAt):
             guard let resetsAt else {
-                return "You've reached your AI limit for now."
+                return "error.budget.now".localized
             }
-            return "You've reached your AI limit. It resets \(Self.relative(resetsAt))."
+            return "error.budget.resets".localized(Self.relative(resetsAt))
         case .rateLimited(let retryAfter):
             guard let retryAfter, retryAfter > 0 else {
-                return "Too many requests. Try again in a moment."
+                return "error.rateLimited.soon".localized
             }
-            return "Too many requests. Try again in \(Int(retryAfter.rounded())) seconds."
+            return "error.rateLimited.seconds".localized(Int(retryAfter.rounded()))
         case .appBudgetExceeded:
-            return "Grok is temporarily unavailable. Please try again later."
+            return "error.temporary.later".localized
         case .invalidRequest, .configuration:
-            return "Something went wrong while generating a response."
+            return "error.generic.title".localized
         case .payloadTooLarge:
-            return "That message is too large to send. Try shortening it."
+            return "error.payloadTooLarge".localized
         case .providerRejected:
-            return "Grok couldn't process that request. Try rephrasing it."
+            return "error.invalidRequest".localized
         case .temporary:
-            return "Grok is temporarily unavailable."
+            return "error.temporary".localized
         case .network:
-            return "You appear to be offline. Check your connection and try again."
+            return "error.network".localized
         }
     }
 

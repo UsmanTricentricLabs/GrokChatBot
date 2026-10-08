@@ -20,6 +20,13 @@ struct SideBarView: View {
     /// The window's own traffic lights sit over the top-left of this rail, so
     /// the content is inset below them. An overlay drawer has no such chrome.
     var reservesTitleBarSpace: Bool = true
+    /// Opens the paywall. The rail does not present it itself — the dialog
+    /// covers the whole shell, so it belongs to the shell.
+    var onUpgrade: () -> Void = {}
+
+    /// Subscription state comes from the manager rather than a copy kept here,
+    /// so the upgrade card disappears the moment a purchase or a restore lands.
+    @ObservedObject private var iap = IAPManager.shared
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -27,7 +34,7 @@ struct SideBarView: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 SideBarNavItem(
-                    title: "Create Image",
+                    title: "feature.image.title".localized,
                     asset: GrokAsset.createImage,
                     isSelected: screenSwitchVM.screen == .createImage
                 ) {
@@ -38,7 +45,7 @@ struct SideBarView: View {
                 }
 
                 SideBarNavItem(
-                    title: "PDF Summary",
+                    title: "feature.pdf.title".localized,
                     asset: GrokAsset.pdfSummary,
                     isSelected: screenSwitchVM.screen == .pdfSummary
                 ) {
@@ -59,7 +66,11 @@ struct SideBarView: View {
                     .padding(.bottom, 12)
             }
 
-            SideBarUpgradeCard(action: {})
+            // Promotional, so it is only for customers who have something to
+            // buy. A subscriber keeps the space for their history instead.
+            if !iap.isPremiumUnlocked {
+                SideBarUpgradeCard(action: onUpgrade)
+            }
         }
         .padding(.horizontal, 12)
         .padding(.top, reservesTitleBarSpace ? GrokMetrics.trafficLightInset : 16)
@@ -76,12 +87,12 @@ struct SideBarView: View {
         case .home:
             if chatVM.conversations.isEmpty {
                 SideBarEmptyState(
-                    title: "No chats yet!",
-                    subtitle: "Conversations you start will show up here"
+                    title: "sidebar.empty.chats.title".localized,
+                    subtitle: "sidebar.empty.chats.subtitle".localized
                 )
                 .padding(.top, 60)
             } else {
-                SideBarHistory(label: "Chat", chatVM: chatVM)
+                SideBarHistory(label: "sidebar.section.chat".localized, chatVM: chatVM)
             }
 
         case .createImage:
@@ -89,8 +100,8 @@ struct SideBarView: View {
                 SideBarImageHistory(imageVM: imageVM)
             } else {
                 SideBarEmptyState(
-                    title: "No images yet!",
-                    subtitle: "Your creations will show up here"
+                    title: "sidebar.empty.images.title".localized,
+                    subtitle: "sidebar.empty.images.subtitle".localized
                 )
                 .padding(.top, 60)
             }
@@ -98,8 +109,8 @@ struct SideBarView: View {
         case .pdfSummary:
             if pdfVM.summarizedDocuments.isEmpty {
                 SideBarEmptyState(
-                    title: "No PDFs yet!",
-                    subtitle: "Summaries you create will show up here"
+                    title: "sidebar.empty.pdfs.title".localized,
+                    subtitle: "sidebar.empty.pdfs.subtitle".localized
                 )
                 .padding(.top, 60)
             } else {
@@ -120,7 +131,7 @@ struct SideBarDocumentList: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Documents")
+            Text("sidebar.section.documents".localized)
                 .grokText(.label, color: GrokColor.sidebarInk)
                 .frame(height: 24)
                 .padding(.horizontal, 4)

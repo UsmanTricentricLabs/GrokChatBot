@@ -1,0 +1,238 @@
+/*
+  Localizable.strings
+  Grok
+
+  Korean
+
+  Keys are grouped by the part of the app they belong to. Format specifiers
+  carry their position (%1$@) wherever a line takes more than one value, so a
+  translation may reorder them freely.
+*/
+
+
+/* MARK: attachment */
+"attachment.kind.pdf" = "PDF 문서";
+"attachment.kind.text" = "텍스트 파일";
+"attachment.locked.detail" = "“%@”을(를) 첨부하려면 암호를 입력하세요.";
+"attachment.locked.title" = "이 PDF는 암호로 보호되어 있습니다";
+"attachment.remove" = "첨부 파일 제거";
+"attachment.tooLarge" = "“%1$@”은(는) %2$@입니다. 파일은 %3$@까지만 가능합니다.";
+"attachment.unreadable" = "이 파일을 열 수 없습니다.";
+"attachment.wrongPassword" = "해당 암호로는 문서를 열 수 없습니다.";
+
+/* MARK: chat */
+"chat.attach" = "첨부";
+"chat.attachHelp" = "텍스트 파일, PDF 또는 이미지 첨부";
+"chat.attachMessage" = "텍스트 파일, PDF 또는 이미지를 첨부하세요(각 %@까지).";
+"chat.autoPrompt.file" = "“%@”을(를) 요약하고 가장 중요한 점을 알려 주세요.";
+"chat.autoPrompt.files" = "이 파일들을 요약하고 가장 중요한 점을 알려 주세요.";
+"chat.autoPrompt.image" = "이 이미지에는 무엇이 있나요?";
+"chat.readAloud" = "소리내어 읽기";
+"chat.thinking" = "생각 중";
+
+/* MARK: common */
+"common.askAnything" = "무엇이든 물어보세요...";
+"common.cancel" = "취소";
+"common.close" = "닫기";
+"common.copied" = "복사됨";
+"common.copy" = "복사";
+"common.dismiss" = "닫기";
+"common.moveBack" = "뒤로";
+"common.notNow" = "나중에";
+"common.ok" = "확인";
+"common.openSettings" = "설정 열기";
+"common.regenerate" = "다시 생성";
+"common.remove" = "제거";
+"common.save" = "저장";
+"common.seeAll" = "모두 보기";
+"common.send" = "보내기";
+"common.share" = "공유";
+"common.stop" = "중지";
+"common.tryAgain" = "다시 시도";
+
+/* MARK: date */
+"date.today" = "오늘";
+"date.yesterday" = "어제";
+
+/* MARK: dictation */
+"dictation.mic.detail" = "받아쓰기에는 마이크가 필요합니다. 시스템 설정 › 개인정보 보호 및 보안 › 마이크에서 켠 뒤 다시 시도하세요.";
+"dictation.mic.failed" = "마이크를 시작할 수 없습니다. 다른 앱이 사용 중인지 확인한 뒤 다시 시도하세요.";
+"dictation.mic.title" = "마이크 접근이 꺼져 있습니다";
+"dictation.speech.detail" = "음성을 텍스트로 바꾸려면 음성 인식이 필요합니다. 시스템 설정 › 개인정보 보호 및 보안 › 음성 인식에서 켠 뒤 다시 시도하세요.";
+"dictation.speech.title" = "음성 인식이 꺼져 있습니다";
+"dictation.speech.unavailable" = "지금은 음성 인식을 사용할 수 없습니다. 연결을 확인한 뒤 다시 시도하세요.";
+"dictation.start" = "받아쓰기";
+"dictation.stop" = "받아쓰기 중지";
+"dictation.unavailable.title" = "받아쓰기를 사용할 수 없습니다";
+
+/* MARK: error */
+"error.budget.now" = "현재 AI 사용 한도에 도달했습니다.";
+"error.budget.resets" = "AI 사용 한도에 도달했습니다. %@에 초기화됩니다.";
+"error.generic.detail" = "연결을 확인한 뒤 다시 시도하세요. 메시지는 저장되었습니다.";
+"error.generic.title" = "응답을 생성하는 중 문제가 발생했습니다.";
+"error.invalidRequest" = "Grok이 해당 요청을 처리하지 못했습니다. 다르게 표현해 보세요.";
+"error.messageSaved" = "메시지는 저장되었습니다.";
+"error.network" = "오프라인 상태인 것 같습니다. 연결을 확인한 뒤 다시 시도하세요.";
+"error.payloadTooLarge" = "이 메시지는 너무 커서 보낼 수 없습니다. 줄여 보세요.";
+"error.rateLimited.seconds" = "요청이 너무 많습니다. %d초 후에 다시 시도하세요.";
+"error.rateLimited.soon" = "요청이 너무 많습니다. 잠시 후 다시 시도하세요.";
+"error.shortenAndResend" = "줄여서 다시 보내세요.";
+"error.subscriptionRequired" = "이 기능에는 활성 구독이 필요합니다.";
+"error.temporary" = "Grok을 일시적으로 사용할 수 없습니다.";
+"error.temporary.later" = "Grok을 일시적으로 사용할 수 없습니다. 나중에 다시 시도하세요.";
+"error.tryShortly" = "잠시 후 다시 시도하세요. 메시지는 저장되었습니다.";
+
+/* MARK: feature */
+"feature.chat.detail" = "더 똑똑한 답변과 더 깊은 추론";
+"feature.chat.title" = "고급 채팅";
+"feature.image.detail" = "아이디어를 모든 스타일의 이미지로";
+"feature.image.title" = "이미지 만들기";
+"feature.pdf.detail" = "어떤 문서든 핵심을 몇 초 만에";
+"feature.pdf.title" = "PDF 요약";
+
+/* MARK: header */
+"header.language" = "언어";
+"header.settings" = "설정";
+"header.showSidebar" = "사이드바 보기";
+
+/* MARK: home */
+"home.hero.subtitle" = "무엇이든 묻고, 아이디어를 탐색하고, 새로운 것을 만들어 보세요";
+"home.hero.title" = "무엇을 도와드릴까요?";
+
+/* MARK: iap */
+"iap.cadence.monthly" = "월간";
+"iap.cadence.weekly" = "주간";
+"iap.cadence.yearly" = "연간";
+"iap.caption.billed" = "%@ 청구";
+"iap.caption.monthlyEquivalent" = "월 %@";
+"iap.caption.savings" = "월 %1$@ · %2$d%% 절약";
+"iap.perPeriod" = "%@당";
+"iap.priceSummary" = "%2$@당 %1$@, 언제든 해지 가능";
+"iap.productNotLoaded" = "이 요금제를 아직 불러오는 중입니다. 잠시 후 다시 시도하세요.";
+"iap.trialBadge" = "%@ 무료 체험";
+"iap.trialSummary" = "%1$@ 무료 체험 후 %2$@/%3$@. 언제든 해지할 수 있습니다.";
+"iap.unit.day" = "일";
+"iap.unit.days" = "일";
+"iap.unit.month" = "개월";
+"iap.unit.months" = "개월";
+"iap.unit.week" = "주";
+"iap.unit.weeks" = "주";
+"iap.unit.year" = "년";
+"iap.unit.years" = "년";
+
+/* MARK: image */
+"image.aspectRatio" = "화면 비율";
+"image.creating" = "이미지를 만드는 중";
+"image.editPrompt" = "프롬프트 편집";
+"image.exportFailed" = "이미지를 내보낼 수 없습니다.";
+"image.gallery.title" = "내 이미지";
+"image.generate" = "생성";
+"image.hero.subtitle" = "이미지를 설명하고 스타일을 고르면 Grok이 만들어 드립니다";
+"image.hero.title" = "무엇을 만들어 볼까요?";
+"image.placeholder.edit" = "변경할 내용이나 새 이미지를 설명하세요...";
+"image.placeholder.new" = "만들고 싶은 이미지를 설명하세요...";
+"image.style" = "스타일";
+"image.style.3drender" = "3D 렌더";
+"image.style.anime" = "애니메이션";
+"image.style.cinematic" = "시네마틱";
+"image.style.illustration" = "일러스트";
+"image.style.minimal" = "미니멀";
+"image.style.photographic" = "사진";
+"image.style.sketch" = "스케치";
+"image.style.watercolor" = "수채화";
+
+/* MARK: imageStarter */
+"imageStarter.poster.detail" = "포스터와 앨범 아트를 위한 과감한 구성";
+"imageStarter.poster.prompt" = "해질녘 인디 음악 페스티벌을 위한 과감한 타이포그래피 포스터";
+"imageStarter.poster.title" = "포스터 및 커버";
+"imageStarter.product.detail" = "깔끔하고 단순한 배경 위의 스튜디오 조명 피사체";
+"imageStarter.product.prompt" = "이음매 없는 배경 위의 세라믹 커피잔, 스튜디오 조명, 부드러운 그림자";
+"imageStarter.product.title" = "제품 사진";
+"imageStarter.scenes.detail" = "풍경, 실내, 그리고 상상 속 장소";
+"imageStarter.scenes.prompt" = "해질녘 바위 절벽 위의 등대, 아래에서 부서지는 파도, 등불에서 번지는 따뜻한 빛";
+"imageStarter.scenes.title" = "장면과 세계";
+
+/* MARK: paywall */
+"paywall.badge.popular" = "인기";
+"paywall.badge.value" = "최고 가치";
+"paywall.cta.continue" = "계속";
+"paywall.cta.freeTrial" = "무료 체험 시작";
+"paywall.headline" = "더 많은 도구.\n더 많은 가능성.";
+"paywall.noRestore" = "이 Apple 계정에서 이전 구매를 찾을 수 없습니다.";
+"paywall.privacy" = "개인정보 처리방침";
+"paywall.restore" = "구매 복원";
+"paywall.restoring" = "복원 중…";
+"paywall.subheadline" = "Mac에서 이미지 생성, PDF 요약 등 Grok의 모든 기능을 사용해 보세요.";
+"paywall.terms" = "서비스 약관";
+"paywall.uploadImage" = "이미지 업로드";
+
+/* MARK: pdf */
+"pdf.askPlaceholder" = "이 PDF에 대해 질문하세요...";
+"pdf.chooseFile" = "파일 선택";
+"pdf.choosePrompt" = "%@ 이하의 PDF를 선택하세요.";
+"pdf.copySummary" = "요약 복사";
+"pdf.drop.idle" = "여기에 PDF를 놓으세요";
+"pdf.drop.limit" = "최대 %@";
+"pdf.drop.release" = "놓으면 업로드됩니다";
+"pdf.drop.releaseHint" = "놓으면 시작됩니다";
+"pdf.hero.subtitle" = "문서를 올리면 핵심 내용을 몇 초 만에 확인할 수 있습니다";
+"pdf.hero.title" = "어떤 PDF든 요약";
+"pdf.importantSections" = "중요 섹션";
+"pdf.keyPoints" = "핵심 내용";
+"pdf.length" = "길이";
+"pdf.length.brief" = "간략";
+"pdf.length.detailed" = "상세";
+"pdf.length.standard" = "표준";
+"pdf.newPDF" = "새 PDF";
+"pdf.noText" = "이 PDF에는 선택 가능한 텍스트가 없어 요약할 수 없습니다.";
+"pdf.pageLabel" = "%d쪽";
+"pdf.readingPage" = "%2$d쪽 중 %1$d쪽 읽는 중…";
+"pdf.summarize" = "요약하기";
+"pdf.summarizedJustNow" = "%@ · 방금 요약함";
+"pdf.summary" = "요약";
+
+/* MARK: plan */
+"plan.monthly" = "월간";
+"plan.weekly" = "주간";
+"plan.yearly" = "연간";
+
+/* MARK: restore */
+"restore.failed.title" = "복원 실패";
+"restore.none.detail" = "이 Apple 계정에서 이전 구매를 찾을 수 없습니다.";
+"restore.none.title" = "복원할 항목 없음";
+"restore.success.detail" = "이 Apple 계정으로 구매한 모든 항목을 다시 사용할 수 있습니다.";
+"restore.success.title" = "구매 복원됨";
+
+/* MARK: settings */
+"settings.help" = "도움말 및 지원";
+"settings.rateUs" = "평가하기";
+"settings.restore" = "구매 복원";
+
+/* MARK: sidebar */
+"sidebar.chatOptions" = "채팅 옵션";
+"sidebar.empty.chats.subtitle" = "시작한 대화가 여기에 표시됩니다";
+"sidebar.empty.chats.title" = "아직 채팅이 없습니다";
+"sidebar.empty.images.subtitle" = "만든 이미지가 여기에 표시됩니다";
+"sidebar.empty.images.title" = "아직 이미지가 없습니다";
+"sidebar.empty.pdfs.subtitle" = "만든 요약이 여기에 표시됩니다";
+"sidebar.empty.pdfs.title" = "아직 PDF가 없습니다";
+"sidebar.newChat" = "새 채팅";
+"sidebar.noChats" = "아직 채팅이 없습니다";
+"sidebar.noMatches" = "일치 항목 없음";
+"sidebar.searchChats" = "채팅 검색";
+"sidebar.section.chat" = "채팅";
+"sidebar.section.documents" = "문서";
+"sidebar.section.images" = "이미지";
+"sidebar.upgrade.action" = "지금 업그레이드";
+"sidebar.upgrade.title" = "요금제를 업그레이드하고 더 많이 사용하세요";
+
+/* MARK: starter */
+"starter.code.detail" = "복잡한 코드도 손쉽게 작성, 테스트, 리팩터링";
+"starter.code.prompt" = "이 코드의 버그를 찾아 왜 발생하는지 설명하고, 그 버그를 잡아낼 테스트와 함께 수정된 버전을 보여 주세요:\n";
+"starter.code.title" = "코드 및 디버깅";
+"starter.data.detail" = "데이터를 분석하고 핵심 지표를 추출";
+"starter.data.prompt" = "이 수치에서 핵심 추세를 뽑아내고, 이상치가 있으면 표시한 뒤 어떻게 해야 할지 알려 주세요:\n";
+"starter.data.title" = "데이터 및 인사이트";
+"starter.write.detail" = "매력적인 글을 쓰거나 긴 글을 요약";
+"starter.write.prompt" = "이 내용을 세 문장으로 요약한 다음, 고객에게 보낼 짧고 친근한 공지로 다시 써 주세요:\n";
+"starter.write.title" = "작성 및 요약";

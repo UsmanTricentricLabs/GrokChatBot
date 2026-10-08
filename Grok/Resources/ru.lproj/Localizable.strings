@@ -1,0 +1,238 @@
+/*
+  Localizable.strings
+  Grok
+
+  Russian
+
+  Keys are grouped by the part of the app they belong to. Format specifiers
+  carry their position (%1$@) wherever a line takes more than one value, so a
+  translation may reorder them freely.
+*/
+
+
+/* MARK: attachment */
+"attachment.kind.pdf" = "документ PDF";
+"attachment.kind.text" = "текстовый файл";
+"attachment.locked.detail" = "Введите пароль для «%@», чтобы прикрепить файл.";
+"attachment.locked.title" = "Этот PDF защищён паролем";
+"attachment.remove" = "Удалить вложение";
+"attachment.tooLarge" = "«%1$@» весит %2$@. Размер файлов ограничен %3$@.";
+"attachment.unreadable" = "Не удалось открыть этот файл.";
+"attachment.wrongPassword" = "Этот пароль не подошёл к документу.";
+
+/* MARK: chat */
+"chat.attach" = "Прикрепить";
+"chat.attachHelp" = "Прикрепить текстовый файл, PDF или изображение";
+"chat.attachMessage" = "Прикрепите текстовый файл, PDF или изображение (до %@ каждый).";
+"chat.autoPrompt.file" = "Перескажи «%@» и скажи, что в нём самое важное.";
+"chat.autoPrompt.files" = "Перескажи эти файлы и скажи, что в них самое важное.";
+"chat.autoPrompt.image" = "Что изображено на этой картинке?";
+"chat.readAloud" = "Прочитать вслух";
+"chat.thinking" = "Думаю";
+
+/* MARK: common */
+"common.askAnything" = "Спросите о чём угодно...";
+"common.cancel" = "Отмена";
+"common.close" = "Закрыть";
+"common.copied" = "Скопировано";
+"common.copy" = "Копировать";
+"common.dismiss" = "Скрыть";
+"common.moveBack" = "Назад";
+"common.notNow" = "Не сейчас";
+"common.ok" = "ОК";
+"common.openSettings" = "Открыть настройки";
+"common.regenerate" = "Сгенерировать заново";
+"common.remove" = "Удалить";
+"common.save" = "Сохранить";
+"common.seeAll" = "Показать все";
+"common.send" = "Отправить";
+"common.share" = "Поделиться";
+"common.stop" = "Стоп";
+"common.tryAgain" = "Повторить";
+
+/* MARK: date */
+"date.today" = "Сегодня";
+"date.yesterday" = "Вчера";
+
+/* MARK: dictation */
+"dictation.mic.detail" = "Grok нужен микрофон для диктовки. Включите его в «Системных настройках» › «Конфиденциальность и безопасность» › «Микрофон» и повторите попытку.";
+"dictation.mic.failed" = "Не удалось запустить микрофон. Убедитесь, что его не использует другое приложение, и повторите попытку.";
+"dictation.mic.title" = "Доступ к микрофону отключён";
+"dictation.speech.detail" = "Grok нужно распознавание речи, чтобы превращать голос в текст. Включите его в «Системных настройках» › «Конфиденциальность и безопасность» › «Распознавание речи» и повторите попытку.";
+"dictation.speech.title" = "Распознавание речи отключено";
+"dictation.speech.unavailable" = "Распознавание речи сейчас недоступно. Проверьте подключение и повторите попытку.";
+"dictation.start" = "Диктовать";
+"dictation.stop" = "Остановить диктовку";
+"dictation.unavailable.title" = "Диктовка недоступна";
+
+/* MARK: error */
+"error.budget.now" = "Вы исчерпали лимит ИИ на данный момент.";
+"error.budget.resets" = "Вы исчерпали лимит ИИ. Он обновится %@.";
+"error.generic.detail" = "Проверьте подключение и повторите попытку. Ваше сообщение сохранено.";
+"error.generic.title" = "При создании ответа что-то пошло не так.";
+"error.invalidRequest" = "Grok не смог обработать этот запрос. Попробуйте переформулировать его.";
+"error.messageSaved" = "Ваше сообщение сохранено.";
+"error.network" = "Похоже, вы офлайн. Проверьте подключение и повторите попытку.";
+"error.payloadTooLarge" = "Это сообщение слишком большое для отправки. Попробуйте сократить его.";
+"error.rateLimited.seconds" = "Слишком много запросов. Повторите попытку через %d с.";
+"error.rateLimited.soon" = "Слишком много запросов. Повторите попытку через мгновение.";
+"error.shortenAndResend" = "Сократите его и отправьте снова.";
+"error.subscriptionRequired" = "Для этой функции нужна активная подписка.";
+"error.temporary" = "Grok временно недоступен.";
+"error.temporary.later" = "Grok временно недоступен. Повторите попытку позже.";
+"error.tryShortly" = "Повторите попытку чуть позже. Ваше сообщение сохранено.";
+
+/* MARK: feature */
+"feature.chat.detail" = "Более умные ответы и глубокие рассуждения";
+"feature.chat.title" = "Продвинутый чат";
+"feature.image.detail" = "Превращайте идеи в изображения в любом стиле";
+"feature.image.title" = "Создать изображение";
+"feature.pdf.detail" = "Ключевые мысли из любого документа за секунды";
+"feature.pdf.title" = "Краткое содержание PDF";
+
+/* MARK: header */
+"header.language" = "Язык";
+"header.settings" = "Настройки";
+"header.showSidebar" = "Показать боковую панель";
+
+/* MARK: home */
+"home.hero.subtitle" = "Спрашивайте о чём угодно, исследуйте идеи или создавайте новое";
+"home.hero.title" = "Чем я могу помочь?";
+
+/* MARK: iap */
+"iap.cadence.monthly" = "ежемесячно";
+"iap.cadence.weekly" = "еженедельно";
+"iap.cadence.yearly" = "ежегодно";
+"iap.caption.billed" = "Оплата %@";
+"iap.caption.monthlyEquivalent" = "Всего %@/месяц";
+"iap.caption.savings" = "Всего %1$@/месяц · Экономия %2$d%%";
+"iap.perPeriod" = "За %@";
+"iap.priceSummary" = "%1$@ за %2$@, отмена в любой момент";
+"iap.productNotLoaded" = "Этот тариф ещё загружается. Повторите попытку через мгновение.";
+"iap.trialBadge" = "%@ бесплатно";
+"iap.trialSummary" = "Бесплатно %1$@, затем %2$@/%3$@. Отмена в любой момент.";
+"iap.unit.day" = "день";
+"iap.unit.days" = "дней";
+"iap.unit.month" = "месяц";
+"iap.unit.months" = "месяцев";
+"iap.unit.week" = "неделя";
+"iap.unit.weeks" = "недель";
+"iap.unit.year" = "год";
+"iap.unit.years" = "лет";
+
+/* MARK: image */
+"image.aspectRatio" = "Соотношение сторон";
+"image.creating" = "Создаю ваше изображение";
+"image.editPrompt" = "Изменить запрос";
+"image.exportFailed" = "Не удалось экспортировать изображение.";
+"image.gallery.title" = "Ваши изображения";
+"image.generate" = "Создать";
+"image.hero.subtitle" = "Опишите изображение, выберите стиль — и Grok воплотит его";
+"image.hero.title" = "Что создадим?";
+"image.placeholder.edit" = "Опишите изменения или новое изображение...";
+"image.placeholder.new" = "Опишите изображение, которое хотите создать...";
+"image.style" = "Стиль";
+"image.style.3drender" = "3D-рендер";
+"image.style.anime" = "Аниме";
+"image.style.cinematic" = "Кинематографичный";
+"image.style.illustration" = "Иллюстрация";
+"image.style.minimal" = "Минимализм";
+"image.style.photographic" = "Фотографический";
+"image.style.sketch" = "Эскиз";
+"image.style.watercolor" = "Акварель";
+
+/* MARK: imageStarter */
+"imageStarter.poster.detail" = "Смелые композиции для постеров и обложек альбомов";
+"imageStarter.poster.prompt" = "Смелый типографский постер для инди-фестиваля на закате";
+"imageStarter.poster.title" = "Постеры и обложки";
+"imageStarter.product.detail" = "Предметы со студийным светом на чистом простом фоне";
+"imageStarter.product.prompt" = "Керамическая кофейная чашка на бесшовном фоне, студийный свет, мягкие тени";
+"imageStarter.product.title" = "Предметная съёмка";
+"imageStarter.scenes.detail" = "Пейзажи, интерьеры и вымышленные места";
+"imageStarter.scenes.prompt" = "Маяк на скалистом утёсе в сумерках, внизу разбиваются волны, из фонаря льётся тёплый свет";
+"imageStarter.scenes.title" = "Сцены и миры";
+
+/* MARK: paywall */
+"paywall.badge.popular" = "Популярный";
+"paywall.badge.value" = "Выгодный";
+"paywall.cta.continue" = "Продолжить";
+"paywall.cta.freeTrial" = "Начать бесплатный период";
+"paywall.headline" = "Больше инструментов.\nБольше возможностей.";
+"paywall.noRestore" = "Для этого аккаунта Apple прошлых покупок не найдено.";
+"paywall.privacy" = "Политика конфиденциальности";
+"paywall.restore" = "Восстановить покупки";
+"paywall.restoring" = "Восстановление…";
+"paywall.subheadline" = "Откройте генерацию изображений, краткое содержание PDF и всю мощь Grok на вашем Mac.";
+"paywall.terms" = "Условия использования";
+"paywall.uploadImage" = "Загрузить изображение";
+
+/* MARK: pdf */
+"pdf.askPlaceholder" = "Задайте вопрос об этом PDF...";
+"pdf.chooseFile" = "Выбрать файл";
+"pdf.choosePrompt" = "Выберите PDF размером до %@.";
+"pdf.copySummary" = "Скопировать краткое содержание";
+"pdf.drop.idle" = "Перетащите PDF сюда";
+"pdf.drop.limit" = "До %@";
+"pdf.drop.release" = "Отпустите, чтобы загрузить";
+"pdf.drop.releaseHint" = "Отпустите, чтобы начать";
+"pdf.hero.subtitle" = "Загрузите документ и получите ключевые мысли за секунды";
+"pdf.hero.title" = "Краткое содержание любого PDF";
+"pdf.importantSections" = "Важные разделы";
+"pdf.keyPoints" = "Ключевые мысли";
+"pdf.length" = "Объём";
+"pdf.length.brief" = "Кратко";
+"pdf.length.detailed" = "Подробно";
+"pdf.length.standard" = "Стандартно";
+"pdf.newPDF" = "Новый PDF";
+"pdf.noText" = "В этом PDF нет выделяемого текста, поэтому его нельзя пересказать.";
+"pdf.pageLabel" = "с. %d";
+"pdf.readingPage" = "Чтение страницы %1$d из %2$d…";
+"pdf.summarize" = "Пересказать";
+"pdf.summarizedJustNow" = "%@ · Пересказано только что";
+"pdf.summary" = "Краткое содержание";
+
+/* MARK: plan */
+"plan.monthly" = "Ежемесячно";
+"plan.weekly" = "Еженедельно";
+"plan.yearly" = "Ежегодно";
+
+/* MARK: restore */
+"restore.failed.title" = "Не удалось восстановить";
+"restore.none.detail" = "Для этого аккаунта Apple прошлых покупок не найдено.";
+"restore.none.title" = "Нечего восстанавливать";
+"restore.success.detail" = "Всё, что куплено с этим аккаунтом Apple, снова доступно.";
+"restore.success.title" = "Покупки восстановлены";
+
+/* MARK: settings */
+"settings.help" = "Помощь и поддержка";
+"settings.rateUs" = "Оценить";
+"settings.restore" = "Восстановить покупку";
+
+/* MARK: sidebar */
+"sidebar.chatOptions" = "Параметры чата";
+"sidebar.empty.chats.subtitle" = "Начатые вами беседы появятся здесь";
+"sidebar.empty.chats.title" = "Чатов пока нет!";
+"sidebar.empty.images.subtitle" = "Ваши работы появятся здесь";
+"sidebar.empty.images.title" = "Изображений пока нет!";
+"sidebar.empty.pdfs.subtitle" = "Созданные вами пересказы появятся здесь";
+"sidebar.empty.pdfs.title" = "PDF пока нет!";
+"sidebar.newChat" = "Новый чат";
+"sidebar.noChats" = "Чатов пока нет";
+"sidebar.noMatches" = "Ничего не найдено";
+"sidebar.searchChats" = "Поиск по чатам";
+"sidebar.section.chat" = "Чат";
+"sidebar.section.documents" = "Документы";
+"sidebar.section.images" = "Изображения";
+"sidebar.upgrade.action" = "Улучшить";
+"sidebar.upgrade.title" = "Улучшите тариф, чтобы открыть больше";
+
+/* MARK: starter */
+"starter.code.detail" = "Пишите, тестируйте и рефакторите сложный код без усилий";
+"starter.code.prompt" = "Найди ошибку в этом коде, объясни, почему она возникает, и покажи исправленную версию с тестом, который бы её поймал:\n";
+"starter.code.title" = "Код и отладка";
+"starter.data.detail" = "Анализируйте данные и извлекайте ключевые метрики";
+"starter.data.prompt" = "Выдели ключевые тенденции в этих числах, отметь выбросы и скажи, что с этим делать:\n";
+"starter.data.title" = "Данные и аналитика";
+"starter.write.detail" = "Создавайте убедительные тексты или сжимайте длинные";
+"starter.write.prompt" = "Сократи это до трёх предложений, а затем перепиши как короткое дружелюбное объявление для клиентов:\n";
+"starter.write.title" = "Письмо и пересказ";

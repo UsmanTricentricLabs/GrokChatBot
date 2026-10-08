@@ -28,7 +28,7 @@ struct PDFDropZone: View {
                 .frame(width: 48, height: 48)
 
                 VStack(alignment: .leading, spacing: 0) {
-                    Text(isTargeted ? "Release to upload" : "Drop a PDF here")
+                    Text(isTargeted ? "pdf.drop.release".localized : "pdf.drop.idle".localized)
                         .grokText(.subheading, color: GrokColor.black1)
                     Text(subtitle)
                         .grokText(.footnote, color: GrokColor.black5)
@@ -38,7 +38,7 @@ struct PDFDropZone: View {
 
             if !isTargeted {
                 PillButton(
-                    title: "Choose File",
+                    title: "pdf.chooseFile".localized,
                     background: GrokColor.white1,
                     hoverBackground: GrokColor.white2,
                     action: onChooseFile
@@ -63,7 +63,7 @@ struct PDFDropZone: View {
 
     private var subtitle: String {
         if isTargeted, let draggedFileName { return draggedFileName }
-        return isTargeted ? "Release to start" : "Up to \(FileImportLimits.formattedByteLimit)"
+        return isTargeted ? "pdf.drop.releaseHint".localized : "pdf.drop.limit".localized(FileImportLimits.formattedByteLimit)
     }
 }
 
@@ -116,7 +116,7 @@ struct PDFFileRow: View {
                 diameter: 40,
                 resting: GrokColor.white2,
                 hover: GrokColor.white1,
-                help: "Remove",
+                help: "common.remove".localized,
                 action: onRemove
             ) {
                 SymbolIcon("xmark", size: 15, color: GrokColor.black1)

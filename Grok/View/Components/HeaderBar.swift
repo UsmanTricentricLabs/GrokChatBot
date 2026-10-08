@@ -14,6 +14,21 @@ struct HeaderBar: View {
     var onToggleSidebar: () -> Void = {}
 
     @State private var isSettingsPresented = false
+    @State private var isLanguagePresented = false
+
+    @Environment(\.layoutDirection) private var layoutDirection
+
+    private var isRightToLeft: Bool { layoutDirection == .rightToLeft }
+
+    /// Clearance for the window's traffic lights.
+    ///
+    /// Right to left the rail sits on the far side, so the lights are always
+    /// over this bar and the inset is always needed. Left to right they are
+    /// only over it once the rail has collapsed out of the way.
+    private var leadingInset: CGFloat {
+        guard isRightToLeft || showsSidebarToggle else { return GrokMetrics.contentPadding }
+        return GrokMetrics.trafficLightClearance
+    }
 
     var body: some View {
         HStack(alignment: .center, spacing: 12) {
@@ -24,7 +39,7 @@ struct HeaderBar: View {
                         .hoverBackground(.clear, hover: GrokColor.white4, cornerRadius: 8)
                 }
                 .buttonStyle(GrokButtonStyle())
-                .help("Show sidebar")
+                .help("header.showSidebar".localized)
             }
 
             ModelPicker()
@@ -32,8 +47,13 @@ struct HeaderBar: View {
             Spacer(minLength: 12)
 
             HStack(spacing: 8) {
-                StarfieldPill(title: "Language", asset: GrokAsset.language) {}
-                StarfieldPill(title: "Settings", asset: GrokAsset.settings) {
+                StarfieldPill(title: "header.language".localized, asset: GrokAsset.language) {
+                    isLanguagePresented.toggle()
+                }
+                .popover(isPresented: $isLanguagePresented, arrowEdge: .bottom) {
+                    LanguageDropDown { isLanguagePresented = false }
+                }
+                StarfieldPill(title: "header.settings".localized, asset: GrokAsset.settings) {
                     isSettingsPresented.toggle()
                 }
                 .popover(isPresented: $isSettingsPresented, arrowEdge: .bottom) {
@@ -41,10 +61,13 @@ struct HeaderBar: View {
                 }
             }
         }
-        .padding(.trailing, GrokMetrics.contentPadding)
-        // With the sidebar collapsed the window's traffic lights sit over this
-        // bar, so the leading content starts clear of them.
-        .padding(.leading, showsSidebarToggle ? 76 : GrokMetrics.contentPadding)
+        // The traffic lights stay in the window's physical top-left corner
+        // whichever way the layout runs, so the clearance is pinned to that
+        // corner rather than to the leading edge — in Arabic the leading edge
+        // is on the right, and padding it would push the pills *into* the
+        // lights instead of away from them.
+        .padding(.leading, isRightToLeft ? GrokMetrics.contentPadding : leadingInset)
+        .padding(.trailing, isRightToLeft ? leadingInset : GrokMetrics.contentPadding)
         .frame(height: GrokMetrics.headerHeight)
         .overlay(alignment: .bottom) {
             Rectangle()

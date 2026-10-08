@@ -23,6 +23,9 @@ enum GrokMetrics {
     /// but still draws the traffic lights over the top-left of the rail, so
     /// this is the lights' height plus a little breathing room.
     static let trafficLightInset: CGFloat = 36
+    /// Horizontal clearance for the same lights, used by whatever sits in the
+    /// window's physical top-left corner.
+    static let trafficLightClearance: CGFloat = 76
 
     // MARK: Content rhythm
 

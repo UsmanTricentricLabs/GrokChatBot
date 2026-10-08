@@ -27,8 +27,8 @@ nonisolated enum AttachmentKind: String, Equatable {
     /// How the extracted text is introduced to the model.
     var contextLabel: String {
         switch self {
-        case .text: return "text file"
-        case .pdf: return "PDF document"
+        case .text: return "attachment.kind.text".localized
+        case .pdf: return "attachment.kind.pdf".localized
         case .image: return "image"
         }
     }
@@ -117,7 +117,7 @@ nonisolated enum AttachmentError: LocalizedError, Equatable {
         switch self {
         case .tooLarge(let name, let byteCount):
             let size = ByteCountFormatter.string(fromByteCount: Int64(byteCount), countStyle: .file)
-            return "“\(name)” is \(size). Files are limited to \(FileImportLimits.formattedByteLimit)."
+            return "attachment.tooLarge".localized(name, size, FileImportLimits.formattedByteLimit)
         case .unsupportedType(let name):
             return "“\(name)” can’t be attached. Choose a text file, a PDF or an image."
         case .corrupted(let name):
@@ -125,7 +125,7 @@ nonisolated enum AttachmentError: LocalizedError, Equatable {
         case .passwordProtected(let name):
             return "“\(name)” is password-protected. Enter its password to open it."
         case .incorrectPassword:
-            return "That password didn’t unlock the document."
+            return "attachment.wrongPassword".localized
         case .empty(let name):
             return "“\(name)” has no readable text."
         }
@@ -133,7 +133,7 @@ nonisolated enum AttachmentError: LocalizedError, Equatable {
 
     /// The short line the PDF file row shows under the file's name.
     var rowDetail: String {
-        errorDescription ?? "This file could not be opened."
+        errorDescription ?? "attachment.unreadable".localized
     }
 
     /// The locked case is answered by the password sheet rather than a banner.

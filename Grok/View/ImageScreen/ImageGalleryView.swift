@@ -22,7 +22,7 @@ struct ImageGalleryView: View {
             VStack(alignment: .leading, spacing: 20) {
                 HStack(alignment: .bottom) {
                     VStack(alignment: .leading, spacing: 0) {
-                        Text("Your Images")
+                        Text("image.gallery.title".localized)
                             .grokText(.sectionTitle, color: GrokColor.black1)
                         Text("\(imageVM.groupedImages.reduce(0) { $0 + $1.images.count }) images")
                             .grokText(.caption, color: GrokColor.black6)
@@ -31,7 +31,7 @@ struct ImageGalleryView: View {
                     // The gallery returns to the Create Image flow, so the
                     // control says where it goes rather than "Done".
                     PillButton(
-                        title: "Move back",
+                        title: "common.moveBack".localized,
                         height: 36,
                         background: GrokColor.white4,
                         hoverBackground: GrokColor.white2

@@ -16,26 +16,28 @@ struct ImageScreen: View {
     var containerHeight: CGFloat
     var showsSidebarToggle: Bool = false
 
-    private static let starters = [
+    /// Computed, not stored: a stored constant would capture its copy in the
+    /// language the app launched in and keep it after a language change.
+    private static var starters: [SuggestionStarter] { [
         SuggestionStarter(
-            title: "Product Shot",
-            description: "Studio-lit objects on clean, simple backdrops",
+            title: "imageStarter.product.title".localized,
+            description: "imageStarter.product.detail".localized,
             icon: .symbol("camera"),
-            prompt: "A ceramic coffee cup on a seamless backdrop, studio lighting, soft shadows"
+            prompt: "imageStarter.product.prompt".localized
         ),
         SuggestionStarter(
-            title: "Poster & Cover",
-            description: "Bold compositions for posters and album art",
+            title: "imageStarter.poster.title".localized,
+            description: "imageStarter.poster.detail".localized,
             icon: .symbol("rectangle.portrait"),
-            prompt: "A bold typographic poster for an indie music festival at sunset"
+            prompt: "imageStarter.poster.prompt".localized
         ),
         SuggestionStarter(
-            title: "Scenes & Worlds",
-            description: "Landscapes, interiors, and imagined places",
+            title: "imageStarter.scenes.title".localized,
+            description: "imageStarter.scenes.detail".localized,
             icon: .symbol("photo"),
-            prompt: "A lighthouse on a rocky cliff at dusk, waves crashing below, warm light glowing from the lamp"
+            prompt: "imageStarter.scenes.prompt".localized
         )
-    ]
+    ] }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -82,8 +84,8 @@ struct ImageScreen: View {
         CenteredScrollView {
             VStack(spacing: isCompact ? 32 : 60) {
                 HeroHeader(
-                    title: "What will you create?",
-                    subtitle: "Describe an image, pick a style, and Grok brings it to life",
+                    title: "image.hero.title".localized,
+                    subtitle: "image.hero.subtitle".localized,
                     isCompact: isCompact
                 )
 
@@ -152,8 +154,8 @@ struct ImageScreen: View {
 
     private var promptPlaceholder: String {
         imageVM.latestImage == nil
-            ? "Describe the image you want to create..."
-            : "Describe changes, or a new image..."
+            ? "image.placeholder.new".localized
+            : "image.placeholder.edit".localized
     }
 
     private var stylePill: some View {
@@ -190,7 +192,7 @@ struct ImageScreen: View {
         let isGenerating = imageVM.isGenerating
         let isActive = imageVM.canGenerate || isGenerating
         let symbol: String = isGenerating ? "stop.fill" : "sparkles"
-        let label: String = isGenerating ? "Stop" : "Generate"
+        let label: String = isGenerating ? "common.stop".localized : "image.generate".localized
         let fill: Color = isActive ? GrokColor.black1 : GrokColor.white6
 
         return Button {

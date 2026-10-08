@@ -17,38 +17,28 @@ struct HomeScreen: View {
     var containerHeight: CGFloat
     var showsSidebarToggle: Bool = false
 
-    private static let starters = [
+    /// Computed, not stored: a stored constant would capture its copy in the
+    /// language the app launched in and keep it after a language change.
+    private static var starters: [SuggestionStarter] { [
         SuggestionStarter(
-            title: "Code & Debug",
-            description: "Write, test, and refactor complex code effortlessly",
+            title: "starter.code.title".localized,
+            description: "starter.code.detail".localized,
             icon: .asset(GrokAsset.codeAndDebug),
-            prompt: """
-                Find the bug in this code, explain why it happens, and show a \
-                fixed version with a test that would have caught it:
-
-                """
+            prompt: "starter.code.prompt".localized
         ),
         SuggestionStarter(
-            title: "Write & Summarize",
-            description: "Draft compelling copy or condense lengthy texts instantly",
+            title: "starter.write.title".localized,
+            description: "starter.write.detail".localized,
             icon: .asset(GrokAsset.writeAndSummarize),
-            prompt: """
-                Summarize this in three sentences, then rewrite it as a short, \
-                friendly announcement I could send to customers:
-
-                """
+            prompt: "starter.write.prompt".localized
         ),
         SuggestionStarter(
-            title: "Data & Insights",
-            description: "Analyze datasets and extract actionable key metrics",
+            title: "starter.data.title".localized,
+            description: "starter.data.detail".localized,
             icon: .asset(GrokAsset.dataInsights),
-            prompt: """
-                Pull the key trends out of these numbers, flag anything that \
-                looks like an outlier, and tell me what to do about it:
-
-                """
+            prompt: "starter.data.prompt".localized
         )
-    ]
+    ] }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -74,7 +64,7 @@ struct HomeScreen: View {
 
                         PromptInputBar(
                             text: $chatVM.draft,
-                            placeholder: "Ask Anything...",
+                            placeholder: "common.askAnything".localized,
                             onSubmit: chatVM.send,
                             onAttach: chatVM.chooseAttachments,
                             attachments: chatVM.attachments,
@@ -118,8 +108,8 @@ struct HomeScreen: View {
         CenteredScrollView {
             VStack(spacing: isCompact ? 32 : 60) {
                 HeroHeader(
-                    title: "How can I help?",
-                    subtitle: "Ask anything, explore ideas, or create something new",
+                    title: "home.hero.title".localized,
+                    subtitle: "home.hero.subtitle".localized,
                     isCompact: isCompact
                 )
 

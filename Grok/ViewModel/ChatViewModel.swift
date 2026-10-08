@@ -288,8 +288,8 @@ final class ChatViewModel: ObservableObject {
         panel.allowedContentTypes = AttachmentKind.acceptedContentTypes
         panel.allowsMultipleSelection = true
         panel.canChooseDirectories = false
-        panel.prompt = "Attach"
-        panel.message = "Attach a text file, PDF or image (up to \(AttachmentLoader.formattedSizeLimit) each)."
+        panel.prompt = "chat.attach".localized
+        panel.message = "chat.attachMessage".localized(AttachmentLoader.formattedSizeLimit)
         guard panel.runModal() == .OK else { return }
         attach(panel.urls)
     }
@@ -388,13 +388,13 @@ final class ChatViewModel: ObservableObject {
     /// What to ask when a file is sent with no question of its own.
     private static func defaultAttachmentPrompt(for attachments: [ChatAttachment]) -> String {
         guard attachments.count == 1, let only = attachments.first else {
-            return "Summarize these files and tell me what matters most in them."
+            return "chat.autoPrompt.files".localized
         }
         switch only.kind {
         case .image:
-            return "What is in this image?"
+            return "chat.autoPrompt.image".localized
         case .pdf, .text:
-            return "Summarize “\(only.name)” and tell me what matters most in it."
+            return "chat.autoPrompt.file".localized(only.name)
         }
     }
 

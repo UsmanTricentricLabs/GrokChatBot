@@ -1,0 +1,238 @@
+/*
+  Localizable.strings
+  Grok
+
+  Catalan
+
+  Keys are grouped by the part of the app they belong to. Format specifiers
+  carry their position (%1$@) wherever a line takes more than one value, so a
+  translation may reorder them freely.
+*/
+
+
+/* MARK: attachment */
+"attachment.kind.pdf" = "document PDF";
+"attachment.kind.text" = "fitxer de text";
+"attachment.locked.detail" = "Introdueix la contrasenya de “%@” per adjuntar-lo.";
+"attachment.locked.title" = "Aquest PDF està protegit amb contrasenya";
+"attachment.remove" = "Elimina l’adjunt";
+"attachment.tooLarge" = "“%1$@” ocupa %2$@. Els fitxers estan limitats a %3$@.";
+"attachment.unreadable" = "No s’ha pogut obrir aquest fitxer.";
+"attachment.wrongPassword" = "Aquesta contrasenya no ha desbloquejat el document.";
+
+/* MARK: chat */
+"chat.attach" = "Adjunta";
+"chat.attachHelp" = "Adjunta un fitxer de text, un PDF o una imatge";
+"chat.attachMessage" = "Adjunta un fitxer de text, un PDF o una imatge (fins a %@ cadascun).";
+"chat.autoPrompt.file" = "Resumeix “%@” i digues-me què és el més important.";
+"chat.autoPrompt.files" = "Resumeix aquests fitxers i digues-me què és el més important.";
+"chat.autoPrompt.image" = "Què hi ha en aquesta imatge?";
+"chat.readAloud" = "Llegeix en veu alta";
+"chat.thinking" = "Pensant";
+
+/* MARK: common */
+"common.askAnything" = "Pregunta el que vulguis...";
+"common.cancel" = "Cancel·la";
+"common.close" = "Tanca";
+"common.copied" = "Copiat";
+"common.copy" = "Copia";
+"common.dismiss" = "Descarta";
+"common.moveBack" = "Torna";
+"common.notNow" = "Ara no";
+"common.ok" = "D’acord";
+"common.openSettings" = "Obre la configuració";
+"common.regenerate" = "Regenera";
+"common.remove" = "Elimina";
+"common.save" = "Desa";
+"common.seeAll" = "Mostra-ho tot";
+"common.send" = "Envia";
+"common.share" = "Comparteix";
+"common.stop" = "Atura";
+"common.tryAgain" = "Torna-ho a provar";
+
+/* MARK: date */
+"date.today" = "Avui";
+"date.yesterday" = "Ahir";
+
+/* MARK: dictation */
+"dictation.mic.detail" = "El Grok necessita el micròfon per dictar. Activa’l a Configuració del Sistema › Privadesa i seguretat › Micròfon i torna-ho a provar.";
+"dictation.mic.failed" = "No s’ha pogut iniciar el micròfon. Comprova que cap altra app l’estigui fent servir i torna-ho a provar.";
+"dictation.mic.title" = "L’accés al micròfon està desactivat";
+"dictation.speech.detail" = "El Grok necessita el reconeixement de veu per convertir la teva veu en text. Activa’l a Configuració del Sistema › Privadesa i seguretat › Reconeixement de veu i torna-ho a provar.";
+"dictation.speech.title" = "El reconeixement de veu està desactivat";
+"dictation.speech.unavailable" = "El reconeixement de veu no està disponible ara mateix. Comprova la connexió i torna-ho a provar.";
+"dictation.start" = "Dicta";
+"dictation.stop" = "Atura el dictat";
+"dictation.unavailable.title" = "El dictat no està disponible";
+
+/* MARK: error */
+"error.budget.now" = "Has arribat al teu límit d’IA per ara.";
+"error.budget.resets" = "Has arribat al teu límit d’IA. Es reinicia %@.";
+"error.generic.detail" = "Comprova la connexió i torna-ho a provar. El teu missatge s’ha desat.";
+"error.generic.title" = "Alguna cosa ha anat malament en generar una resposta.";
+"error.invalidRequest" = "El Grok no ha pogut processar aquesta petició. Prova de reformular-la.";
+"error.messageSaved" = "El teu missatge s’ha desat.";
+"error.network" = "Sembla que no tens connexió. Comprova-la i torna-ho a provar.";
+"error.payloadTooLarge" = "Aquest missatge és massa gran per enviar-lo. Prova d’escurçar-lo.";
+"error.rateLimited.seconds" = "Massa peticions. Torna-ho a provar d’aquí a %d segons.";
+"error.rateLimited.soon" = "Massa peticions. Torna-ho a provar en un moment.";
+"error.shortenAndResend" = "Escurça’l i torna’l a enviar.";
+"error.subscriptionRequired" = "Aquesta funció necessita una subscripció activa.";
+"error.temporary" = "El Grok no està disponible temporalment.";
+"error.temporary.later" = "El Grok no està disponible temporalment. Torna-ho a provar més tard.";
+"error.tryShortly" = "Torna-ho a provar d’aquí a poc. El teu missatge s’ha desat.";
+
+/* MARK: feature */
+"feature.chat.detail" = "Respostes més intel·ligents i raonament més profund";
+"feature.chat.title" = "Xat avançat";
+"feature.image.detail" = "Converteix idees en imatges de qualsevol estil";
+"feature.image.title" = "Crea una imatge";
+"feature.pdf.detail" = "Els punts clau de qualsevol document en segons";
+"feature.pdf.title" = "Resum de PDF";
+
+/* MARK: header */
+"header.language" = "Idioma";
+"header.settings" = "Configuració";
+"header.showSidebar" = "Mostra la barra lateral";
+
+/* MARK: home */
+"home.hero.subtitle" = "Pregunta el que vulguis, explora idees o crea alguna cosa nova";
+"home.hero.title" = "Com et puc ajudar?";
+
+/* MARK: iap */
+"iap.cadence.monthly" = "mensual";
+"iap.cadence.weekly" = "setmanal";
+"iap.cadence.yearly" = "anual";
+"iap.caption.billed" = "Facturació %@";
+"iap.caption.monthlyEquivalent" = "Només %@/mes";
+"iap.caption.savings" = "Només %1$@/mes · Estalvia un %2$d%%";
+"iap.perPeriod" = "Per %@";
+"iap.priceSummary" = "%1$@ al %2$@, cancel·la quan vulguis";
+"iap.productNotLoaded" = "Aquest pla encara s’està carregant. Torna-ho a provar en un moment.";
+"iap.trialBadge" = "%@ de prova gratuïta";
+"iap.trialSummary" = "Prova gratis %1$@ i després %2$@/%3$@. Cancel·la quan vulguis.";
+"iap.unit.day" = "dia";
+"iap.unit.days" = "dies";
+"iap.unit.month" = "mes";
+"iap.unit.months" = "mesos";
+"iap.unit.week" = "setmana";
+"iap.unit.weeks" = "setmanes";
+"iap.unit.year" = "any";
+"iap.unit.years" = "anys";
+
+/* MARK: image */
+"image.aspectRatio" = "Proporció";
+"image.creating" = "Creant la teva imatge";
+"image.editPrompt" = "Edita la instrucció";
+"image.exportFailed" = "No s’ha pogut exportar la imatge.";
+"image.gallery.title" = "Les teves imatges";
+"image.generate" = "Genera";
+"image.hero.subtitle" = "Descriu una imatge, tria un estil i el Grok li donarà vida";
+"image.hero.title" = "Què vols crear?";
+"image.placeholder.edit" = "Descriu els canvis, o una imatge nova...";
+"image.placeholder.new" = "Descriu la imatge que vols crear...";
+"image.style" = "Estil";
+"image.style.3drender" = "Render 3D";
+"image.style.anime" = "Anime";
+"image.style.cinematic" = "Cinematogràfic";
+"image.style.illustration" = "Il·lustració";
+"image.style.minimal" = "Minimalista";
+"image.style.photographic" = "Fotogràfic";
+"image.style.sketch" = "Esbós";
+"image.style.watercolor" = "Aquarel·la";
+
+/* MARK: imageStarter */
+"imageStarter.poster.detail" = "Composicions atrevides per a pòsters i portades d’àlbum";
+"imageStarter.poster.prompt" = "Un pòster tipogràfic atrevit per a un festival de música indie al capvespre";
+"imageStarter.poster.title" = "Pòsters i portades";
+"imageStarter.product.detail" = "Objectes amb llum d’estudi sobre fons nets i senzills";
+"imageStarter.product.prompt" = "Una tassa de cafè de ceràmica sobre un fons continu, llum d’estudi, ombres suaus";
+"imageStarter.product.title" = "Foto de producte";
+"imageStarter.scenes.detail" = "Paisatges, interiors i llocs imaginats";
+"imageStarter.scenes.prompt" = "Un far en un penya-segat rocós al crepuscle, onades trencant a sota, llum càlida brillant des del llum";
+"imageStarter.scenes.title" = "Escenes i mons";
+
+/* MARK: paywall */
+"paywall.badge.popular" = "Més popular";
+"paywall.badge.value" = "Millor valor";
+"paywall.cta.continue" = "Continua";
+"paywall.cta.freeTrial" = "Comença la prova gratuïta";
+"paywall.headline" = "Més eines.\nMés possibilitats.";
+"paywall.noRestore" = "No s’ha trobat cap compra anterior per a aquest compte d’Apple.";
+"paywall.privacy" = "Política de privadesa";
+"paywall.restore" = "Restaura les compres";
+"paywall.restoring" = "Restaurant…";
+"paywall.subheadline" = "Desbloqueja la generació d’imatges, els resums de PDF i tota la potència del Grok al teu Mac.";
+"paywall.terms" = "Condicions del servei";
+"paywall.uploadImage" = "Puja una imatge";
+
+/* MARK: pdf */
+"pdf.askPlaceholder" = "Fes una pregunta sobre aquest PDF...";
+"pdf.chooseFile" = "Tria un fitxer";
+"pdf.choosePrompt" = "Tria un PDF de fins a %@.";
+"pdf.copySummary" = "Copia el resum";
+"pdf.drop.idle" = "Deixa anar un PDF aquí";
+"pdf.drop.limit" = "Fins a %@";
+"pdf.drop.release" = "Deixa anar per pujar-lo";
+"pdf.drop.releaseHint" = "Deixa anar per començar";
+"pdf.hero.subtitle" = "Puja un document i obtén els punts clau en segons";
+"pdf.hero.title" = "Resumeix qualsevol PDF";
+"pdf.importantSections" = "Seccions importants";
+"pdf.keyPoints" = "Punts clau";
+"pdf.length" = "Extensió";
+"pdf.length.brief" = "Breu";
+"pdf.length.detailed" = "Detallat";
+"pdf.length.standard" = "Estàndard";
+"pdf.newPDF" = "PDF nou";
+"pdf.noText" = "Aquest PDF no té text seleccionable, així que no es pot resumir.";
+"pdf.pageLabel" = "p. %d";
+"pdf.readingPage" = "Llegint la pàgina %1$d de %2$d…";
+"pdf.summarize" = "Resumeix";
+"pdf.summarizedJustNow" = "%@ · Resumit ara mateix";
+"pdf.summary" = "Resum";
+
+/* MARK: plan */
+"plan.monthly" = "Mensual";
+"plan.weekly" = "Setmanal";
+"plan.yearly" = "Anual";
+
+/* MARK: restore */
+"restore.failed.title" = "La restauració ha fallat";
+"restore.none.detail" = "No s’ha trobat cap compra anterior per a aquest compte d’Apple.";
+"restore.none.title" = "Res a restaurar";
+"restore.success.detail" = "Tot el que s’ha comprat amb aquest compte d’Apple torna a estar disponible.";
+"restore.success.title" = "Compres restaurades";
+
+/* MARK: settings */
+"settings.help" = "Ajuda i assistència";
+"settings.rateUs" = "Valora’ns";
+"settings.restore" = "Restaura la compra";
+
+/* MARK: sidebar */
+"sidebar.chatOptions" = "Opcions del xat";
+"sidebar.empty.chats.subtitle" = "Les converses que iniciïs apareixeran aquí";
+"sidebar.empty.chats.title" = "Encara no hi ha xats!";
+"sidebar.empty.images.subtitle" = "Les teves creacions apareixeran aquí";
+"sidebar.empty.images.title" = "Encara no hi ha imatges!";
+"sidebar.empty.pdfs.subtitle" = "Els resums que creïs apareixeran aquí";
+"sidebar.empty.pdfs.title" = "Encara no hi ha PDF!";
+"sidebar.newChat" = "Xat nou";
+"sidebar.noChats" = "Encara no hi ha xats";
+"sidebar.noMatches" = "Cap resultat";
+"sidebar.searchChats" = "Cerca als xats";
+"sidebar.section.chat" = "Xat";
+"sidebar.section.documents" = "Documents";
+"sidebar.section.images" = "Imatges";
+"sidebar.upgrade.action" = "Millora ara";
+"sidebar.upgrade.title" = "Millora el teu pla per desbloquejar-ne més";
+
+/* MARK: starter */
+"starter.code.detail" = "Escriu, prova i refactoritza codi complex sense esforç";
+"starter.code.prompt" = "Troba l’error d’aquest codi, explica per què passa i mostra’n una versió corregida amb una prova que l’hauria detectat:\n";
+"starter.code.title" = "Codi i depuració";
+"starter.data.detail" = "Analitza conjunts de dades i extreu mètriques clau accionables";
+"starter.data.prompt" = "Extreu les tendències clau d’aquests números, assenyala qualsevol valor atípic i digues-me què hi he de fer:\n";
+"starter.data.title" = "Dades i informació";
+"starter.write.detail" = "Redacta textos atractius o condensa textos llargs a l’instant";
+"starter.write.prompt" = "Resumeix això en tres frases i després reescriu-ho com un anunci breu i proper que pugui enviar als clients:\n";
+"starter.write.title" = "Escriu i resumeix";

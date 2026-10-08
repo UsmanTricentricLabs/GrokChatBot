@@ -1,0 +1,238 @@
+/*
+  Localizable.strings
+  Grok
+
+  Vietnamese
+
+  Keys are grouped by the part of the app they belong to. Format specifiers
+  carry their position (%1$@) wherever a line takes more than one value, so a
+  translation may reorder them freely.
+*/
+
+
+/* MARK: attachment */
+"attachment.kind.pdf" = "tài liệu PDF";
+"attachment.kind.text" = "tệp văn bản";
+"attachment.locked.detail" = "Nhập mật khẩu của “%@” để đính kèm.";
+"attachment.locked.title" = "PDF này được bảo vệ bằng mật khẩu";
+"attachment.remove" = "Xoá tệp đính kèm";
+"attachment.tooLarge" = "“%1$@” nặng %2$@. Tệp bị giới hạn ở %3$@.";
+"attachment.unreadable" = "Không thể mở tệp này.";
+"attachment.wrongPassword" = "Mật khẩu đó không mở được tài liệu.";
+
+/* MARK: chat */
+"chat.attach" = "Đính kèm";
+"chat.attachHelp" = "Đính kèm tệp văn bản, PDF hoặc hình ảnh";
+"chat.attachMessage" = "Đính kèm tệp văn bản, PDF hoặc hình ảnh (tối đa %@ mỗi tệp).";
+"chat.autoPrompt.file" = "Tóm tắt “%@” và cho tôi biết điều gì quan trọng nhất.";
+"chat.autoPrompt.files" = "Tóm tắt các tệp này và cho tôi biết điều gì quan trọng nhất.";
+"chat.autoPrompt.image" = "Trong hình này có gì?";
+"chat.readAloud" = "Đọc to";
+"chat.thinking" = "Đang suy nghĩ";
+
+/* MARK: common */
+"common.askAnything" = "Hỏi bất cứ điều gì...";
+"common.cancel" = "Huỷ";
+"common.close" = "Đóng";
+"common.copied" = "Đã sao chép";
+"common.copy" = "Sao chép";
+"common.dismiss" = "Bỏ qua";
+"common.moveBack" = "Quay lại";
+"common.notNow" = "Để sau";
+"common.ok" = "OK";
+"common.openSettings" = "Mở Cài đặt";
+"common.regenerate" = "Tạo lại";
+"common.remove" = "Xoá";
+"common.save" = "Lưu";
+"common.seeAll" = "Xem tất cả";
+"common.send" = "Gửi";
+"common.share" = "Chia sẻ";
+"common.stop" = "Dừng";
+"common.tryAgain" = "Thử lại";
+
+/* MARK: date */
+"date.today" = "Hôm nay";
+"date.yesterday" = "Hôm qua";
+
+/* MARK: dictation */
+"dictation.mic.detail" = "Grok cần micrô để đọc chính tả. Hãy bật trong Cài đặt Hệ thống › Quyền riêng tư & Bảo mật › Micrô rồi thử lại.";
+"dictation.mic.failed" = "Không thể khởi động micrô. Hãy đảm bảo không có ứng dụng nào khác đang dùng nó rồi thử lại.";
+"dictation.mic.title" = "Quyền truy cập micrô đang tắt";
+"dictation.speech.detail" = "Grok cần nhận dạng giọng nói để chuyển giọng nói thành văn bản. Hãy bật trong Cài đặt Hệ thống › Quyền riêng tư & Bảo mật › Nhận dạng giọng nói rồi thử lại.";
+"dictation.speech.title" = "Nhận dạng giọng nói đang tắt";
+"dictation.speech.unavailable" = "Nhận dạng giọng nói hiện không khả dụng. Hãy kiểm tra kết nối rồi thử lại.";
+"dictation.start" = "Đọc chính tả";
+"dictation.stop" = "Dừng đọc chính tả";
+"dictation.unavailable.title" = "Đọc chính tả không khả dụng";
+
+/* MARK: error */
+"error.budget.now" = "Bạn đã dùng hết hạn mức AI lúc này.";
+"error.budget.resets" = "Bạn đã dùng hết hạn mức AI. Hạn mức sẽ đặt lại %@.";
+"error.generic.detail" = "Hãy kiểm tra kết nối rồi thử lại. Tin nhắn của bạn đã được lưu.";
+"error.generic.title" = "Đã xảy ra lỗi khi tạo câu trả lời.";
+"error.invalidRequest" = "Grok không xử lý được yêu cầu đó. Hãy thử diễn đạt lại.";
+"error.messageSaved" = "Tin nhắn của bạn đã được lưu.";
+"error.network" = "Có vẻ bạn đang ngoại tuyến. Hãy kiểm tra kết nối rồi thử lại.";
+"error.payloadTooLarge" = "Tin nhắn này quá lớn để gửi. Hãy thử rút ngắn.";
+"error.rateLimited.seconds" = "Quá nhiều yêu cầu. Hãy thử lại sau %d giây.";
+"error.rateLimited.soon" = "Quá nhiều yêu cầu. Hãy thử lại sau giây lát.";
+"error.shortenAndResend" = "Hãy rút ngắn rồi gửi lại.";
+"error.subscriptionRequired" = "Tính năng này cần gói đăng ký đang hoạt động.";
+"error.temporary" = "Grok tạm thời không khả dụng.";
+"error.temporary.later" = "Grok tạm thời không khả dụng. Hãy thử lại sau.";
+"error.tryShortly" = "Hãy thử lại sau giây lát. Tin nhắn của bạn đã được lưu.";
+
+/* MARK: feature */
+"feature.chat.detail" = "Câu trả lời thông minh hơn và lập luận sâu hơn";
+"feature.chat.title" = "Trò chuyện nâng cao";
+"feature.image.detail" = "Biến ý tưởng thành hình ảnh với mọi phong cách";
+"feature.image.title" = "Tạo hình ảnh";
+"feature.pdf.detail" = "Ý chính của mọi tài liệu chỉ trong vài giây";
+"feature.pdf.title" = "Tóm tắt PDF";
+
+/* MARK: header */
+"header.language" = "Ngôn ngữ";
+"header.settings" = "Cài đặt";
+"header.showSidebar" = "Hiện thanh bên";
+
+/* MARK: home */
+"home.hero.subtitle" = "Hỏi bất cứ điều gì, khám phá ý tưởng hoặc tạo ra điều mới";
+"home.hero.title" = "Tôi có thể giúp gì?";
+
+/* MARK: iap */
+"iap.cadence.monthly" = "hằng tháng";
+"iap.cadence.weekly" = "hằng tuần";
+"iap.cadence.yearly" = "hằng năm";
+"iap.caption.billed" = "Thanh toán %@";
+"iap.caption.monthlyEquivalent" = "Chỉ %@/tháng";
+"iap.caption.savings" = "Chỉ %1$@/tháng · Tiết kiệm %2$d%%";
+"iap.perPeriod" = "Mỗi %@";
+"iap.priceSummary" = "%1$@ mỗi %2$@, huỷ bất cứ lúc nào";
+"iap.productNotLoaded" = "Gói này vẫn đang tải. Hãy thử lại sau giây lát.";
+"iap.trialBadge" = "Dùng thử %@ miễn phí";
+"iap.trialSummary" = "Dùng thử miễn phí %1$@, sau đó %2$@/%3$@. Huỷ bất cứ lúc nào.";
+"iap.unit.day" = "Ngày";
+"iap.unit.days" = "Ngày";
+"iap.unit.month" = "Tháng";
+"iap.unit.months" = "Tháng";
+"iap.unit.week" = "Tuần";
+"iap.unit.weeks" = "Tuần";
+"iap.unit.year" = "Năm";
+"iap.unit.years" = "Năm";
+
+/* MARK: image */
+"image.aspectRatio" = "Tỉ lệ khung hình";
+"image.creating" = "Đang tạo hình ảnh của bạn";
+"image.editPrompt" = "Sửa câu lệnh";
+"image.exportFailed" = "Không thể xuất hình ảnh.";
+"image.gallery.title" = "Hình ảnh của bạn";
+"image.generate" = "Tạo";
+"image.hero.subtitle" = "Mô tả hình ảnh, chọn phong cách và Grok sẽ hiện thực hoá nó";
+"image.hero.title" = "Bạn muốn tạo gì?";
+"image.placeholder.edit" = "Mô tả thay đổi, hoặc một hình ảnh mới...";
+"image.placeholder.new" = "Mô tả hình ảnh bạn muốn tạo...";
+"image.style" = "Phong cách";
+"image.style.3drender" = "Kết xuất 3D";
+"image.style.anime" = "Anime";
+"image.style.cinematic" = "Điện ảnh";
+"image.style.illustration" = "Minh hoạ";
+"image.style.minimal" = "Tối giản";
+"image.style.photographic" = "Ảnh chụp";
+"image.style.sketch" = "Phác thảo";
+"image.style.watercolor" = "Màu nước";
+
+/* MARK: imageStarter */
+"imageStarter.poster.detail" = "Bố cục ấn tượng cho áp phích và bìa album";
+"imageStarter.poster.prompt" = "Một áp phích chữ ấn tượng cho lễ hội nhạc indie lúc hoàng hôn";
+"imageStarter.poster.title" = "Áp phích & bìa";
+"imageStarter.product.detail" = "Vật thể dưới ánh sáng studio trên nền đơn giản, sạch sẽ";
+"imageStarter.product.prompt" = "Một chiếc cốc cà phê gốm trên nền liền mạch, ánh sáng studio, bóng đổ mềm";
+"imageStarter.product.title" = "Ảnh sản phẩm";
+"imageStarter.scenes.detail" = "Phong cảnh, nội thất và những nơi chốn tưởng tượng";
+"imageStarter.scenes.prompt" = "Một ngọn hải đăng trên vách đá lúc chạng vạng, sóng vỗ bên dưới, ánh sáng ấm toả ra từ đèn";
+"imageStarter.scenes.title" = "Khung cảnh & thế giới";
+
+/* MARK: paywall */
+"paywall.badge.popular" = "Phổ biến nhất";
+"paywall.badge.value" = "Giá trị nhất";
+"paywall.cta.continue" = "Tiếp tục";
+"paywall.cta.freeTrial" = "Bắt đầu dùng thử miễn phí";
+"paywall.headline" = "Nhiều công cụ hơn.\nNhiều khả năng hơn.";
+"paywall.noRestore" = "Không tìm thấy giao dịch mua trước đây cho Tài khoản Apple này.";
+"paywall.privacy" = "Chính sách quyền riêng tư";
+"paywall.restore" = "Khôi phục giao dịch";
+"paywall.restoring" = "Đang khôi phục…";
+"paywall.subheadline" = "Mở khoá tạo hình ảnh, tóm tắt PDF và toàn bộ sức mạnh của Grok trên máy Mac của bạn.";
+"paywall.terms" = "Điều khoản dịch vụ";
+"paywall.uploadImage" = "Tải hình ảnh lên";
+
+/* MARK: pdf */
+"pdf.askPlaceholder" = "Hỏi về tệp PDF này...";
+"pdf.chooseFile" = "Chọn tệp";
+"pdf.choosePrompt" = "Hãy chọn tệp PDF tối đa %@.";
+"pdf.copySummary" = "Sao chép tóm tắt";
+"pdf.drop.idle" = "Thả tệp PDF vào đây";
+"pdf.drop.limit" = "Tối đa %@";
+"pdf.drop.release" = "Thả ra để tải lên";
+"pdf.drop.releaseHint" = "Thả ra để bắt đầu";
+"pdf.hero.subtitle" = "Tải tài liệu lên và nhận ý chính trong vài giây";
+"pdf.hero.title" = "Tóm tắt mọi tệp PDF";
+"pdf.importantSections" = "Phần quan trọng";
+"pdf.keyPoints" = "Ý chính";
+"pdf.length" = "Độ dài";
+"pdf.length.brief" = "Ngắn gọn";
+"pdf.length.detailed" = "Chi tiết";
+"pdf.length.standard" = "Tiêu chuẩn";
+"pdf.newPDF" = "PDF mới";
+"pdf.noText" = "Tệp PDF này không có văn bản chọn được nên không thể tóm tắt.";
+"pdf.pageLabel" = "tr. %d";
+"pdf.readingPage" = "Đang đọc trang %1$d trên %2$d…";
+"pdf.summarize" = "Tóm tắt";
+"pdf.summarizedJustNow" = "%@ · Vừa tóm tắt";
+"pdf.summary" = "Tóm tắt";
+
+/* MARK: plan */
+"plan.monthly" = "Hằng tháng";
+"plan.weekly" = "Hằng tuần";
+"plan.yearly" = "Hằng năm";
+
+/* MARK: restore */
+"restore.failed.title" = "Khôi phục thất bại";
+"restore.none.detail" = "Không tìm thấy giao dịch mua trước đây cho Tài khoản Apple này.";
+"restore.none.title" = "Không có gì để khôi phục";
+"restore.success.detail" = "Mọi thứ đã mua bằng Tài khoản Apple này đều khả dụng trở lại.";
+"restore.success.title" = "Đã khôi phục giao dịch";
+
+/* MARK: settings */
+"settings.help" = "Trợ giúp & hỗ trợ";
+"settings.rateUs" = "Đánh giá";
+"settings.restore" = "Khôi phục giao dịch";
+
+/* MARK: sidebar */
+"sidebar.chatOptions" = "Tuỳ chọn trò chuyện";
+"sidebar.empty.chats.subtitle" = "Các cuộc trò chuyện bạn bắt đầu sẽ hiện ở đây";
+"sidebar.empty.chats.title" = "Chưa có cuộc trò chuyện nào!";
+"sidebar.empty.images.subtitle" = "Tác phẩm của bạn sẽ hiện ở đây";
+"sidebar.empty.images.title" = "Chưa có hình ảnh nào!";
+"sidebar.empty.pdfs.subtitle" = "Các bản tóm tắt bạn tạo sẽ hiện ở đây";
+"sidebar.empty.pdfs.title" = "Chưa có PDF nào!";
+"sidebar.newChat" = "Trò chuyện mới";
+"sidebar.noChats" = "Chưa có cuộc trò chuyện nào";
+"sidebar.noMatches" = "Không có kết quả";
+"sidebar.searchChats" = "Tìm trong trò chuyện";
+"sidebar.section.chat" = "Trò chuyện";
+"sidebar.section.documents" = "Tài liệu";
+"sidebar.section.images" = "Hình ảnh";
+"sidebar.upgrade.action" = "Nâng cấp ngay";
+"sidebar.upgrade.title" = "Nâng cấp gói để mở khoá thêm";
+
+/* MARK: starter */
+"starter.code.detail" = "Viết, kiểm thử và tái cấu trúc mã phức tạp dễ dàng";
+"starter.code.prompt" = "Tìm lỗi trong đoạn mã này, giải thích vì sao nó xảy ra và đưa ra bản sửa kèm một bài kiểm thử có thể phát hiện ra nó:\n";
+"starter.code.title" = "Mã & gỡ lỗi";
+"starter.data.detail" = "Phân tích tập dữ liệu và rút ra chỉ số then chốt";
+"starter.data.prompt" = "Rút ra các xu hướng chính từ những con số này, đánh dấu điểm bất thường và cho tôi biết nên làm gì:\n";
+"starter.data.title" = "Dữ liệu & thông tin";
+"starter.write.detail" = "Soạn nội dung hấp dẫn hoặc cô đọng văn bản dài tức thì";
+"starter.write.prompt" = "Tóm tắt nội dung này trong ba câu, rồi viết lại thành một thông báo ngắn gọn, thân thiện để gửi cho khách hàng:\n";
+"starter.write.title" = "Viết & tóm tắt";

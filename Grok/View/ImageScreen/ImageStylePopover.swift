@@ -20,7 +20,7 @@ struct ImageStylePopover: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Style")
+            Text("image.style".localized)
                 .grokText(.label, color: GrokColor.black6)
                 .padding(.horizontal, 6)
 
@@ -39,7 +39,7 @@ struct ImageStylePopover: View {
                 .padding(.vertical, 2)
 
             HStack(spacing: 8) {
-                Text("Aspect ratio")
+                Text("image.aspectRatio".localized)
                     .grokText(.label, color: GrokColor.black6)
                     .padding(.leading, 6)
                 Spacer(minLength: 8)

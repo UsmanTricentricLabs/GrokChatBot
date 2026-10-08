@@ -6,7 +6,6 @@
 //
 
 import AppKit
-import StoreKit
 import SwiftUI
 
 /// Where the Settings menu's links point. One place to edit once the listing
@@ -24,6 +23,11 @@ nonisolated enum SettingsDestination {
     }
 
     static let support = URL(string: "mailto:support@tricentriclabs.com")!
+
+    /// Linked from the foot of the paywall. The App Store requires both to be
+    /// reachable from anywhere a subscription is sold.
+    static let terms = URL(string: "https://tricentriclabs.com/grok/terms")!
+    static let privacy = URL(string: "https://tricentriclabs.com/grok/privacy")!
 }
 
 /// The menu behind the Settings pill: Share, Rate Us, Help & Support and
@@ -32,6 +36,8 @@ struct SettingDropDown: View {
     /// Closes the popover once a row has done its work.
     let onDismiss: () -> Void
 
+    @ObservedObject private var iap = IAPManager.shared
+
     /// The Share row's own view, which the system picker hangs off.
     @State private var shareAnchor: NSView?
     @State private var isRestoring = false
@@ -39,19 +45,19 @@ struct SettingDropDown: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
-            SettingRow(title: "Share", symbol: "square.and.arrow.up", action: share)
+            SettingRow(title: "common.share".localized, symbol: "square.and.arrow.up", action: share)
                 .background(ViewAnchor(view: $shareAnchor))
 
-            SettingRow(title: "Rate Us", symbol: "star") {
+            SettingRow(title: "settings.rateUs".localized, symbol: "star") {
                 open(SettingsDestination.review)
             }
 
-            SettingRow(title: "Help & Support", symbol: "questionmark.circle") {
+            SettingRow(title: "settings.help".localized, symbol: "questionmark.circle") {
                 open(SettingsDestination.support)
             }
 
             SettingRow(
-                title: "Restore Purchase",
+                title: "settings.restore".localized,
                 symbol: "arrow.clockwise",
                 isBusy: isRestoring,
                 action: restorePurchases
@@ -60,7 +66,7 @@ struct SettingDropDown: View {
         .padding(8)
         .frame(width: 260)
         .alert(item: $restoreResult) { result in
-            Alert(title: Text(result.title), message: Text(result.detail), dismissButton: .default(Text("OK")))
+            Alert(title: Text(result.title), message: Text(result.detail), dismissButton: .default(Text("common.ok".localized)))
         }
     }
 
@@ -87,42 +93,55 @@ struct SettingDropDown: View {
         onDismiss()
     }
 
-    /// Asks the App Store to restore anything bought with this account. The
-    /// row stays put while it runs, because the sheet it raises belongs to the
+    /// Asks `IAPManager` to restore anything bought with this account. The row
+    /// stays put while it runs, because the sheet it raises belongs to the
     /// system and the result is worth reporting either way.
+    ///
+    /// The sync itself is not repeated here: the manager owns it, and it is the
+    /// only place that may unlock premium, so a restore started from this menu
+    /// updates the rest of the app exactly as one started from the paywall.
     private func restorePurchases() {
         guard !isRestoring else { return }
         isRestoring = true
 
-        Task {
-            do {
-                try await AppStore.sync()
-                restoreResult = .restored
-            } catch {
-                restoreResult = .failed(error.localizedDescription)
-            }
+        iap.restorePurchases { restored in
             isRestoring = false
+
+            if restored {
+                restoreResult = .restored
+            } else if let reason = iap.errorMessage {
+                // Taken from the manager and cleared, so the paywall does not
+                // later show a failure that has already been reported here.
+                iap.errorMessage = nil
+                restoreResult = .failed(reason)
+            } else {
+                restoreResult = .nothingToRestore
+            }
         }
     }
 
     /// What the alert says once the restore finishes.
     enum RestoreResult: Identifiable {
         case restored
+        case nothingToRestore
         case failed(String)
 
         var id: String { title + detail }
 
         var title: String {
             switch self {
-            case .restored: return "Purchases Restored"
-            case .failed: return "Restore Failed"
+            case .restored: return "restore.success.title".localized
+            case .nothingToRestore: return "restore.none.title".localized
+            case .failed: return "restore.failed.title".localized
             }
         }
 
         var detail: String {
             switch self {
             case .restored:
-                return "Anything bought with this Apple Account is available again."
+                return "restore.success.detail".localized
+            case .nothingToRestore:
+                return "restore.none.detail".localized
             case .failed(let reason):
                 return reason
             }

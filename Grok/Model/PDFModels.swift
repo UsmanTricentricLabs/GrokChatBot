@@ -50,7 +50,10 @@ nonisolated enum SummaryLength: String, CaseIterable, Identifiable, Hashable {
     case detailed = "Detailed"
 
     var id: String { rawValue }
-    var title: String { rawValue }
+
+    /// The raw value is what is stored, so it stays English; the title is what
+    /// is shown, and follows the app's language.
+    var title: String { ("pdf.length." + rawValue.lowercased()).localized }
 }
 
 nonisolated struct SummarySection: Identifiable, Equatable {
@@ -64,7 +67,7 @@ nonisolated struct SummarySection: Identifiable, Equatable {
         self.page = page
     }
 
-    var pageLabel: String { "p. \(page)" }
+    var pageLabel: String { "pdf.pageLabel".localized(page) }
 }
 
 nonisolated struct PDFSummary: Equatable {

@@ -268,8 +268,8 @@ final class ImageViewModel: ObservableObject {
     }
 
     private static func label(for day: Date, calendar: Calendar) -> String {
-        if calendar.isDateInToday(day) { return "Today" }
-        if calendar.isDateInYesterday(day) { return "Yesterday" }
+        if calendar.isDateInToday(day) { return "date.today".localized }
+        if calendar.isDateInYesterday(day) { return "date.yesterday".localized }
 
         let formatter = DateFormatter()
         formatter.dateFormat = "d MMMM"

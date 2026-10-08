@@ -48,7 +48,7 @@ struct PromptInputBar<Actions: View>: View {
                         .frame(width: 50, height: GrokMetrics.inputButton)
                 }
                 .buttonStyle(GrokButtonStyle())
-                .help("Attach a text file, PDF or image")
+                .help("chat.attachHelp".localized)
 
                 GrowingTextView(
                     text: $text,
@@ -171,7 +171,7 @@ struct SendButton: View {
         }
         .buttonStyle(GrokButtonStyle())
         .disabled(!isEnabled && !isStreaming)
-        .help(isStreaming ? "Stop" : "Send")
+        .help(isStreaming ? "common.stop".localized : "common.send".localized)
     }
 }
 
@@ -212,7 +212,7 @@ struct MicrophoneButton: View {
             .frame(width: GrokMetrics.inputButton, height: GrokMetrics.inputButton)
         }
         .buttonStyle(GrokButtonStyle())
-        .help(dictation.isListening ? "Stop dictation" : "Dictate")
+        .help(dictation.isListening ? "dictation.stop".localized : "dictation.start".localized)
         .onAppear {
             dictation.onTranscript = { transcript in
                 text = Self.joined(baseText, transcript)
@@ -233,16 +233,16 @@ struct MicrophoneButton: View {
                 return Alert(
                     title: Text(issue.title),
                     message: Text(issue.message),
-                    primaryButton: .default(Text("Open Settings")) {
+                    primaryButton: .default(Text("common.openSettings".localized)) {
                         NSWorkspace.shared.open(settingsURL)
                     },
-                    secondaryButton: .cancel(Text("Not Now"))
+                    secondaryButton: .cancel(Text("common.notNow".localized))
                 )
             }
             return Alert(
                 title: Text(issue.title),
                 message: Text(issue.message),
-                dismissButton: .default(Text("OK"))
+                dismissButton: .default(Text("common.ok".localized))
             )
         }
     }

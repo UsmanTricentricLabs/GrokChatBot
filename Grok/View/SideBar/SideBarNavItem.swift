@@ -45,7 +45,7 @@ struct SideBarNewChatButton: View {
             HStack(spacing: 8) {
                 GrokIcon(GrokAsset.newChat, size: 24, color: GrokColor.black1)
                     .frame(width: 28)
-                Text("New Chat")
+                Text("sidebar.newChat".localized)
                     .grokText(.subheading, color: GrokColor.black1)
                     .lineLimit(1)
                 Spacer(minLength: 0)

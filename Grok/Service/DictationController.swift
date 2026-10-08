@@ -27,18 +27,18 @@ nonisolated enum DictationPermissionIssue: Identifiable, Equatable {
 
     var title: String {
         switch self {
-        case .microphoneDenied: return "Microphone access is off"
-        case .speechDenied: return "Speech recognition is off"
-        case .unavailable: return "Dictation isn’t available"
+        case .microphoneDenied: return "dictation.mic.title".localized
+        case .speechDenied: return "dictation.speech.title".localized
+        case .unavailable: return "dictation.unavailable.title".localized
         }
     }
 
     var message: String {
         switch self {
         case .microphoneDenied:
-            return "Grok needs the microphone to dictate. Turn it on in System Settings › Privacy & Security › Microphone, then try again."
+            return "dictation.mic.detail".localized
         case .speechDenied:
-            return "Grok needs speech recognition to turn your voice into text. Turn it on in System Settings › Privacy & Security › Speech Recognition, then try again."
+            return "dictation.speech.detail".localized
         case .unavailable(let reason):
             return reason
         }
@@ -105,7 +105,7 @@ final class DictationController: NSObject, ObservableObject {
         }
         guard let recognizer, recognizer.isAvailable else {
             permissionIssue = .unavailable(
-                "Speech recognition isn’t available right now. Check your connection and try again."
+                "dictation.speech.unavailable".localized
             )
             return
         }
@@ -115,7 +115,7 @@ final class DictationController: NSObject, ObservableObject {
         } catch {
             stop()
             permissionIssue = .unavailable(
-                "The microphone could not be started. Make sure no other app is using it, then try again."
+                "dictation.mic.failed".localized
             )
         }
     }

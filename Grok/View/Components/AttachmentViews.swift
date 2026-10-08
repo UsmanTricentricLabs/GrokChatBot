@@ -58,7 +58,7 @@ struct AttachmentChip: View {
                 }
                 .buttonStyle(GrokButtonStyle())
                 .opacity(isHovering ? 1 : 0.45)
-                .help("Remove attachment")
+                .help("attachment.remove".localized)
             }
         }
         .padding(.horizontal, 10)
@@ -106,7 +106,7 @@ struct AttachmentErrorBanner: View {
                 SymbolIcon("xmark", size: 11, weight: .semibold, color: GrokColor.black6)
             }
             .buttonStyle(GrokButtonStyle())
-            .help("Dismiss")
+            .help("common.dismiss".localized)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
@@ -132,10 +132,10 @@ struct AttachmentPasswordSheet: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             VStack(alignment: .leading, spacing: 6) {
-                Text("This PDF is password-protected")
+                Text("attachment.locked.title".localized)
                     .grokText(.subheading, color: GrokColor.black1)
 
-                Text("Enter the password for “\(fileName)” to attach it.")
+                Text("attachment.locked.detail".localized(fileName))
                     .grokText(.caption, color: GrokColor.black6)
                     .fixedSize(horizontal: false, vertical: true)
             }

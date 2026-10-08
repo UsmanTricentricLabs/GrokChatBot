@@ -20,7 +20,7 @@ struct ImageGeneratingView: View {
             VStack(spacing: 6) {
                 SymbolIcon("sparkles", size: 26, color: GrokColor.black5)
                     .padding(.bottom, 6)
-                Text("Creating your image")
+                Text("image.creating".localized)
                     .grokText(.bodyMedium, color: GrokColor.black1)
                 Text("\(image.styleCaption) · about 10 seconds")
                     .grokText(.footnote, color: GrokColor.black5)
@@ -76,18 +76,18 @@ struct ImageResultView: View {
 
     private var actionRow: some View {
         HStack(spacing: 2) {
-            action("square.and.arrow.down", help: "Save") { imageVM.save(image) }
+            action("square.and.arrow.down", help: "common.save".localized) { imageVM.save(image) }
             ConfirmingIconButton(
                 diameter: 32,
                 confirmationSize: 15,
-                help: "Copy",
+                help: "common.copy".localized,
                 action: { imageVM.copy(image) }
             ) {
                 SymbolIcon("doc.on.doc", size: 16, color: GrokColor.black5)
             }
             ShareAction { view in imageVM.share(image, from: view) }
-            action("arrow.clockwise", help: "Regenerate") { imageVM.regenerate(image) }
-            action("pencil", help: "Edit prompt") { imageVM.editPrompt(for: image) }
+            action("arrow.clockwise", help: "common.regenerate".localized) { imageVM.regenerate(image) }
+            action("pencil", help: "image.editPrompt".localized) { imageVM.editPrompt(for: image) }
         }
     }
 
@@ -134,7 +134,7 @@ struct ShareAction: View {
     @State private var anchor: NSView?
 
     var body: some View {
-        CircularIconButton(diameter: 32, help: "Share", action: { perform(anchor) }) {
+        CircularIconButton(diameter: 32, help: "common.share".localized, action: { perform(anchor) }) {
             SymbolIcon("square.and.arrow.up", size: 16, color: GrokColor.black5)
         }
         .background(ViewAnchor(view: $anchor))
