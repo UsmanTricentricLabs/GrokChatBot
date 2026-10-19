@@ -211,6 +211,8 @@ final class PDFViewModel: ObservableObject {
 
     func summarize() {
         guard case .selected(let info) = state else { return }
+        guard PaywallPresenter.shared.claimRun() else { return }
+
         pagesRead = 0
         state = .processing(info)
 
@@ -319,6 +321,8 @@ final class PDFViewModel: ObservableObject {
     func askFollowUp() {
         let question = followUpDraft.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !question.isEmpty, summary != nil else { return }
+        guard PaywallPresenter.shared.claimRun() else { return }
+
         followUpDraft = ""
 
         followUps.append(ChatMessage(role: .user, text: question))

@@ -5,9 +5,9 @@
 	<key>BaseURL</key>
 	<string>https://ai-gateway.tricentriclabs.workers.dev</string>
 	<key>AppId</key>
-	<string>grok_001</string>
+	<string>gok_001</string>
 	<key>AppKey</key>
-	<string>aik_y-gSvot9Xkyim99aQzzVKulBI54aZqQHDaHO8JhhXt8</string>
+	<string>aik_zuVGIL5Abx5CkStYR3GyAZMOAFLdduuvdkzhR0Tf-ok</string>
 	<key>ChatModel</key>
 	<string>grok-4.3</string>
 	<key>ImageModel</key>

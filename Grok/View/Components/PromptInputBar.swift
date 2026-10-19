@@ -215,6 +215,9 @@ struct MicrophoneButton: View {
         .help(dictation.isListening ? "dictation.stop".localized : "dictation.start".localized)
         .onAppear {
             dictation.onTranscript = { transcript in
+                // Only growth is written back: an empty transcript would undo
+                // what has been dictated so far.
+                guard !transcript.isEmpty else { return }
                 text = Self.joined(baseText, transcript)
             }
         }

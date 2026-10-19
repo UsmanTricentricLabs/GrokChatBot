@@ -12,22 +12,17 @@ import SwiftUI
 /// and the support address are live.
 nonisolated enum SettingsDestination {
     /// The App Store listing's numeric id.
-    static let appStoreID = "0000000000"
+    static let appStoreID = "6824491561"
 
     /// The link that travels when the app is shared.
     static var listing: URL { URL(string: "https://apps.apple.com/app/id\(appStoreID)")! }
 
-    /// Opens the listing straight on its review sheet.
-    static var review: URL {
-        URL(string: "macappstore://apps.apple.com/app/id\(appStoreID)?action=write-review")!
-    }
-
-    static let support = URL(string: "mailto:support@tricentriclabs.com")!
+    static let support = URL(string: "mailto:eeman1010101010@gmail.com")!
 
     /// Linked from the foot of the paywall. The App Store requires both to be
     /// reachable from anywhere a subscription is sold.
-    static let terms = URL(string: "https://tricentriclabs.com/grok/terms")!
-    static let privacy = URL(string: "https://tricentriclabs.com/grok/privacy")!
+    static let terms = URL(string: "https://sites.google.com/view/eeman-malik/terms-and-conditions")!
+    static let privacy = URL(string: "https://sites.google.com/view/eeman-malik/privacy-policy")!
 }
 
 /// The menu behind the Settings pill: Share, Rate Us, Help & Support and
@@ -49,7 +44,8 @@ struct SettingDropDown: View {
                 .background(ViewAnchor(view: $shareAnchor))
 
             SettingRow(title: "settings.rateUs".localized, symbol: "star") {
-                open(SettingsDestination.review)
+                RatingManager.shared.requestReviewFromUser()
+                onDismiss()
             }
 
             SettingRow(title: "settings.help".localized, symbol: "questionmark.circle") {
@@ -99,7 +95,7 @@ struct SettingDropDown: View {
     ///
     /// The sync itself is not repeated here: the manager owns it, and it is the
     /// only place that may unlock premium, so a restore started from this menu
-    /// updates the rest of the app exactly as one started from the paywall.
+    /// updates the rest of the app exactly as one started from the paywall.F
     private func restorePurchases() {
         guard !isRestoring else { return }
         isRestoring = true

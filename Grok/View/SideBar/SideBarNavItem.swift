@@ -22,6 +22,7 @@ struct SideBarNavItem: View {
                 Text(title)
                     .grokText(.control, color: GrokColor.sidebarInk)
                     .lineLimit(1)
+                    .minimumScaleFactor(0.7)
                 Spacer(minLength: 0)
             }
             .padding(.horizontal, 14)
@@ -36,21 +37,28 @@ struct SideBarNavItem: View {
     }
 }
 
-/// The white "New Chat" pill that opens the sidebar.
-struct SideBarNewChatButton: View {
+/// The white primary pill at the top of the rail — the flow the app opens on.
+struct SideBarPrimaryButton: View {
+    let title: String
+    let asset: String
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
             HStack(spacing: 8) {
-                GrokIcon(GrokAsset.newChat, size: 24, color: GrokColor.black1)
-                    .frame(width: 28)
-                Text("sidebar.newChat".localized)
-                    .grokText(.subheading, color: GrokColor.black1)
+                GrokIcon(asset, size: 18, color: GrokColor.black1)
+//                    .frame(width: 24)
+                Text(title)
+                    // Same size as the nav rows below, so the rail reads as
+                    // one list; only the white pill sets this one apart.
+                    .grokText(.control, color: GrokColor.black1)
                     .lineLimit(1)
+                    // The rail is narrow and the label is localized, so a long
+                    // title shrinks to fit rather than truncating to "PDF Su…".
+                    .minimumScaleFactor(0.7)
                 Spacer(minLength: 0)
             }
-            .padding(.horizontal, 18)
+            .padding(.horizontal, 14)
             .frame(height: 48)
             .hoverBackground(GrokColor.white1, hover: GrokColor.white2, cornerRadius: 24)
         }

@@ -30,7 +30,13 @@ struct SideBarView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            SideBarNewChatButton(action: startNewChat)
+            // PDF Summary is the app's opening flow, so it takes the primary
+            // pill at the top of the rail.
+            SideBarPrimaryButton(
+                title: "feature.pdf.title".localized,
+                asset: GrokAsset.pdfSummary,
+                action: startNewSummary
+            )
 
             VStack(alignment: .leading, spacing: 4) {
                 SideBarNavItem(
@@ -45,14 +51,13 @@ struct SideBarView: View {
                 }
 
                 SideBarNavItem(
-                    title: "feature.pdf.title".localized,
-                    asset: GrokAsset.pdfSummary,
-                    isSelected: screenSwitchVM.screen == .pdfSummary
+                    title: "sidebar.newChat".localized,
+                    asset: GrokAsset.newChat,
+                    isSelected: screenSwitchVM.screen == .home
                 ) {
-                    // Like New Chat and Create Image: the nav item opens the
-                    // empty drop zone rather than the last summary.
-                    pdfVM.startNewSummary()
-                    screenSwitchVM.show(.pdfSummary)
+                    // Like Create Image: the nav item opens a fresh
+                    // conversation rather than returning to the last one.
+                    startNewChat()
                 }
             }
 
@@ -122,6 +127,11 @@ struct SideBarView: View {
     private func startNewChat() {
         chatVM.startNewConversation()
         screenSwitchVM.show(.home)
+    }
+
+    private func startNewSummary() {
+        pdfVM.startNewSummary()
+        screenSwitchVM.show(.pdfSummary)
     }
 }
 

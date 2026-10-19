@@ -132,6 +132,9 @@ final class ImageViewModel: ObservableObject {
         let text = prompt.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !text.isEmpty else { return }
 
+        // Refused once the free run is spent; the typed prompt stays put.
+        guard PaywallPresenter.shared.claimRun() else { return }
+
         let image = GeneratedImage(prompt: text, style: style, ratio: ratio)
         images.insert(image, at: 0)
         sessionImageIDs.append(image.id)

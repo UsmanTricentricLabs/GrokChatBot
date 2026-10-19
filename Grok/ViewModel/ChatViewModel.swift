@@ -219,6 +219,10 @@ final class ChatViewModel: ObservableObject {
         let sent = attachments
         guard !typed.isEmpty || !sent.isEmpty else { return }
 
+        // Refused once the free run is spent; the draft and its attachments
+        // stay put, so the prompt is still there after a purchase.
+        guard PaywallPresenter.shared.claimRun() else { return }
+
         // Attaching a file without typing anything is a request to read it.
         let prompt = typed.isEmpty ? Self.defaultAttachmentPrompt(for: sent) : typed
 
@@ -253,6 +257,8 @@ final class ChatViewModel: ObservableObject {
         guard let answerIndex = conversations[index].messages.lastIndex(where: { $0.role == .assistant }),
               let prompt = conversations[index].messages[..<answerIndex].last(where: { $0.role == .user })?.modelText
         else { return }
+
+        guard PaywallPresenter.shared.claimRun() else { return }
 
         conversations[index].messages.removeSubrange(answerIndex...)
         beginResponse(to: prompt, in: conversations[index].id)
@@ -420,6 +426,9 @@ final class ChatViewModel: ObservableObject {
                     }
                 }
                 update(answer.id, in: conversationID) { $0.state = .complete }
+                // An answer that finished is the one moment in the session
+                // worth asking for a rating on.
+                RatingManager.shared.recordSuccessfulGeneration()
             } catch {
                 update(answer.id, in: conversationID) {
                     $0.state = .failed(AIErrorPresentation(error))

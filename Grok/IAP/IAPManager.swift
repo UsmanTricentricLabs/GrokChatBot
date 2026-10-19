@@ -4,9 +4,9 @@ internal import Combine
 
 enum PremiumProductId: String, CaseIterable {
     
-    case weekly = "com.gemx.weekly"
-    case monthly = "com.gemx.monthly"
-    case yearly = "com.gemx.yearly"
+    case weekly = "com.grokai.weekly"
+    case monthly = "com.grokai.monthly"
+    case yearly = "com.grokai.yearly"
     
     static var allIds: Set<String> {
         Set(PremiumProductId.allCases.map { $0.rawValue })

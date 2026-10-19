@@ -78,6 +78,13 @@ final class DictationController: NSObject, ObservableObject {
     private let audioEngine = AVAudioEngine()
     private var request: SFSpeechAudioBufferRecognitionRequest?
     private var task: SFSpeechRecognitionTask?
+    /// Whether the recognizer's callbacks still speak for this session.
+    ///
+    /// Cancelling a task can call back one more time — with an error, or with
+    /// an empty final result — and taking that as the transcript would wipe
+    /// out everything that was just dictated. So the heard text is frozen the
+    /// moment the user presses stop, and late callbacks are dropped.
+    private var isAcceptingResults = false
 
     /// Called with the full transcript each time it grows.
     var onTranscript: ((String) -> Void)?
@@ -123,6 +130,7 @@ final class DictationController: NSObject, ObservableObject {
     func stop() {
         guard isListening || task != nil else { return }
 
+        isAcceptingResults = false
         audioEngine.inputNode.removeTap(onBus: 0)
         if audioEngine.isRunning { audioEngine.stop() }
         request?.endAudio()
@@ -151,6 +159,7 @@ final class DictationController: NSObject, ObservableObject {
         request.shouldReportPartialResults = true
         self.request = request
         transcript = ""
+        isAcceptingResults = true
 
         let inputNode = audioEngine.inputNode
         let format = inputNode.outputFormat(forBus: 0)
@@ -167,10 +176,15 @@ final class DictationController: NSObject, ObservableObject {
 
         task = recognizer.recognitionTask(with: request) { [weak self] result, error in
             Task { @MainActor [weak self] in
-                guard let self else { return }
+                guard let self, self.isAcceptingResults else { return }
                 if let result {
-                    self.transcript = result.bestTranscription.formattedString
-                    self.onTranscript?(self.transcript)
+                    let heard = result.bestTranscription.formattedString
+                    // A final result can arrive empty; the words already heard
+                    // are the better answer in that case.
+                    if !heard.isEmpty {
+                        self.transcript = heard
+                        self.onTranscript?(heard)
+                    }
                     if result.isFinal { self.stop() }
                 } else if error != nil {
                     self.stop()

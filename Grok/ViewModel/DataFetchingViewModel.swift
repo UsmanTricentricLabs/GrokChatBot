@@ -12,7 +12,7 @@ internal import Combine
 /// Owns which of the three flows — Chat, AI Image, PDF Summary — is on screen.
 class ScreenSwitchViewModel: ObservableObject {
 
-    @Published var screen: Screen = .home
+    @Published var screen: Screen = .pdfSummary
     /// Drives the sidebar drawer once the window is too narrow to hold it.
     @Published var isSidebarPresented: Bool = false
 
