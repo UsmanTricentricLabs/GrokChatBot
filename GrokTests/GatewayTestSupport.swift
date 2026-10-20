@@ -147,7 +147,7 @@ enum TestFixtures {
         """
         {
           "request_id": "req_test_image",
-          "model": "gemini-2.5-flash-image",
+          "model": "grok-imagine-image-2.0",
           "image": { "data": "\(pngBase64)", "mime_type": "image/png" }
         }
         """

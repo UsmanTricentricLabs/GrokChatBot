@@ -95,6 +95,7 @@
 "feature.pdf.title" = "PDF Summary";
 
 /* MARK: header */
+"header.models" = "Models";
 "header.language" = "Language";
 "header.settings" = "Settings";
 "header.showSidebar" = "Show sidebar";
@@ -211,6 +212,7 @@
 "settings.help" = "Help & Support";
 "settings.rateUs" = "Rate Us";
 "settings.restore" = "Restore Purchase";
+"support.subject" = "Support Request – %@";
 
 /* MARK: sidebar */
 "sidebar.chatOptions" = "Chat options";

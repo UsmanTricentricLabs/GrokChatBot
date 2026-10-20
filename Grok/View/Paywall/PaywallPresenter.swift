@@ -30,6 +30,11 @@ final class PaywallPresenter: ObservableObject {
 
     static let shared = PaywallPresenter()
 
+    /// The gate and the launch offer. Set to `false` to give the app away
+    /// whole while it is being tested: the dialog, the plans and the purchase
+    /// flow all stay where they are, and only the asking stops.
+    static let isEnforced = true
+
     @Published var isPresented = false
 
     /// Whether the free run has been used up. Persisted, so it is spent for
@@ -55,6 +60,7 @@ final class PaywallPresenter: ObservableObject {
     ///   and once for everyone else. A refusal puts the paywall up, so the
     ///   caller only has to stop.
     func claimRun(using iap: IAPManager = .shared) -> Bool {
+        guard Self.isEnforced else { return true }
         if iap.isPremiumUnlocked { return true }
 
         guard !hasSpentFreeRun else {
@@ -75,6 +81,7 @@ final class PaywallPresenter: ObservableObject {
     /// The free run is not spent by seeing this — the dialog can be closed and
     /// the one free feature used, which is what the offer is advertising.
     func offerAtLaunch(using iap: IAPManager) async {
+        guard Self.isEnforced else { return }
         guard !hasOfferedAtLaunch else { return }
         hasOfferedAtLaunch = true
 

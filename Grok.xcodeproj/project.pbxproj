@@ -21,7 +21,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		56AE31A2306E405300425025 /* Grok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grok.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		56AE31A2306E405300425025 /* PDF Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PDF Assistant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56AE31C2306E405400425001 /* GrokTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrokTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -69,7 +69,7 @@
 		56AE31A3306E405300425025 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				56AE31A2306E405300425025 /* Grok.app */,
+				56AE31A2306E405300425025 /* PDF Assistant.app */,
 				56AE31C2306E405400425001 /* GrokTests.xctest */,
 			);
 			name = Products;
@@ -78,9 +78,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		56AE31A1306E405300425025 /* Grok */ = {
+		56AE31A1306E405300425025 /* PDF Assistant */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56AE31B2306E405400425025 /* Build configuration list for PBXNativeTarget "Grok" */;
+			buildConfigurationList = 56AE31B2306E405400425025 /* Build configuration list for PBXNativeTarget "PDF Assistant" */;
 			buildPhases = (
 				56AE319E306E405300425025 /* Sources */,
 				56AE319F306E405300425025 /* Frameworks */,
@@ -93,12 +93,12 @@
 			fileSystemSynchronizedGroups = (
 				56AE31A4306E405300425025 /* Grok */,
 			);
-			name = Grok;
+			name = "PDF Assistant";
 			packageProductDependencies = (
 				56FE3DD230737FE400E140CE /* tricentricAiFormatter */,
 			);
 			productName = Grok;
-			productReference = 56AE31A2306E405300425025 /* Grok.app */;
+			productReference = 56AE31A2306E405300425025 /* PDF Assistant.app */;
 			productType = "com.apple.product-type.application";
 		};
 		56AE31C0306E405400425001 /* GrokTests */ = {
@@ -171,7 +171,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				56AE31A1306E405300425025 /* Grok */,
+				56AE31A1306E405300425025 /* PDF Assistant */,
 				56AE31C0306E405400425001 /* GrokTests */,
 			);
 		};
@@ -214,7 +214,7 @@
 /* Begin PBXTargetDependency section */
 		56AE31C9306E405400425001 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 56AE31A1306E405300425025 /* Grok */;
+			target = 56AE31A1306E405300425025 /* PDF Assistant */;
 			targetProxy = 56AE31CA306E405400425001 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -364,6 +364,8 @@
 				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "PDF Assistant";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Grok uses the microphone so you can dictate your prompt instead of typing it.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Grok uses speech recognition to turn what you say into text in the prompt field.";
@@ -409,6 +411,8 @@
 				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "PDF Assistant";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Grok uses the microphone so you can dictate your prompt instead of typing it.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Grok uses speech recognition to turn what you say into text in the prompt field.";
@@ -478,7 +482,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56AE31B2306E405400425025 /* Build configuration list for PBXNativeTarget "Grok" */ = {
+		56AE31B2306E405400425025 /* Build configuration list for PBXNativeTarget "PDF Assistant" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56AE31B3306E405400425025 /* Debug */,

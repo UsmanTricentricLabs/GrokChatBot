@@ -17,12 +17,16 @@ nonisolated enum SettingsDestination {
     /// The link that travels when the app is shared.
     static var listing: URL { URL(string: "https://apps.apple.com/app/id\(appStoreID)")! }
 
-    static let support = URL(string: "mailto:eeman1010101010@gmail.com")!
+    /// Where Help & Support writes to. The message itself is composed by
+    /// `SettingDropDown.sendSupportEmail()`, which fills in what the reply
+    /// needs to know.
+    static let supportAddress = "Muhammadalidev0@icloud.com"
+    static let support = URL(string: "mailto:\(supportAddress)")!
 
     /// Linked from the foot of the paywall. The App Store requires both to be
     /// reachable from anywhere a subscription is sold.
-    static let terms = URL(string: "https://sites.google.com/view/eeman-malik/terms-and-conditions")!
-    static let privacy = URL(string: "https://sites.google.com/view/eeman-malik/privacy-policy")!
+    static let terms = URL(string: "https://sites.google.com/view/maapps-terms")!
+    static let privacy = URL(string: "https://sites.google.com/view/maapps-privacypolicy")!
 }
 
 /// The menu behind the Settings pill: Share, Rate Us, Help & Support and
@@ -49,7 +53,7 @@ struct SettingDropDown: View {
             }
 
             SettingRow(title: "settings.help".localized, symbol: "questionmark.circle") {
-                open(SettingsDestination.support)
+                sendSupportEmail()
             }
 
             SettingRow(
@@ -82,6 +86,41 @@ struct SettingDropDown: View {
             of: shareAnchor,
             preferredEdge: .maxX
         )
+    }
+
+    /// Help & Support: a new mail message, already addressed and already
+    /// carrying what support would otherwise have to ask for — the Mac, the
+    /// system version and the build the problem was seen on.
+    ///
+    /// The subject and the body are percent-encoded as query items rather than
+    /// by escaping the whole URL: a body holds newlines, ampersands and plus
+    /// signs, and escaping the URL whole would leave them to be read as part
+    /// of its structure.
+    private func sendSupportEmail() {
+        let info = Bundle.main.infoDictionary
+        let appName = (info?["CFBundleDisplayName"] as? String)
+            ?? (info?["CFBundleName"] as? String)
+            ?? "Grok"
+        let version = info?["CFBundleShortVersionString"] as? String ?? "N/A"
+        let build = info?["CFBund leVersion"] as? String ?? "N/A"
+
+        let body = """
+            Device: \(Host.current().localizedName ?? "Unknown Mac")
+            macOS Version: \(ProcessInfo.processInfo.operatingSystemVersionString)
+            App Version: \(version) (\(build))
+
+            This information will help us solve your problem faster. Thanks for your cooperation!
+            """
+
+        var components = URLComponents()
+        components.scheme = "mailto"
+        components.path = SettingsDestination.supportAddress
+        components.queryItems = [
+            URLQueryItem(name: "subject", value: "support.subject".localized(appName)),
+            URLQueryItem(name: "body", value: body)
+        ]
+
+        open(components.url ?? SettingsDestination.support)
     }
 
     private func open(_ url: URL) {

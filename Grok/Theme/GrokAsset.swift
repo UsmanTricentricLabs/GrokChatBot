@@ -14,7 +14,7 @@ enum GrokAsset {
     // MARK: Brand
 
     /// The Grok mark, used for the hero and beside streaming answers.
-    static let mark = "mainHomeIcon"
+    static let mark = "mainChatIcon"
 
     // MARK: Sidebar
 

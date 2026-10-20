@@ -68,12 +68,19 @@ final class ChatViewModel: ObservableObject {
         // The sample rows are laid down once, on the very first launch, so the
         // sidebar is never empty before the first chat — after that the store
         // is the only source of history.
-        if history.isEmpty {
+        //
+        // "Once" is remembered rather than inferred from an empty store: a
+        // customer who deletes every conversation has emptied it deliberately,
+        // and laying the samples down again would undo that at the next
+        // launch.
+        let defaults = UserDefaults.standard
+        if history.isEmpty, !defaults.bool(forKey: ChatViewModel.didSeedKey) {
             self.conversations = ChatViewModel.recentHistory
             history.save(self.conversations)
         } else {
             self.conversations = history.load()
         }
+        defaults.set(true, forKey: ChatViewModel.didSeedKey)
 
         // Every edit reaches the store: new turns, renames, pins, deletes. The
         // pause lets a streaming answer settle before it is written, so a long
@@ -481,6 +488,10 @@ final class ChatViewModel: ObservableObject {
 
         return words.isEmpty ? "New Chat" : words.joined(separator: " ")
     }
+
+    /// Set as soon as the sample history has been offered, so it is offered
+    /// exactly once per installation.
+    private static let didSeedKey = "chat.didSeedSampleHistory"
 
     private static var recentHistory: [Conversation] {
         [

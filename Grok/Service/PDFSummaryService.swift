@@ -100,6 +100,29 @@ nonisolated struct PDFSummaryService: PDFSummarizing {
         )
     }
 
+    /// The document's text, page-marked the same way the summary prompt marks
+    /// it, for the questions asked about it afterwards.
+    ///
+    /// Extraction stays local, as it does for the summary itself: only the
+    /// text travels, and only with a question the user asked. `nil` when the
+    /// file cannot be opened or holds no text worth sending.
+    static func pageMarkedText(for info: PDFDocumentInfo, limit: Int = characterLimit) -> String? {
+        let scoped = info.url.startAccessingSecurityScopedResource()
+        defer { if scoped { info.url.stopAccessingSecurityScopedResource() } }
+
+        guard let document = PDFDocument(url: info.url) else { return nil }
+
+        // Reopening re-locks the file, so the password the sheet collected is
+        // applied again, exactly as summarizing does.
+        if document.isLocked {
+            guard let password = info.password, document.unlock(withPassword: password) else { return nil }
+        }
+
+        let pages = (0..<document.pageCount).map { document.page(at: $0)?.string ?? "" }
+        let text = joined(pageTexts: pages, limit: limit)
+        return text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? nil : text
+    }
+
     func summarize(
         _ info: PDFDocumentInfo,
         length: SummaryLength,
@@ -190,13 +213,19 @@ nonisolated struct PDFSummaryService: PDFSummarizing {
     }
 
     private static func prompt(for pageTexts: [String]) -> String {
+        "Summarize this document.\n\n" + joined(pageTexts: pageTexts, limit: characterLimit)
+    }
+
+    /// The pages run together with a page marker each, stopping at the
+    /// character limit so a long document still fits one request.
+    private static func joined(pageTexts: [String], limit: Int) -> String {
         var text = ""
         for (index, page) in pageTexts.enumerated() {
             let marked = "[page \(index + 1)]\n\(page)\n"
-            guard text.count + marked.count <= characterLimit else { break }
+            guard text.count + marked.count <= limit else { break }
             text += marked
         }
-        return "Summarize this document.\n\n\(text)"
+        return text
     }
 
     /// Pulls the JSON object out of the reply, tolerating a code fence or a

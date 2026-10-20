@@ -77,9 +77,9 @@ struct HeaderBar: View {
     }
 }
 
-/// The model name with its chevron, opening a popover of the available
-/// models. A plain button is used rather than `Menu` so the 24pt bold label
-/// renders exactly as designed.
+/// The models menu: a fixed label with its chevron, opening a popover of the
+/// available models. A plain button is used rather than `Menu` so the 24pt
+/// bold label renders exactly as designed.
 struct ModelPicker: View {
     private static let models = ["Grok", "Grok Mini"]
 
@@ -91,7 +91,9 @@ struct ModelPicker: View {
             isPresented.toggle()
         } label: {
             HStack(spacing: 12) {
-                Text(selection)
+                // The heading names the menu rather than the choice: which
+                // model is selected is shown by the tick inside it.
+                Text("header.models".localized)
                     .grokText(.sectionTitle, color: GrokColor.black1)
                     .fixedSize()
                 SymbolIcon("chevron.down", size: 15, weight: .medium, color: GrokColor.black1)

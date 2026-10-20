@@ -45,6 +45,9 @@ final class PDFViewModel: ObservableObject {
     private var summaries: [URL: PDFSummary] = [:]
     /// The questions asked about each document, restored with its summary.
     private var followUpHistory: [URL: [ChatMessage]] = [:]
+    /// Extracted text per document, so the questions asked about one do not
+    /// re-read the file each time.
+    private var documentTexts: [URL: String] = [:]
 
     private let service: PDFSummarizing
     private let chatService: ChatService
@@ -320,19 +323,52 @@ final class PDFViewModel: ObservableObject {
 
     func askFollowUp() {
         let question = followUpDraft.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !question.isEmpty, summary != nil else { return }
+        guard !question.isEmpty, let summary, let info = document else { return }
         guard PaywallPresenter.shared.claimRun() else { return }
 
         followUpDraft = ""
 
         followUps.append(ChatMessage(role: .user, text: question))
+        beginFollowUp(to: question, summary: summary, document: info)
+    }
+
+    /// Replaces the last answer with a freshly generated one, from the
+    /// question that produced it.
+    func regenerateLastFollowUp() {
+        guard let summary, let info = document else { return }
+        guard let answerIndex = followUps.lastIndex(where: { $0.role == .assistant }),
+              let question = followUps[..<answerIndex].last(where: { $0.role == .user })?.modelText
+        else { return }
+        guard PaywallPresenter.shared.claimRun() else { return }
+
+        // The answer goes, the question it answered stays: it is asked again
+        // exactly as it was.
+        followUps.removeSubrange(answerIndex...)
+        beginFollowUp(to: question, summary: summary, document: info)
+    }
+
+    /// Recovery action on the error row.
+    func retryLastFollowUp() {
+        regenerateLastFollowUp()
+    }
+
+    private func beginFollowUp(to question: String, summary: PDFSummary, document info: PDFDocumentInfo) {
+        // The turns before this question, so the model sees the conversation
+        // as it was asked — the question itself travels as the prompt.
+        let earlier = Array(followUps.dropLast())
         let answer = ChatMessage(role: .assistant, blocks: [], state: .thinking)
         followUps.append(answer)
 
         followUpTask?.cancel()
         followUpTask = Task { [chatService] in
             do {
-                for try await snapshot in chatService.respond(to: question) {
+                // The document travels with the question: the Gateway keeps
+                // nothing between calls, so a question asked on its own would
+                // reach a model that has never seen the PDF.
+                let system = await documentContext(for: info, summary: summary)
+                try Task.checkCancellation()
+
+                for try await snapshot in chatService.respond(to: question, history: earlier, system: system) {
                     guard !Task.isCancelled else { return }
                     update(answer.id) {
                         $0.blocks = snapshot
@@ -340,10 +376,47 @@ final class PDFViewModel: ObservableObject {
                     }
                 }
                 update(answer.id) { $0.state = .complete }
+            } catch is CancellationError {
+                return
             } catch {
                 update(answer.id) { $0.state = .failed(AIErrorPresentation(error)) }
             }
         }
+    }
+
+    /// The system prompt a follow-up is answered under: who the model is
+    /// answering for, and the document it has to answer from.
+    ///
+    /// The text is read once per document and kept, because a question is
+    /// asked far more often than a file is opened. Should the file no longer
+    /// be readable — moved, or its security scope gone — the summary stands in
+    /// for it, which is still the document in the user's words.
+    private func documentContext(for info: PDFDocumentInfo, summary: PDFSummary) async -> String {
+        let body: String
+
+        if let cached = documentTexts[info.url] {
+            body = cached
+        } else if let text = await Task.detached(priority: .userInitiated, operation: {
+            PDFSummaryService.pageMarkedText(for: info)
+        }).value {
+            documentTexts[info.url] = text
+            body = text
+        } else {
+            body = summary.plainText
+        }
+
+        return """
+            You are Grok, answering questions about one PDF the user has open: \
+            "\(info.name)", \(info.pageCount) page(s). Its text follows, with a \
+            marker before each page. Answer only from that text, cite the page \
+            when it helps, and say plainly when the document does not cover \
+            what was asked — never ask the user to attach or paste the file, \
+            because it is already here. Answer in clear prose with short \
+            paragraphs, using Markdown when it helps. Do not use emoji.
+
+            DOCUMENT
+            \(body)
+            """
     }
 
     func stopFollowUp() {

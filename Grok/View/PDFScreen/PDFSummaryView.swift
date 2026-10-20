@@ -20,7 +20,7 @@ struct PDFSummaryView: View {
                 .padding(.horizontal, GrokMetrics.contentPadding)
 
             ScrollViewReader { scroller in
-                ScrollView(.vertical, showsIndicators: true) {
+                ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 32) {
                     section(title: "pdf.summary".localized) {
                         VStack(alignment: .leading, spacing: 10) {
@@ -115,8 +115,8 @@ struct PDFSummaryView: View {
                 message: message,
                 onCopy: { pdfVM.copy(message) },
                 onSpeak: { pdfVM.speak(message) },
-                onRegenerate: pdfVM.stopFollowUp,
-                onRetry: pdfVM.stopFollowUp
+                onRegenerate: pdfVM.regenerateLastFollowUp,
+                onRetry: pdfVM.retryLastFollowUp
             )
             .frame(maxWidth: .infinity, alignment: .leading)
         }

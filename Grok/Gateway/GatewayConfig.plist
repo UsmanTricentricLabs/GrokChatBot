@@ -11,6 +11,6 @@
 	<key>ChatModel</key>
 	<string>grok-4.3</string>
 	<key>ImageModel</key>
-	<string>gemini-2.5-flash-image</string>
+	<string>grok-imagine-image-2.0</string>
 </dict>
 </plist>

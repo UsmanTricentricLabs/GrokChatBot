@@ -95,6 +95,7 @@
 "feature.pdf.title" = "ملخص PDF";
 
 /* MARK: header */
+"header.models" = "النماذج";
 "header.language" = "اللغة";
 "header.settings" = "الإعدادات";
 "header.showSidebar" = "إظهار الشريط الجانبي";
@@ -211,6 +212,7 @@
 "settings.help" = "المساعدة والدعم";
 "settings.rateUs" = "قيّمنا";
 "settings.restore" = "استعادة الشراء";
+"support.subject" = "طلب دعم – %@";
 
 /* MARK: sidebar */
 "sidebar.chatOptions" = "خيارات المحادثة";

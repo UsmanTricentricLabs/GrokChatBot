@@ -13,7 +13,6 @@ final class GatewayChatServiceTests: XCTestCase {
     private func service() -> GatewayChatService {
         var service = GatewayChatService(client: GatewayClient(session: StubURLProtocol.session()))
         // Reveal instantly so tests do not wait on the streaming animation.
-        service.wordInterval = 0
         return service
     }
 

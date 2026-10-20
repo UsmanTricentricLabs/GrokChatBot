@@ -26,9 +26,9 @@ extension ChatService {
 
 /// Routes chat through the Central AI Gateway.
 ///
-/// The Gateway returns a complete reply rather than a token stream, so the
-/// answer is revealed word by word on arrival. That keeps the thinking,
-/// streaming-caret and Stop behaviour the thread was built around.
+/// The Gateway returns a complete reply rather than a token stream, and the
+/// app shows it the same way: the thread waits on the thinking state, then the
+/// answer appears whole. Stop still cancels the request in flight.
 nonisolated struct GatewayChatService: ChatService {
 
     /// The persona the app has always used for its answers.
@@ -44,8 +44,6 @@ nonisolated struct GatewayChatService: ChatService {
         language. Do not use emoji.
         """
 
-    /// Delay between revealed words.
-    var wordInterval: UInt64 = 12_000_000
     /// How many turns of history accompany a prompt.
     var historyLimit = 20
 
@@ -62,7 +60,6 @@ nonisolated struct GatewayChatService: ChatService {
     ) -> AsyncThrowingStream<[ResponseBlock], Error> {
         let turns = Self.turns(from: history, prompt: prompt, limit: historyLimit)
         let systemPrompt = system ?? Self.defaultSystemPrompt
-        let interval = wordInterval
         let client = client
 
         return AsyncThrowingStream { continuation in
@@ -77,11 +74,8 @@ nonisolated struct GatewayChatService: ChatService {
                     try Task.checkCancellation()
 
                     let answer = response.message.content.trimmingCharacters(in: .whitespacesAndNewlines)
-                    for snapshot in Self.reveal(answer) {
-                        try Task.checkCancellation()
-                        continuation.yield(snapshot)
-                        try await Task.sleep(nanoseconds: interval)
-                    }
+                    // One snapshot: the reply is shown whole, the way the
+                    // Gateway delivers it.
                     continuation.yield([.markdown(answer)])
                     continuation.finish()
                 } catch is CancellationError {
@@ -110,20 +104,5 @@ nonisolated struct GatewayChatService: ChatService {
             turns.append(GatewayChatTurn(role: .user, content: prompt))
         }
         return turns
-    }
-
-    /// Progressive snapshots of a finished answer: the Markdown fills word by
-    /// word, so the formatter lays out more of the reply on every tick.
-    private static func reveal(_ answer: String) -> [[ResponseBlock]] {
-        var snapshots: [[ResponseBlock]] = []
-        var revealed = ""
-
-        // Splitting on spaces alone keeps the line breaks inside each token, so
-        // rejoining them reproduces the answer's Markdown exactly.
-        for word in answer.split(separator: " ", omittingEmptySubsequences: false) {
-            revealed += revealed.isEmpty ? String(word) : " \(word)"
-            snapshots.append([.markdown(revealed)])
-        }
-        return snapshots
     }
 }

@@ -95,6 +95,7 @@
 "feature.pdf.title" = "PDF 摘要";
 
 /* MARK: header */
+"header.models" = "模型";
 "header.language" = "语言";
 "header.settings" = "设置";
 "header.showSidebar" = "显示边栏";
@@ -211,6 +212,7 @@
 "settings.help" = "帮助与支持";
 "settings.rateUs" = "给我们评分";
 "settings.restore" = "恢复购买";
+"support.subject" = "支持请求 – %@";
 
 /* MARK: sidebar */
 "sidebar.chatOptions" = "聊天选项";

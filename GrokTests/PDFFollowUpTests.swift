@@ -26,7 +26,6 @@ final class PDFFollowUpTests: XCTestCase {
 
         let client = GatewayClient(session: StubURLProtocol.session())
         var chat = GatewayChatService(client: client)
-        chat.wordInterval = 0
 
         controller = PersistenceController(inMemory: true)
         viewModel = PDFViewModel(

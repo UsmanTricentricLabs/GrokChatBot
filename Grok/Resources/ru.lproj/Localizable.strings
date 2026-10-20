@@ -95,6 +95,7 @@
 "feature.pdf.title" = "Краткое содержание PDF";
 
 /* MARK: header */
+"header.models" = "Модели";
 "header.language" = "Язык";
 "header.settings" = "Настройки";
 "header.showSidebar" = "Показать боковую панель";
@@ -211,6 +212,7 @@
 "settings.help" = "Помощь и поддержка";
 "settings.rateUs" = "Оценить";
 "settings.restore" = "Восстановить покупку";
+"support.subject" = "Запрос в поддержку – %@";
 
 /* MARK: sidebar */
 "sidebar.chatOptions" = "Параметры чата";

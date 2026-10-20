@@ -18,7 +18,12 @@ struct PromptInputBar<Actions: View>: View {
     let placeholder: String
     let onSubmit: () -> Void
 
+    /// Supplied by the flows that take files. A flow that takes none leaves
+    /// it nil and the button is not drawn at all.
     var onAttach: (() -> Void)?
+    /// What the attach button's tooltip says, for flows that attach something
+    /// other than a chat file.
+    var attachHelp: String?
     /// Files already attached to the next prompt, drawn as chips above the field.
     var attachments: [ChatAttachment] = []
     var onRemoveAttachment: ((ChatAttachment) -> Void)?
@@ -41,14 +46,14 @@ struct PromptInputBar<Actions: View>: View {
             }
 
             HStack(alignment: .bottom, spacing: 10) {
-                Button {
-                    onAttach?()
-                } label: {
-                    GrokPlateIcon(GrokAsset.attach, size: GrokMetrics.inputButton)
-                        .frame(width: 50, height: GrokMetrics.inputButton)
+                if let onAttach {
+                    Button(action: onAttach) {
+                        GrokPlateIcon(GrokAsset.attach, size: GrokMetrics.inputButton)
+                            .frame(width: 50, height: GrokMetrics.inputButton)
+                    }
+                    .buttonStyle(GrokButtonStyle())
+                    .help(attachHelp ?? "chat.attachHelp".localized)
                 }
-                .buttonStyle(GrokButtonStyle())
-                .help("chat.attachHelp".localized)
 
                 GrowingTextView(
                     text: $text,

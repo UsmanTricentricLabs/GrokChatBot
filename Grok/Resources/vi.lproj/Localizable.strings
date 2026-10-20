@@ -95,6 +95,7 @@
 "feature.pdf.title" = "Tóm tắt PDF";
 
 /* MARK: header */
+"header.models" = "Mô hình";
 "header.language" = "Ngôn ngữ";
 "header.settings" = "Cài đặt";
 "header.showSidebar" = "Hiện thanh bên";
@@ -211,6 +212,7 @@
 "settings.help" = "Trợ giúp & hỗ trợ";
 "settings.rateUs" = "Đánh giá";
 "settings.restore" = "Khôi phục giao dịch";
+"support.subject" = "Yêu cầu hỗ trợ – %@";
 
 /* MARK: sidebar */
 "sidebar.chatOptions" = "Tuỳ chọn trò chuyện";

@@ -95,6 +95,7 @@
 "feature.pdf.title" = "Riepilogo PDF";
 
 /* MARK: header */
+"header.models" = "Modelli";
 "header.language" = "Lingua";
 "header.settings" = "Impostazioni";
 "header.showSidebar" = "Mostra barra laterale";
@@ -211,6 +212,7 @@
 "settings.help" = "Aiuto e assistenza";
 "settings.rateUs" = "Valutaci";
 "settings.restore" = "Ripristina acquisto";
+"support.subject" = "Richiesta di assistenza – %@";
 
 /* MARK: sidebar */
 "sidebar.chatOptions" = "Opzioni chat";

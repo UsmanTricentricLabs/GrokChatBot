@@ -95,6 +95,7 @@
 "feature.pdf.title" = "PDF 要約";
 
 /* MARK: header */
+"header.models" = "モデル";
 "header.language" = "言語";
 "header.settings" = "設定";
 "header.showSidebar" = "サイドバーを表示";
@@ -211,6 +212,7 @@
 "settings.help" = "ヘルプとサポート";
 "settings.rateUs" = "評価する";
 "settings.restore" = "購入を復元";
+"support.subject" = "サポートのご依頼 – %@";
 
 /* MARK: sidebar */
 "sidebar.chatOptions" = "チャットのオプション";

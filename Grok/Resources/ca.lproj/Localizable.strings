@@ -95,6 +95,7 @@
 "feature.pdf.title" = "Resum de PDF";
 
 /* MARK: header */
+"header.models" = "Models";
 "header.language" = "Idioma";
 "header.settings" = "Configuració";
 "header.showSidebar" = "Mostra la barra lateral";
@@ -211,6 +212,7 @@
 "settings.help" = "Ajuda i assistència";
 "settings.rateUs" = "Valora’ns";
 "settings.restore" = "Restaura la compra";
+"support.subject" = "Sol·licitud d’assistència – %@";
 
 /* MARK: sidebar */
 "sidebar.chatOptions" = "Opcions del xat";

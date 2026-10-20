@@ -98,7 +98,7 @@ final class GatewayClientTests: XCTestCase {
 
         let body = try XCTUnwrap(StubURLProtocol.lastJSON())
         XCTAssertEqual(body["prompt"] as? String, "A lighthouse")
-        XCTAssertEqual(body["model"] as? String, "gemini-2.5-flash-image")
+        XCTAssertEqual(body["model"] as? String, "grok-imagine-image-2.0")
 
         // The endpoint rejects these, so they must never be sent.
         for field in ["size", "aspect_ratio", "n", "quality", "style", "response_format"] {

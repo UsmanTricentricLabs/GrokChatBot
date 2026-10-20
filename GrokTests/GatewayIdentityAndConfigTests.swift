@@ -39,7 +39,7 @@ final class GatewayConfigurationTests: XCTestCase {
 
         XCTAssertEqual(configuration.appId, "grok_001")
         XCTAssertEqual(configuration.chatModel, "grok-4.3")
-        XCTAssertEqual(configuration.imageModel, "gemini-2.5-flash-image")
+        XCTAssertEqual(configuration.imageModel, "grok-imagine-image-2.0")
         XCTAssertEqual(configuration.baseURL.scheme, "https")
         XCTAssertTrue(configuration.appKey.hasPrefix("aik_"))
     }
